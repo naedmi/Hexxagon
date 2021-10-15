@@ -1,0 +1,4 @@
+[debug] [hello-world-build] Classpath dependencies List()
+[debug] [hello-world-build] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'hello-world-build' to 'C:\HTWG\AIN3\Software Engineering\Hexxagon\hello-world\project\.bloop\hello-world-build.json'
+[success] Generated .bloop\hello-world-build.json
