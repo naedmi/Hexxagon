@@ -10,6 +10,7 @@ line()
 bar()
 
 def test = "HALLO ICH BIN VON OSKAR!!!"
+def test2 = "NOCHMAL VON OSKAR"
 /*
 			     ___
 			 ___/   \___
