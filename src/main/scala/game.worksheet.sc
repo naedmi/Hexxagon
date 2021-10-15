@@ -9,7 +9,7 @@ def bar(): String =
 line()
 bar()
 
-
+def test = "HALLO ICH BIN VON OSKAR!!!"
 /*
 			     ___
 			 ___/   \___
