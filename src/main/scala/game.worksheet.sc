@@ -11,6 +11,7 @@ bar()
 
 
 /* heeeeeyeyeyeyey *wichtige änderung*
+def test = "HALLO ICH BIN VON OSKAR!!!"
 			     ___
 			 ___/   \___
 		 ___/   \___/   \___
