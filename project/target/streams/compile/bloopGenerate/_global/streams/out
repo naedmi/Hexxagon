@@ -1,4 +1,4 @@
-[debug] [hello-world-build] Classpath dependencies List()
-[debug] [hello-world-build] Dependencies from configurations List()
-[debug] Bloop wrote the configuration of project 'hello-world-build' to 'C:\HTWG\AIN3\Software Engineering\Hexxagon\hello-world\project\.bloop\hello-world-build.json'
-[success] Generated .bloop\hello-world-build.json
+[0m[[0m[0mdebug[0m] [0m[0m[hexxagon-build] Classpath dependencies List()[0m
+[0m[[0m[0mdebug[0m] [0m[0m[hexxagon-build] Dependencies from configurations List()[0m
+[0m[[0m[0mdebug[0m] [0m[0mBloop wrote the configuration of project 'hexxagon-build' to 'C:\HTWG\AIN3\Software Engineering\Hexxagon\project\.bloop\hexxagon-build.json'[0m
+[0m[[0m[32msuccess[0m] [0m[0mGenerated .bloop\hexxagon-build.json[0m
