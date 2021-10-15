@@ -1,2 +1,2 @@
 # Hexxagon
-Greates Game of all time
+Greatest Game of all time
