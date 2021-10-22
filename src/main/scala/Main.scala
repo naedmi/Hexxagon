@@ -1,4 +1,4 @@
-object Main extends App {
+@main def Hex: Unit = {
   def lines = 6
   def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
   def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
