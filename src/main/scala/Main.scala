@@ -9,7 +9,6 @@ object Main extends App {
   print(field)
 }
 
-// hallooooo
   /*print("""
  ___     ___     ___     ___     ___  
 /   \___/   \___/   \___/   \___/   \
