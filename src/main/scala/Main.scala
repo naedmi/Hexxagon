@@ -1,3 +1,5 @@
+package Hexxagon.src
+
 @main def Hex: Unit = {
   def lines = 6
   def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
@@ -8,7 +10,6 @@
 
   print(field)
 }
-// noch mal
 // hallooooo
 
   /*print("""
