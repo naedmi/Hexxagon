@@ -4,10 +4,10 @@ object Main extends App {
   def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
   def edgetop = " ___     ___     ___     ___     ___ \n"
 
-  def Field = edgetop + (top + bot) * lines
+  def field = edgetop + (top + bot) * lines
 
-  print(Field)
-
+  print(field)
+}
   /*print("""
  ___     ___     ___     ___     ___  
 /   \___/   \___/   \___/   \___/   \
@@ -23,4 +23,3 @@ object Main extends App {
 /   \___/   \___/   \___/   \___/   \
 \___/   \___/   \___/   \___/   \___/
   """)*/
-}
