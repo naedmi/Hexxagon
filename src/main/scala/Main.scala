@@ -6,13 +6,13 @@ object Main extends App {
      ___     ___     ___     ___
  ___/   \___/   \___/   \___/   \___
 """
-  println("Hello, World!")
+println("Hello, World!")
 
-  def Field = edgetop + (top + bot) * lines
+def Field = edgetop + (top + bot) * lines
 
-  print(Field)
+print(Field)
 
-  /*print("""
+/*print("""
      ___     ___     ___     ___
  ___/   \___/   \___/   \___/   \___
 /   \___/   \___/   \___/   \___/   \
