@@ -2,5 +2,6 @@
 /.metals
 /.vscode
 /.bsp
+/.idea
 /target
 /project

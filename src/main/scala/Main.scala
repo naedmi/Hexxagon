@@ -3,7 +3,6 @@ object Main extends App {
   def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
   def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
   def edgetop = " ___     ___     ___     ___     ___ \n"
-  println("Hello, World!")
 
   def Field = edgetop + (top + bot) * lines
 
