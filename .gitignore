@@ -3,5 +3,7 @@
 /.vscode
 /.bsp
 /.idea
+/.ammonite
 /target
 /project
+/null
