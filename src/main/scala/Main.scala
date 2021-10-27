@@ -6,6 +6,7 @@ package scala
 }
 
 case class HexField(val lines:Int = 6, val col:Int = 9):
+  //val matrix = Array.ofDim[String](lines, col)
   var condition = 1;
   if (col == 0 || lines == 0) {
     condition = 0;
@@ -15,5 +16,12 @@ case class HexField(val lines:Int = 6, val col:Int = 9):
   def top = "/   \\" * condition + "___/   \\" * usecol + eol
   def bot = "\\___/" * condition + "   \\___/" * usecol + eol
   def edgetop = " ___ " * condition + "    ___ " * usecol + eol
+
+  //def placeX(x:Int, y:Int) = {
+  //  matrix(x)(y) = "X"
+  //}
+  //def placeO(x:Int, y:Int) = {
+  //  matrix(x)(y) = "O"
+  //}
 
   def field = eol + edgetop + (top + bot) * lines
