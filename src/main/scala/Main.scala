@@ -1,16 +1,22 @@
-package Hexxagon.src
+package scala
 
-@main def Hex: Unit = {
-  def lines = 6
+//@main def Hex: Unit = {
+//  def lines = 6
+//  def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
+//  def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
+//  def edgetop = " ___     ___     ___     ___     ___ \n"
+//
+//  def field = edgetop + (top + bot) * lines
+//
+//  print(field)
+//}
+
+case class HexField(private val lines:Integer):
   def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
   def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
   def edgetop = " ___     ___     ___     ___     ___ \n"
 
-  def field = edgetop + (top + bot) * lines
-
-  print(field)
-}
-// hallooooo
+  def field = "\n" + edgetop + (top + bot) * lines
 
   /*print("""
  ___     ___     ___     ___     ___  
