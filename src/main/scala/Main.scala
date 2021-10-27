@@ -1,13 +1,19 @@
 package scala
 
 @main def Hex: Unit = {
-  val h = new HexField(6, 4);
+  val h = new HexField(1, 1);
   print(h.field);
 }
 
-case class HexField(val lines:Int, val col:Int):
-  def top = "/   \\" + "___/   \\" * col + " \n"
-  def bot = "\\___/" + "   \\___/" * col + " \n"
-  def edgetop = " ___ " + "    ___ " * col + " \n"
+case class HexField(val lines:Int = 6, val col:Int = 9):
+  var condition = 1;
+  if (col == 0 || lines == 0) {
+    condition = 0;
+  }
+  val usecol = col / 2
+  val eol = "\n" * condition
+  def top = "/   \\" * condition + "___/   \\" * usecol + eol
+  def bot = "\\___/" * condition + "   \\___/" * usecol + eol
+  def edgetop = " ___ " * condition + "    ___ " * usecol + eol
 
-  def field = "\n" + edgetop + (top + bot) * lines
+  def field = eol + edgetop + (top + bot) * lines
