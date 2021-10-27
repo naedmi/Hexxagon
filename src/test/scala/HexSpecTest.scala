@@ -47,7 +47,7 @@ class HexSpecTest extends AnyWordSpec {
             "not have any lines" in {
                 hex.edgetop + hex.top + hex.bot should be(new HexField(0, 0).field)
             }
-            "and be empty when printed completly" in {
+            "be empty when printed completly" in {
                 hex.field should be("")
             }
         }
