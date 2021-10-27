@@ -1,35 +1,13 @@
 package scala
 
-//@main def Hex: Unit = {
-//  def lines = 6
-//  def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
-//  def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
-//  def edgetop = " ___     ___     ___     ___     ___ \n"
-//
-//  def field = edgetop + (top + bot) * lines
-//
-//  print(field)
-//}
+@main def Hex: Unit = {
+  val h = new HexField(6, 4);
+  print(h.field);
+}
 
-case class HexField(private val lines:Integer):
-  def top = "/   \\___/   \\___/   \\___/   \\___/   \\ \n"
-  def bot = "\\___/   \\___/   \\___/   \\___/   \\___/ \n"
-  def edgetop = " ___     ___     ___     ___     ___ \n"
+case class HexField(val lines:Int, val col:Int):
+  def top = "/   \\" + "___/   \\" * col + " \n"
+  def bot = "\\___/" + "   \\___/" * col + " \n"
+  def edgetop = " ___ " + "    ___ " * col + " \n"
 
   def field = "\n" + edgetop + (top + bot) * lines
-
-  /*print("""
- ___     ___     ___     ___     ___  
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/
-/   \___/   \___/   \___/   \___/   \
-\___/   \___/   \___/   \___/   \___/ 
-""")*/
