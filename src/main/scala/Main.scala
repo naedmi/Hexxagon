@@ -5,8 +5,20 @@ import scala.io.StdIn.readLine
 @main def Hex: Unit = {
   val h = new HexField();
 
+  printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", h.lines - 1, h.col - 1)
+  var line = readLine()
+  while(!line.equals("exit")) {
+    val Array(x, y, c) = line.split("\\s".map(_.toChar))
+
+    if c.equals("X") then
+      h.placeX(x.toInt, y.toInt)
+    else if c.equals("O") then
+      h.placeO(x.toInt, y.toInt)
+    end if
+    print(h.field);
+    line = readLine()
+  }
   
-  print(h.field);
 }
 
 case class HexField(var lines:Int = 6, var col:Int = 9):
