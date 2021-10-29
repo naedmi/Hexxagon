@@ -56,8 +56,8 @@ class HexSpecTest extends AnyWordSpec {
 
             val hex = new HexField(1, 1)
 
-            "contain nothing" in {
-                hex.matrix(0)(0).isSpaceChar should be(true)
+            "contain a Space when empty" in {
+                hex.matrix(0)(0) should be(' ')
             }
             "or contain a X" in {
                 hex.placeX(0, 0)

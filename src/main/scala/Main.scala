@@ -5,7 +5,7 @@ import scala.io.StdIn.readLine
 @main def Hex: Unit = {
   val h = new HexField();
 
-  h.placeO(0, 0)
+  
   print(h.field);
 }
 
@@ -14,36 +14,21 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
   if (col == 0 || lines == 0) {
     condition = 0;
   }
-  
   val usecol = col / 2
+
   if lines == 0 then lines = 1
   if col == 0 then col = 1
-  val matrix = Array.ofDim[Char](lines, col)
-  val stone = ' ';
-  if (condition != 0) {
-    
-    // Initialisation
-    for(i <- 0 until lines) {
-      for(j <- 0 until usecol) {
-        matrix(i)(j) = stone;
-      }
-    }
-  } else {
-    matrix(0)(0) = stone
-  }
+
+  var matrix = Vector.fill[Char](lines, col)(' ');
   
   val eol = "\n" * condition
-  
-  //def top = "/   \\" * condition + "___/   \\" * usecol + eol
-  //def bot = "\\___/" * condition + "   \\___/" * usecol + eol
   def edgetop = " ___ " * condition + "    ___ " * usecol + eol
   
-
   def placeX(x:Int, y:Int) = {
-    matrix(x)(y) = 'X'
+    matrix = matrix.updated(x, matrix(x).updated(y, 'X'))
   }
   def placeO(x:Int, y:Int) = {
-    matrix(x)(y) = 'O'
+    matrix = matrix.updated(x, matrix(x).updated(y, 'O'))
   }
 
   def bot(line:Int): String = {
