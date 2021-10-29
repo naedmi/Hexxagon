@@ -1,9 +1,11 @@
 package scala
 
+import scala.io.StdIn.readLine
+
 @main def Hex: Unit = {
-  val h = new HexField(0, 0);
-  h.placeX(0, 0)
-  //h.placeX(0, 1)
+  val h = new HexField();
+
+  h.placeO(0, 0)
   print(h.field);
 }
 
