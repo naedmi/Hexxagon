@@ -1,20 +1,21 @@
 package scala
 
 @main def Hex: Unit = {
-  val h = new HexField(0, 0);
+  val h = new HexField(2, 2);
   //h.placeX(0, 0)
   //h.placeX(0, 1)
   print(h.field);
 }
 
-case class HexField(val lines:Int = 6, val col:Int = 9):
+case class HexField(var lines:Int = 6, val col:Int = 9):
   var condition = 1;
   if (col == 0 || lines == 0) {
     condition = 0;
   }
   
   val usecol = col / 2
-  val matrix = Array.ofDim[Char](lines + 1, usecol + 1)
+  if lines == 0 then lines = 1
+  val matrix = Array.ofDim[Char](lines, usecol + 1)
   val stone = ' ';
   if (condition != 0) {
     
@@ -31,7 +32,7 @@ case class HexField(val lines:Int = 6, val col:Int = 9):
   val eol = "\n" * condition
   
   //def top = "/   \\" * condition + "___/   \\" * usecol + eol
-  def bot = "\\___/" * condition + "   \\___/" * usecol + eol
+  //def bot = "\\___/" * condition + "   \\___/" * usecol + eol
   def edgetop = " ___ " * condition + "    ___ " * usecol + eol
   
 
@@ -42,6 +43,15 @@ case class HexField(val lines:Int = 6, val col:Int = 9):
     matrix(x)(y) = 'O'
   }
 
+  def bot(line:Int): String = {
+    
+    var res = "\\___/" * condition
+    for (x <- 0 until usecol) {
+      res += " " + matrix(line)(1).toString * condition + " \\___/" * condition
+    }
+    res + "\n" * condition
+  }
+
   def top(line:Int): String = {
     
     var res = "/ " * condition + matrix(line)(0).toString * condition + " \\" * condition
@@ -50,10 +60,11 @@ case class HexField(val lines:Int = 6, val col:Int = 9):
     }
     res + "\n" * condition
   }
+
   def field = {
     var res = eol + edgetop
     for(l <- 0 until lines) {
-      res += (top(l) + bot)
+      res += (top(l) + bot(l))
     }
     res
   }
