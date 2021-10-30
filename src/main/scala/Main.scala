@@ -1,24 +1,39 @@
 package scala
 
 import scala.io.StdIn.readLine
+import scala.util.matching.Regex
 
 @main def Hex: Unit = {
   val h = new HexField();
+  val maxind1 = h.lines - 1
+  val maxind2 = h.col - 1
+  printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", maxind2, maxind1)
+  print(h.field);
 
-  printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", h.lines - 1, h.col - 1)
+  val reg: Regex = ("[0-" + maxind1 + "]\\s[0-" + maxind2 + "]\\s[XO]").r
   var line = readLine()
-  while(!line.equals("exit")) {
-    val Array(x, y, c) = line.split("\\s".map(_.toChar))
 
-    if c.equals("X") then
-      h.placeX(x.toInt, y.toInt)
-    else if c.equals("O") then
-      h.placeO(x.toInt, y.toInt)
-    end if
-    print(h.field);
+  while(!line.equals("exit")) {
+    line = matchReg(reg.findFirstIn(line))
+    if line.equals("Wrong Input") then
+      println(line)
+    else
+      val (y:Int, x:Int, c:Char) = line.split("\\s") match {
+        case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0))
+      }
+      if c.equals('X') then
+        h.placeX(x, y)
+      else if c.equals('O') then
+        h.placeO(x, y)
+      end if
+      print(h.field);
     line = readLine()
   }
-  
+}
+
+def matchReg(x : Option[String]): String = x match {
+    case None => "Wrong Input"
+    case Some(s) => s
 }
 
 case class HexField(var lines:Int = 6, var col:Int = 9):
