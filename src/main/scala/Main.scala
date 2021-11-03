@@ -10,7 +10,7 @@ import scala.util.matching.Regex
   printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", maxind2, maxind1)
   print(h.field);
 
-  val reg: Regex = ("[0-" + maxind1 + "]\\s[0-" + maxind2 + "]\\s[XO]").r
+  val reg: Regex = ("[0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XO]").r
   var line = readLine()
 
   while(!line.equals("exit")) {
@@ -50,6 +50,7 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
   
   val eol = "\n" * condition
   def edgetop = " ___ " * condition + "    ___ " * usecol + eol
+  def edgebot = " " * condition + "   \\___/" * condition * usecol + eol
   
   def placeX(x:Int, y:Int) = {
     matrix = matrix.updated(x, matrix(x).updated(y, 'X'))
@@ -81,5 +82,6 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
     for(l <- 0 until lines) {
       res += (top(l) + bot(l))
     }
+    res += edgebot
     res
   }
