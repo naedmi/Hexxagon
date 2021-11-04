@@ -62,6 +62,8 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
   def bot(line:Int): String = {
     
     var res = "\\___/" * condition
+
+    //matrix.zipWithIndex.foreach((x, i) => if i % 2 != 0 && i >= 1 && i < col - 1 then res += " " * condition + x.toString * condition + " \\___/" * condition)
     for (x <- 1 until col - 1 by 2) {
       res += " " + matrix(line)(x).toString * condition + " \\___/" * condition
     }
@@ -71,9 +73,12 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
   def top(line:Int): String = {
     
     var res = "/ " * condition + matrix(line)(0).toString * condition + " \\" * condition
-    for (x <- 2 until col by 2) {
-      res += "___/ " + matrix(line)(x) + " \\"
-    }
+
+    matrix(line).zipWithIndex.foreach((x, i) => if i % 2 == 0 && i >= 2 then res += "___/ " + x + " \\")
+
+    //for (x <- 2 until col by 2) {
+    //  res += "___/ " + matrix(line)(x) + " \\"
+    //}
     res + "\n" * condition
   }
 
