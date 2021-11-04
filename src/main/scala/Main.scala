@@ -4,9 +4,11 @@ import scala.io.StdIn.readLine
 import scala.util.matching.Regex
 
 @main def Hex: Unit = {
+
   val h = new HexField();
   val maxind1 = h.lines - 1
   val maxind2 = h.col - 1
+
   printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", maxind2, maxind1)
   print(h.field);
 
@@ -15,6 +17,7 @@ import scala.util.matching.Regex
 
   while(!line.equals("exit")) {
     line = matchReg(reg.findFirstIn(line))
+
     if line.equals("Wrong Input") then
       println(line)
     else
@@ -26,7 +29,9 @@ import scala.util.matching.Regex
       else if c.equals('O') then
         h.placeO(x, y)
       end if
-      print(h.field);
+
+    print(h.field)
+
     line = readLine()
   }
 }
@@ -63,10 +68,11 @@ case class HexField(var lines:Int = 6, var col:Int = 9):
     
     var res = "\\___/" * condition
 
-    //matrix.zipWithIndex.foreach((x, i) => if i % 2 != 0 && i >= 1 && i < col - 1 then res += " " * condition + x.toString * condition + " \\___/" * condition)
-    for (x <- 1 until col - 1 by 2) {
-      res += " " + matrix(line)(x).toString * condition + " \\___/" * condition
-    }
+    matrix(line).zipWithIndex.foreach((x, i) => if i % 2 != 0 && i >= 1 && i != col then res += " " + x.toString * condition + " \\___/" * condition)
+
+    //for (x <- 1 until col - 1 by 2) {
+    //  res += " " + matrix(line)(x).toString * condition + " \\___/" * condition
+    //}
     res + "\n" * condition
   }
 
