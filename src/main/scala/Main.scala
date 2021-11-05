@@ -11,4 +11,3 @@ import model.HexField
   val tui = TUI(controller)
   tui.run
 }
-

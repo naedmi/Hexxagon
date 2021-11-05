@@ -1,3 +1,4 @@
+package scala
 package model
 
 class HexField(col:Int, lines:Int):
