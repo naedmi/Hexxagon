@@ -40,6 +40,11 @@ class HexSpecTest extends AnyWordSpec {
                 hex.matrix.contains('O') should be(false)
                 hex.field should be(new HexField(9, 6).field)
             }
+            "be empty in every Cell at the beginning" in {
+                hex.matrix.contains('X') should be(false)
+                hex.matrix.contains('O') should be(false)
+                hex.field should be(new HexField(6, 9).field)
+            }
         }
 
         "created as empty Grid" should {

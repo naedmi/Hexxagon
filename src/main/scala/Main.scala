@@ -5,7 +5,7 @@ import scala.util.matching.Regex
 
 @main def Hex: Unit = {
 
-  val h = new HexField(2, 5)
+  val h = new HexField();
   val maxind1 = h.lines - 1
   val maxind2 = h.col - 1
 
