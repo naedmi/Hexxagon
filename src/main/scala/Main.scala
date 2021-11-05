@@ -12,7 +12,7 @@ import scala.util.matching.Regex
   printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", maxind2, maxind1)
   print(h.field);
 
-  val reg: Regex = ("[0-" + maxind2 + "]\\s+[0-" + maxind1 + "]\\s+[XO]").r
+  val reg: Regex = ("[0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XO]").r
   var line = readLine()
 
   while(!line.equals("exit")) {
