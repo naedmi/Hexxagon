@@ -6,41 +6,28 @@ import controller.Controller
 import model.HexField
 import scala.io.StdIn.readLine
 import scala.util.matching.Regex
+import java.util.regex.Pattern
 
 class TUI(controller: Controller) extends Observer {
     controller.add(this)
     override def update = println(controller.hexfield)
-    def run = getInput
     
     val maxind1 = controller.hexfield.matrix.row - 1
     val maxind2 = controller.hexfield.matrix.col - 1
-    val reg: Regex = ("[0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XO]").r
+    val reg: Regex = ("([0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XOxo])").r
+    val message = s"Input your x and y Coordinate as followed: [ 0-$maxind2 ] [ 0-$maxind1 ] [ X | O ] \n"
 
-    def getInput: Unit = 
-        
-        printf("Input your x and y Coordinate as followed: [ 0-%d ] [ 0-%d ] [ X | O ] \n", maxind2, maxind1)
-        print(controller.hexfield);
-        
-        var line = readLine()
-
-        while(!line.equals("exit")) {
-            line = matchReg(reg.findFirstIn(line))
-
-            if line.equals("Wrong Input") then
-                println(line)
-            else
-                val (x:Int, y:Int, c:Char) = line.split("\\s") match { case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0)) }
-                if c.equals('X') then
-                    controller.placeX(x, y)
-                else if c.equals('O') then
-                    controller.placeO(x, y)
-            end if
-            line = readLine()
-        }
-
-    def matchReg(x : Option[String]): String = 
-        x match {
-            case None => "Wrong Input"
-            case Some(s) => s
+    def handleInput(in:String): String = 
+        in match {
+            case reg(_*) => {
+                val (x:Int, y:Int, c:Char) = in.split("\\s") match { case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0)) }
+                c match {
+                    case 'X' | 'x' => controller.placeX(x, y)
+                    case 'O' | 'o' => controller.placeO(x, y)
+                }
+                ""  //must return String
+            }
+            case "q" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
+            case _ =>   "Wrong Input"
         }
 }

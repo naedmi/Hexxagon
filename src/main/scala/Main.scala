@@ -3,11 +3,20 @@ package scala
 import controller.Controller
 import aview.TUI
 import model.HexField
+import scala.io.StdIn.readLine
 
 @main def run: Unit = {
-  println("Welcome to Hexxagon!")
+  println("\nWelcome to Hexxagon!")
   val hexfield = new HexField()
   val controller = Controller(hexfield)
   val tui = TUI(controller)
-  tui.run
+
+  print(tui.message)
+  println(controller.hexfield)
+
+  var input = ""
+  while(tui.handleInput(input) != "Exiting.") {
+    input = readLine()
+    println(tui.handleInput(input)) 
+  } 
 }
