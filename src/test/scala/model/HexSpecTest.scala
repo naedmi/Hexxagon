@@ -1,7 +1,9 @@
 package scala
+package model
 
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
+import controller.Controller
 
 class HexSpecTest extends AnyWordSpec {
     info("Note that HexFields have to have an uneven number of columns!")
@@ -15,10 +17,13 @@ class HexSpecTest extends AnyWordSpec {
                 hex.edgetop should be(new HexField(hex.col, 1).edgetop);
             }
             "have lines" in {
-                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new HexField( hex.col, 1).field)
+                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new HexField(hex.col, 1).field)
             }
             "be equal to a field the same size" in {
                 hex.field should be(new HexField(hex.col, hex.lines).field)
+            }
+            "placing at 8 5 X" in {
+                hex.placeX(8, 5) should be(new Matrix(9, 6).fill('X', 8, 5))
             }
         }
 
@@ -36,17 +41,14 @@ class HexSpecTest extends AnyWordSpec {
                 hex.field should be(new HexField(9, 6).field)
             }
             "be empty in every Cell at the beginning" in {
-                hex.matrix.contains('X') should be(false)
-                hex.matrix.contains('O') should be(false)
-                hex.field should be(new HexField(9, 6).field)
-            }
-            "be empty in every Cell at the beginning" in {
-                hex.matrix.contains('X') should be(false)
-                hex.matrix.contains('O') should be(false)
-                hex.field should be(new HexField(6, 9).field)
+                hex.matrix.matrix.contains('X') should be(false)
+                hex.matrix.matrix.contains('O') should be(false)
+                val nhex = new HexField(2, 3)
+                nhex.matrix.matrix.contains('X') should be(false)
+                nhex.matrix.matrix.contains('O') should be(false)
             }
         }
-
+        /*
         "created as empty Grid" should {
 
             val hex = new HexField(0, 0)
@@ -61,32 +63,22 @@ class HexSpecTest extends AnyWordSpec {
                 hex.field should be("")
             }
         }
-
+        */
         "created as Single Cell" should {
 
             val hex = new HexField(1, 1)
+            val contr = new Controller(hex)
 
             "contain a Space when empty" in {
-                hex.matrix(0)(0) should be(' ')
+                hex.matrix.matrix(0)(0) should be(' ')
             }
             "contain a X" in {
-                hex.placeX(0, 0)
-                hex.matrix(0)(0) should be('X')
+                contr.placeX(0, 0)
+                hex.matrix.matrix(0)(0) should be('X')
             }
             "contain a O" in {
-                hex.placeO(0, 0)
-                hex.matrix(0)(0) should be('O')
-            }
-        }
-
-        "matching Input" should {
-            val hex = new HexField()
-            val reg = ("[0-" + (hex.col - 1) + "]\\s[0-" + (hex.lines - 1) + "]\\s[XO]").r
-            "\"Wrong Input\"" in {
-                matchReg(reg.findFirstIn("wrong")) should be("Wrong Input")
-            }
-            "be \"\"" in {
-                matchReg(reg.findFirstIn("0 0 X")) should be("0 0 X")
+                contr.placeO(0, 0)
+                hex.matrix.matrix(0)(0) should be('O')
             }
         }
     }

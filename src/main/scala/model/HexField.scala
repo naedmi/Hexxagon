@@ -1,12 +1,13 @@
 package scala
 package model
 
-class HexField(col:Int, lines:Int):
+case class HexField(col:Int, lines:Int):
     assert(col > 0 && lines > 0)
     def this() = this(9,6) // default
-
-    var matrix = new Matrix(col, lines)
+    
     if col % 2 == 0 then matrix = new Matrix(col+1, lines)
+    var matrix = new Matrix(col, lines)
+    
     val eol = "\n"
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
