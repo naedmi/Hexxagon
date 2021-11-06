@@ -1,11 +1,10 @@
 package aview
 
-import util.Observer
-import controller.Controller
-import model.HexField
+import scala.controller.Controller
+import scala.model.HexField
+import scala.aview.TUI
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
-import aview.TUI
 
 class TUISpec extends AnyWordSpec {
     "A TUI" when {

@@ -1,3 +1,4 @@
+package scala
 package controller
 import util.Observable
 import model.HexField
