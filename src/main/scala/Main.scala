@@ -1,3 +1,4 @@
+package src.main.scala
 
 import controller.Controller
 import aview.TUI
