@@ -23,7 +23,7 @@ class TUI(controller: Controller) extends Observer {
                     case 'X' | 'x' => controller.placeX(x, y)
                     case 'O' | 'o' => controller.placeO(x, y)
                 }
-                ""  //must return String
+                ""  // must return String
             }
             case "q" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
             case _ =>   "Wrong Input"
