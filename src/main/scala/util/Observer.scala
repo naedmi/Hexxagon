@@ -1,4 +1,3 @@
-package scala
 package util
 
 trait Observer:

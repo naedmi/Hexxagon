@@ -1,4 +1,3 @@
-package scala 
 package aview
 
 import util.Observer

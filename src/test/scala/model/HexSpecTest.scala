@@ -1,4 +1,3 @@
-package scala
 package model
 
 import org.scalatest.wordspec.AnyWordSpec

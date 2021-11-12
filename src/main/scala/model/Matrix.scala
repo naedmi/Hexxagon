@@ -1,4 +1,3 @@
-package scala
 package model
 
 case class Matrix(matrix: Vector[Vector[Char]]) {

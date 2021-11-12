@@ -1,8 +1,8 @@
 package aview
 
-import scala.controller.Controller
-import scala.model.HexField
-import scala.aview.TUI
+import controller.Controller
+import model.HexField
+import aview.TUI
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 

@@ -2,9 +2,9 @@ package controller
 
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
-import scala.controller.Controller
-import scala.util.Observer
-import scala.model.HexField
+import controller.Controller
+import util.Observer
+import model.HexField
 
 class ControllerSpec extends AnyWordSpec {
     "A Controller" when {

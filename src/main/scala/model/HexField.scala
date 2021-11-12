@@ -1,4 +1,3 @@
-package scala
 package model
 
 case class HexField(col:Int, lines:Int):
