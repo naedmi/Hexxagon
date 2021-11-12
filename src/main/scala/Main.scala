@@ -1,4 +1,3 @@
-package scala
 
 import controller.Controller
 import aview.TUI
