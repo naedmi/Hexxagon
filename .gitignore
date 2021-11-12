@@ -1,9 +1,18 @@
-/.bloop
+# bloop and metals
+.bloop
+.bsp
+
+# sbt
+project/project/
+project/target/
+target/
+
+# coursier
+null/
+
+# other
 /.metals
 /.vscode
-/.bsp
 /.idea
 /.ammonite
 /target
-/project
-/null
