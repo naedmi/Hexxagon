@@ -19,9 +19,10 @@ class TUI(controller: Controller) extends Observer {
         in match {
             case reg(_*) => {
                 val (x:Int, y:Int, c:Char) = in.split("\\s") match { case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0)) }
-                c match
+                c match {
                     case 'X' | 'x' => controller.placeX(x, y)
                     case 'O' | 'o' => controller.placeO(x, y)
+                }
                 ""  // must return String
             }
             case "q" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
