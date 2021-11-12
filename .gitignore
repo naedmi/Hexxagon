@@ -1,9 +1,9 @@
-/.bloop
-/.metals
-/.vscode
-/.bsp
-/.idea
-/.ammonite
+.bloop
+.metals
+.vscode
+.bsp
+.idea
+.ammonite
 /target
-/project
-/null
+/project/project
+/project/target
