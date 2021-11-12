@@ -1,6 +1,7 @@
 # bloop and metals
 .bloop
 .bsp
+/.metals
 
 # sbt
 project/project/
@@ -11,7 +12,6 @@ target/
 null/
 
 # other
-/.metals
 /.vscode
 /.idea
 /.ammonite
