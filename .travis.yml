@@ -1,0 +1,9 @@
+language: scala
+scala:
+  - 3.1.0
+
+script:
+  - sbt clean test jacoco
+
+after_success:
+  - sbt jacocoCoveralls
