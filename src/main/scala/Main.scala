@@ -1,4 +1,3 @@
-
 import controller.Controller
 import aview.TUI
 import model.HexField
