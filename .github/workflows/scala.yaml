@@ -2,7 +2,7 @@ name: Scala CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ github-actions-test ]
 
 jobs:
   build:
