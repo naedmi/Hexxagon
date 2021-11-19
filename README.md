@@ -1,4 +1,4 @@
-[![Build Status](https://app.travis-ci.com/naedmi/Hexxagon.svg?branch=master)](https://app.travis-ci.com/naedmi/Hexxagon)
+[![Scala CI](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml/badge.svg)](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg)](https://coveralls.io/github/naedmi/Hexxagon)
 
 # Hexxagon
