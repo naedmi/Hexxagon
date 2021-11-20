@@ -12,11 +12,11 @@ lazy val root = project
     "org.scalactic" %% "scalactic" % "3.2.10", 
     "org.scalatest" %% "scalatest" % "3.2.10" % "test"),
 
-    jacocoExcludes := Seq("**/Main*.*")
+    jacocoExcludes := Seq("**/Main.scala"),
 
-    /*jacocoCoverallsServiceName := "github-actions", 
+    jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
-    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")*/
+    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
 .enablePlugins(JacocoCoverallsPlugin)
