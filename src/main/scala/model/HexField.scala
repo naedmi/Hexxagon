@@ -1,7 +1,7 @@
 package model
 
 case class HexField(col:Int, lines:Int):
-    assert(col > 0 && lines > 0)
+    assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     
     var matrix = new Matrix(col, lines)

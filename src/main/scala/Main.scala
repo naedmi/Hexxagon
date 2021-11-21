@@ -5,16 +5,17 @@ import scala.io.StdIn.readLine
 
 @main def run: Unit = {
   println("\nWelcome to Hexxagon!")
-  val hexfield = new HexField()
-  val controller = Controller(hexfield)
+  val controller = Controller()
   val tui = TUI(controller)
 
   print(tui.message)
-  println(controller.hexfield)
+  println(controller)
 
   var input = ""
-  while(tui.handleInput(input) != "Exiting.") {
+  var tmp = tui.handleInput(input)
+  while(tmp != "Exiting.") {
     input = readLine()
-    println(tui.handleInput(input)) 
+    tmp = tui.handleInput(input)
+    println(tmp) 
   } 
 }

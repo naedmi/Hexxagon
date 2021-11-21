@@ -1,6 +1,8 @@
 package model
 
 case class Matrix(matrix: Vector[Vector[Char]]) {
+    var Xcount = 0
+    var Ocount = 0
     def this(columns:Int, rows:Int) = this(Vector.fill[Char](rows, columns)(' '))
     val col = matrix(0).size
     val row = matrix.size
