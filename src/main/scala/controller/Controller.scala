@@ -15,7 +15,7 @@ case class Controller (var hexfield: HexField = new HexField()) extends Observab
 
     def placeO(x: Int, y: Int) =
         hexfield.matrix = hexfield.placeO(x, y)
-        hexfield.matrix.Xcount += 1
+        hexfield.matrix.Ocount += 1
         notifyObservers
         
     override def toString = hexfield.toString + "\nX: " + hexfield.matrix.Xcount + "\tO: " + hexfield.matrix.Ocount
