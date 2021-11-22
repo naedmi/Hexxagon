@@ -15,6 +15,10 @@ class ListFactorySpec extends AnyWordSpec {
             ListFactory(4, 4, 4, 4) should be (List((3, 4),(3, 3),(4, 3)))
             ListFactory(0, 4, 0, 5) should be (List((0, 3),(0, 5)))
             ListFactory(0, 5, 0, 5) should be (List((0, 4)))
+            ListFactory(0, 0, 2, 0) should be (List((1, 0)))
+        }
+        "applied" in {
+            ListFactory.apply(0,0,0,0) should be (ListFactory(0,0,0,0))
         }
     }
 }
