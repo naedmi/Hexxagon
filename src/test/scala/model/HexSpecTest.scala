@@ -25,7 +25,7 @@ class HexSpecTest extends AnyWordSpec {
                 hex.placeX(8, 5) should be(new Matrix(9, 6).fill('X', 8, 5))
             }
             "be the same size as an 8 - 6 Grid" in {
-                hex.field should be(new HexField(8, 6).field)
+                new HexField().field should be(new HexField(8, 6).field)
             }
         }
 

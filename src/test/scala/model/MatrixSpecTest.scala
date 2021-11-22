@@ -14,13 +14,15 @@ class MatrixSpecTest extends AnyWordSpec {
             }
         }
         "placed a Stone" should {
-            var matrix = new Matrix(3, 2)
-            matrix = matrix.fill('X', 0, 0)
+            var matrix = new Matrix(5, 4)
             matrix = matrix.fill('O', 1, 0)
+            matrix = matrix.fill('X', 0, 0)
+            matrix = matrix.fill('O', 2, 0)
             "contain Stone in the Cell" in {
                 matrix.cell(0, 0) should be('X')
                 matrix.cell(1, 0) should be('O')
-                matrix.cell(2, 0) should be(' ')
+                matrix.cell(2, 0) should be('O')
+                matrix.cell(0, 1) should be(' ')
             }
         }
     }
