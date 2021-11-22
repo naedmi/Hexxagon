@@ -1,5 +1,7 @@
 package model
 
+import util.ListFactory
+
 case class Matrix(var matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) {
     def this(columns:Int, rows:Int) = this(Vector.fill[Char](rows, columns)(' '))
     val col = matrix(0).size
@@ -14,7 +16,7 @@ case class Matrix(var matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Oco
         var ibound = y - 1
         if x % 2 == 1 then
             ibound += 1
-        val tolookat : List[(Int, Int)] = List((x, y - 1), (x, y + 1), (x - 1, ibound), (x - 1, ibound + 1), (x + 1, ibound), (x + 1, ibound + 1))
+        val tolookat = ListFactory(x, y, col - 1, row - 1)
         tolookat.foreach{ 
         case (x, y) => if !matrix(y)(x).equals(content) && !matrix(y)(x).equals(' ') then
              matrix = matrix.updated(y, matrix(y).updated(x, content))
