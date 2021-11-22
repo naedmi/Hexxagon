@@ -11,11 +11,11 @@ case class HexField(col:Int, lines:Int):
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
 
-    def placeX(x:Int, y:Int) = {
+    def placeX(x:Int, y:Int) : Matrix = {
         matrix.fill('X', x, y)
     }
 
-    def placeO(x:Int, y:Int) = {
+    def placeO(x:Int, y:Int) : Matrix = {
         matrix.fill('O', x, y)
     }
 
