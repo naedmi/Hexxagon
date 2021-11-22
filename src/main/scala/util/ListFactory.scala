@@ -3,9 +3,21 @@ package util
 object ListFactory {
     def apply(x:Int, y:Int, MaxX:Int, MaxY:Int):List[(Int, Int)] = {
         var ibound = y - 1
-        if x % 2 == 1 then
+        if x % 2 == 1 || y < 0 then
             ibound += 1
-        if MaxX == 0 || MaxY == 0 then List()
+        if (MaxX == 0 && MaxY == 0) || (x > MaxX || y > MaxY) then List()
+        else if MaxX == 0 then 
+            y match { 
+                case 0 => List((0, 1))
+                case MaxY => List((0, MaxY - 1))
+                case _ => List((0, y - 1), (0, y + 1))
+            }
+        else if MaxY == 0 then 
+            x match { 
+                case 0 => List((1, 0))
+                case MaxX => List((MaxX - 1, y))
+                case _ => List((x - 1, 0), (x + 1, 0))
+            }
         else
             x match {
                 case 0 => {

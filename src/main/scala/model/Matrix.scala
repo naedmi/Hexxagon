@@ -13,12 +13,9 @@ case class Matrix(var matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Oco
             case 'X' => Xcount += 1
             case 'O' => Ocount += 1
         }
-        var ibound = y - 1
-        if x % 2 == 1 then
-            ibound += 1
         val tolookat = ListFactory(x, y, col - 1, row - 1)
         tolookat.foreach{ 
-        case (x, y) => if !matrix(y)(x).equals(content) && !matrix(y)(x).equals(' ') then
+            case (x, y) => if !matrix(y)(x).equals(content) && !matrix(y)(x).equals(' ') then
              matrix = matrix.updated(y, matrix(y).updated(x, content))
              content match {
                 case 'X' => {
