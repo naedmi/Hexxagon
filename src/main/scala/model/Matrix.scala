@@ -8,9 +8,9 @@ case class Matrix(var matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Oco
     // def row(row: Int) = matrix(row)
     def fill(content: Char, x: Int, y: Int): Matrix =
         content match {
-                case 'X' => Xcount += 1
-                case 'O' => Ocount += 1
-            }
+            case 'X' => Xcount += 1
+            case 'O' => Ocount += 1
+        }
         var ibound = y - 1
         if x % 2 == 1 then
             ibound += 1
