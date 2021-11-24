@@ -2,6 +2,7 @@ package model
 
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
+import scala.annotation.varargs
 
 class MatrixSpecTest extends AnyWordSpec {
     "A Matrix" when {
@@ -56,6 +57,14 @@ class MatrixSpecTest extends AnyWordSpec {
                 matrix.matrix.flatten.contains(' ') should be (false)
                 matrix.matrix.flatten.contains('X') should be (false)
                 matrix.matrix.flatten.contains('O') should be (true)
+            }
+            "filling results in new Matrix" in {
+                var mat = new Matrix(1, 1)
+                mat.fillAll(' ') should be (new Matrix(1, 1))
+                mat = mat.fill('X', 0, 0)
+                mat.cell(0, 0) should be ('X')
+                mat = mat.fillAll(' ')
+                mat.cell(0, 0) should be (' ')
             }
         }
     }

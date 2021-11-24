@@ -18,6 +18,10 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
                 Ocount = row * col
                 Xcount = 0
             }
+            case ' ' => {
+                Ocount = 0
+                Xcount = 0
+            }
         }
         copy(Vector.fill[Char](row, col)(content))
     def fill(content: Char, x: Int, y: Int): Matrix =
