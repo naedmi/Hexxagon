@@ -19,10 +19,23 @@ class MatrixSpecTest extends AnyWordSpec {
             matrix = matrix.fill('X', 0, 0)
             matrix = matrix.fill('O', 2, 0)
             "contain Stone in the Cell" in {
+                matrix.Ocount should be (2)
+                matrix.Xcount should be (1)
                 matrix.cell(0, 0) should be('X')
                 matrix.cell(1, 0) should be('O')
                 matrix.cell(2, 0) should be('O')
                 matrix.cell(0, 1) should be(' ')
+            }
+        }
+        "placing a Stone on top of a Stone" should {
+            var matrix = new Matrix(5, 4)
+            "Counters should substract 1" in {
+                matrix = matrix.fill('O', 2, 2)
+                matrix.Ocount should be (1)
+                matrix.Xcount should be (0)
+                matrix = matrix.fill('X', 2, 2)
+                matrix.Ocount should be (0)
+                matrix.Xcount should be (1)
             }
         }
         "filled with a Stone" should {
@@ -31,6 +44,7 @@ class MatrixSpecTest extends AnyWordSpec {
             "should only contain 'X'" in {
                 matrix = matrix.fillAll('X')
                 matrix.Xcount should be (matrix.row * matrix.col)
+                matrix.Ocount should be (0)
                 matrix.matrix.flatten.contains(' ') should be (false)
                 matrix.matrix.flatten.contains('O') should be (false)
                 matrix.matrix.flatten.contains('X') should be (true)
@@ -38,6 +52,7 @@ class MatrixSpecTest extends AnyWordSpec {
             "should only contain 'O'" in {
                 matrix = matrix.fillAll('O')
                 matrix.Ocount should be (matrix.row * matrix.col)
+                matrix.Xcount should be (0)
                 matrix.matrix.flatten.contains(' ') should be (false)
                 matrix.matrix.flatten.contains('X') should be (false)
                 matrix.matrix.flatten.contains('O') should be (true)
