@@ -24,6 +24,14 @@ class TUI(controller: Controller) extends Observer {
                 }
                 ""  // must return String
             }
+            case "fill X" | "fill x" => {
+                controller.fillAll('X')
+                "Filled with X."
+            }
+            case "fill O" | "fill o" => {
+                controller.fillAll('O')
+                "Filled with O."
+            }
             case "q" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
             case _ =>   "Wrong Input"
         }

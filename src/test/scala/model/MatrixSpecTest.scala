@@ -25,5 +25,23 @@ class MatrixSpecTest extends AnyWordSpec {
                 matrix.cell(0, 1) should be(' ')
             }
         }
+        "filled with a Stone" should {
+            var matrix = new Matrix(5, 5)
+            
+            "should only contain 'X'" in {
+                matrix = matrix.fillAll('X')
+                matrix.Xcount should be (matrix.row * matrix.col)
+                matrix.matrix.flatten.contains(' ') should be (false)
+                matrix.matrix.flatten.contains('O') should be (false)
+                matrix.matrix.flatten.contains('X') should be (true)
+            }
+            "should only contain 'O'" in {
+                matrix = matrix.fillAll('O')
+                matrix.Ocount should be (matrix.row * matrix.col)
+                matrix.matrix.flatten.contains(' ') should be (false)
+                matrix.matrix.flatten.contains('X') should be (false)
+                matrix.matrix.flatten.contains('O') should be (true)
+            }
+        }
     }
 }

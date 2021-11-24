@@ -27,6 +27,9 @@ class HexSpecTest extends AnyWordSpec {
             "be the same size as an 8 - 6 Grid" in {
                 new HexField().field should be(new HexField(8, 6).field)
             }
+            "could be filled with one method call" in {
+                hex.fillAllX() should be (new Matrix(9, 6).fillAll('X'))
+            }
         }
 
         "created as default Grid" should {
@@ -50,22 +53,6 @@ class HexSpecTest extends AnyWordSpec {
                 nhex.matrix.matrix.contains('O') should be(false)
             }
         }
-        /*
-        "created as empty Grid" should {
-
-            val hex = new HexField(0, 0)
-
-            "not contain a top" in {
-                hex.edgetop should be("");
-            }
-            "not have any lines" in {
-                hex.edgetop + hex.top(0) + hex.bot(0) should be(new HexField(0, 0).field)
-            }
-            "be empty when printed completly" in {
-                hex.field should be("")
-            }
-        }
-        */
         "created as Single Cell" should {
 
             val hex = new HexField(1, 1)
@@ -81,6 +68,12 @@ class HexSpecTest extends AnyWordSpec {
             "contain a O" in {
                 contr.placeO(0, 0)
                 hex.matrix.matrix(0)(0) should be('O')
+            }
+            "filled completely" in {
+                contr.fillAll('X')
+                hex.matrix.matrix.flatten should contain ('X')
+                hex.matrix.matrix.flatten should not contain (' ')
+                hex.matrix.matrix.flatten should not contain ('O')
             }
         }
     }

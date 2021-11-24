@@ -8,6 +8,14 @@ case class Controller (var hexfield: HexField = new HexField()) extends Observab
         hexfield = new HexField(col, row)
         notifyObservers
 
+    def fillAll(c:Char) =
+        hexfield.matrix = 
+        c match {
+            case 'X' => hexfield.fillAllX()
+            case 'O' => hexfield.fillAllO()    
+        }
+        notifyObservers
+
     def placeX(x: Int, y: Int) =
         hexfield.matrix = hexfield.placeX(x, y)
         notifyObservers
