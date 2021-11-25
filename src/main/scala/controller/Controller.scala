@@ -23,11 +23,19 @@ case class Controller (var hexfield: HexField = new HexField()) extends Observab
         notifyObservers
 
     def place(c:Char, x: Int, y: Int) =
-        undoManager.doStep(new PlaceCommand(c, x, y, this))
-        laststatus = gamestatus
-        if checkStat.equals(GAMEOVER) then notifyObservers
-        else c match { case 'X' => gamestatus = TURNPLAYER2; case 'O' => gamestatus = TURNPLAYER1 }
-        notifyObservers
+        if ((gamestatus.equals(TURNPLAYER1) & c.equals('O')) 
+            | (gamestatus.equals(TURNPLAYER2) & c.equals('X')))
+            print("Not your turn!\n\n")
+            notifyObservers
+        else
+            undoManager.doStep(new PlaceCommand(c, x, y, this))
+            laststatus = gamestatus
+            if checkStat.equals(GAMEOVER) then notifyObservers
+            else c match { 
+                case 'X' => gamestatus = TURNPLAYER2; 
+                case 'O' => gamestatus = TURNPLAYER1;
+            }
+            notifyObservers
     
     def undo = {
         var mem = gamestatus
@@ -42,5 +50,8 @@ case class Controller (var hexfield: HexField = new HexField()) extends Observab
         notifyObservers
     }    
 
-    override def toString = GameStatus.message(gamestatus) + hexfield.toString + "\nX: " + hexfield.matrix.Xcount + "\tO: " + hexfield.matrix.Ocount
+    override def toString = 
+        GameStatus.message(gamestatus) + hexfield.toString 
+        + "\nX: " + hexfield.matrix.Xcount + "\tO: " + hexfield.matrix.Ocount
+        + "\n" + "_"*(4*hexfield.matrix.col+1) + "\n"
 }
