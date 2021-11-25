@@ -7,10 +7,7 @@ import scala.util.matching.Regex
 
 class TUI(controller: Controller) extends Observer {
     controller.add(this)
-    override def update = {
-        println(controller)
-        println(controller.gamestatus)
-    } 
+    override def update = println(controller)
     
     val maxind1 = controller.hexfield.matrix.row - 1
     val maxind2 = controller.hexfield.matrix.col - 1
@@ -21,10 +18,7 @@ class TUI(controller: Controller) extends Observer {
         in match {
             case reg(_*) => {
                 val (x:Int, y:Int, c:Char) = in.split("\\s") match { case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0)) }
-                c match {
-                    case 'X' | 'x' => controller.placeX(x, y)
-                    case 'O' | 'o' => controller.placeO(x, y)
-                }
+                controller.place(c.toUpper, x, y)
                 ""  // must return String
             }
             case "fill X" | "fill x" => {
@@ -35,7 +29,9 @@ class TUI(controller: Controller) extends Observer {
                 controller.fillAll('O')
                 "Filled with O."
             }
-            case "q" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
-            case _ =>   "Wrong Input"
+            case "redo" | "r" | "re" => controller.redo; "Redone."
+            case "undo" | "u" | "un" => controller.undo; "Undone."
+            case "q" | "e" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
+            case _ => "Wrong Input."
         }
 }

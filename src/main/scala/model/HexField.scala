@@ -11,15 +11,10 @@ case class HexField(col:Int, lines:Int):
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
 
-    def fillAllX() : Matrix = matrix.fillAll('X')
-    def fillAllO() : Matrix = matrix.fillAll('O')
+    def fillAll(c:Char) : Matrix = matrix.fillAll(c)
 
-    def placeX(x:Int, y:Int) : Matrix = {
-        matrix.fill('X', x, y)
-    }
-
-    def placeO(x:Int, y:Int) : Matrix = {
-        matrix.fill('O', x, y)
+    def place(c:Char,x:Int, y:Int) : Matrix = {
+        matrix.fill(c, x, y)
     }
 
     def bot(line:Int): String = {
@@ -28,9 +23,6 @@ case class HexField(col:Int, lines:Int):
         matrix.matrix(line).zipWithIndex.foreach(
         (x, i) => if i % 2 != 0 && i >= 1 && i < col then res += " " + x.toString + " \\___/")
 
-        //for (x <- 1 until col - 1 by 2) {
-        //  res += " " + matrix(line)(x).toString * condition + " \\___/" * condition
-        //}
         res + "\n"
     }
 
@@ -40,9 +32,6 @@ case class HexField(col:Int, lines:Int):
         matrix.matrix(line).zipWithIndex.foreach(
         (x, i) => if i % 2 == 0 && i >= 2 then res += "___/ " + x + " \\")
 
-        //for (x <- 2 until col by 2) {
-        //  res += "___/ " + matrix(line)(x) + " \\"
-        //}
         res + "\n"
     }
     
