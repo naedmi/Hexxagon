@@ -29,7 +29,7 @@ class TUISpec extends AnyWordSpec {
                     case _ =>
                 }
                 t should be(false)
-                tui.handleInput(in) should be("Wrong Input")
+                tui.handleInput(in) should be("Wrong Input.")
             }
             "Fill the matrix with the command 'fill _'" in {
                 tui.handleInput("fill x") should be ("Filled with X.")

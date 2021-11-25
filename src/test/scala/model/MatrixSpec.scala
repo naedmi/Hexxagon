@@ -4,7 +4,7 @@ import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import scala.annotation.varargs
 
-class MatrixSpecTest extends AnyWordSpec {
+class MatrixSpec extends AnyWordSpec {
     "A Matrix" when {
         "initialized" should {
             "contain only ' '" in {
