@@ -11,7 +11,7 @@ object starter {
     println(start)
     var input = ""
     var tmp = tui.handleInput(input)
-    while(tmp != "Exiting.") {
+    while(tmp != "Exiting." & tmp != "Filled with X." & tmp != "Filled with O.") {
       input = readLine()
       tmp = tui.handleInput(input)
       println(tmp) 
