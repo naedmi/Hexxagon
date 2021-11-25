@@ -22,13 +22,13 @@ class HexSpecTest extends AnyWordSpec {
                 hex.field should be(new HexField(hex.col, hex.lines).field)
             }
             "placing at 8 5 X" in {
-                hex.placeX(8, 5) should be(new Matrix(9, 6).fill('X', 8, 5))
+                hex.place('X', 8, 5) should be(new Matrix(9, 6).fill('X', 8, 5))
             }
             "be the same size as an 8 - 6 Grid" in {
                 new HexField().field should be(new HexField(8, 6).field)
             }
             "could be filled with one method call" in {
-                hex.fillAllX() should be (new Matrix(9, 6).fillAll('X'))
+                hex.fillAll('X') should be (new Matrix(9, 6).fillAll('X'))
             }
         }
 
@@ -62,11 +62,11 @@ class HexSpecTest extends AnyWordSpec {
                 hex.matrix.matrix(0)(0) should be(' ')
             }
             "contain a X" in {
-                contr.placeX(0, 0)
+                contr.place('X', 0, 0)
                 hex.matrix.matrix(0)(0) should be('X')
             }
             "contain a O" in {
-                contr.placeO(0, 0)
+                contr.place('O', 0, 0)
                 hex.matrix.matrix(0)(0) should be('O')
             }
             "filled completely" in {

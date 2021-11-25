@@ -18,7 +18,7 @@ class ControllerSpec extends AnyWordSpec {
             controller.hexfield.matrix.col should be(9)
           }
           "notify its Observer after placing a stone" in {
-            controller.placeX(0, 0)
+            controller.place('X', 0, 0)
             obs.updated should be (true)
             controller.hexfield.matrix.cell(0, 0) should be('X')
           }
