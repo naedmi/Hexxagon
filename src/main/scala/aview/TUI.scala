@@ -7,7 +7,10 @@ import scala.util.matching.Regex
 
 class TUI(controller: Controller) extends Observer {
     controller.add(this)
-    override def update = println(controller)
+    override def update = {
+        println(controller)
+        println(controller.gamestatus)
+    } 
     
     val maxind1 = controller.hexfield.matrix.row - 1
     val maxind2 = controller.hexfield.matrix.col - 1

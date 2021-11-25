@@ -1,8 +1,12 @@
 package controller
+
+import GameStatus._
 import util.Observable
 import model.HexField
 
 case class Controller (var hexfield: HexField = new HexField()) extends Observable {
+
+    var gamestatus: GameStatus = IDLE
 
     def create(col:Int = 9, row:Int = 6) = 
         hexfield = new HexField(col, row)
