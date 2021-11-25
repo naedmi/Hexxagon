@@ -20,8 +20,13 @@ class PlaceCommand(content:Char, x:Int, y:Int, controller: Controller) extends C
         controller.hexfield.matrix = controller.hexfield.place(content, x, y)
     }
 }
+
 class PlaceAllCommand(content:Char, controller: Controller) extends Command {
-    override def doStep = controller.hexfield.matrix = controller.hexfield.fillAll(content)
+    var rememberMe = controller.hexfield.matrix
+    override def doStep = {
+        rememberMe = controller.hexfield.matrix
+        controller.hexfield.matrix = controller.hexfield.fillAll(content)
+    }
     override def undoStep = controller.hexfield.matrix = controller.hexfield.fillAll(' ')
     override def redoStep = controller.hexfield.matrix = controller.hexfield.fillAll(content)
 }
