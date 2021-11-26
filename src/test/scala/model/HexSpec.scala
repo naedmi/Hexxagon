@@ -4,7 +4,7 @@ import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import controller.Controller
 
-class HexSpecTest extends AnyWordSpec {
+class HexFieldSpec extends AnyWordSpec {
     info("Note that HexFields have to have an uneven number of columns!")
     "A Hex" when {
     

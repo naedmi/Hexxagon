@@ -3,7 +3,7 @@ package model
 import util.ListFactory
 
 case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) {
-    def this(columns:Int, rows:Int) = this(Vector.fill[Char](rows, columns)(' '))
+    def this(columns:Int, rows:Int) = this(Vector.fill[Char](rows, columns)(' '), 0, 0)
     def MAX = row * col
     val col = matrix(0).size
     val row = matrix.size
@@ -20,12 +20,12 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
         
         if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
 
-        if !matrix(y)(x).equals(' ') && !matrix(y)(x).equals(content) then
-        content match { 
-            case 'X' => Xcount += 1; Ocount -= 1;
-            case 'O' => Ocount += 1; Xcount -= 1 
-        }
-        else if matrix(y)(x).equals(content) then this  //prevent from placing X ontop of X
+        if matrix(y)(x).equals(content) then this // prevent from placing X ontop of X
+        else if !matrix(y)(x).equals(' ') then
+            content match { 
+                case 'X' => Xcount += 1; Ocount -= 1;
+                case 'O' => Ocount += 1; Xcount -= 1 
+            }
         else content match { 
             case 'X' => Xcount += 1; 
             case 'O' => Ocount += 1 

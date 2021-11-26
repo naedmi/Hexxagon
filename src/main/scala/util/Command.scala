@@ -1,9 +1,10 @@
 package util
 
-trait Command {
+trait Command[T] {
 
-  def doStep:Unit
-  def undoStep:Unit
-  def redoStep:Unit
+  def noStep(t: T): T
+  def doStep(t: T): T
+  def undoStep(t: T): T
+  def redoStep (t: T): T
 
 }

@@ -30,6 +30,16 @@ class ControllerSpec extends AnyWordSpec {
             tmp.contains(' ') should be (false)
             tmp.contains('O') should be (true)
           }
+          "undo and redo a move" in {
+            val stone = controller.hexfield.matrix.cell(2,2)
+            controller.place('O', 2, 2)
+            controller.hexfield.matrix.cell(2, 2) should be('O')
+            controller.undo
+            controller.hexfield.matrix.cell(2, 2) should be(stone)
+            controller.redo
+            controller.hexfield.matrix.cell(2, 2) should be('O')
+
+          }
         }
   }
 }
