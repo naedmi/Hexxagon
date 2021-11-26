@@ -14,12 +14,12 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.filter(_.contains('O')) should be(Vector())
             }
         }
-        "placed a Stone" should {
+        "placed a stone" should {
             var matrix = new Matrix(5, 4)
             matrix = matrix.fill('O', 1, 0)
             matrix = matrix.fill('X', 0, 0)
             matrix = matrix.fill('O', 2, 0)
-            "contain Stone in the Cell" in {
+            "contain stone in the Cell" in {
                 matrix.Ocount should be (2)
                 matrix.Xcount should be (1)
                 matrix.cell(0, 0) should be('X')
@@ -28,9 +28,9 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.cell(0, 1) should be(' ')
             }
         }
-        "placing a Stone on top of a Stone" should {
+        "place a stone on top of a stone" should {
             var matrix = new Matrix(5, 4)
-            "Counters should substract 1" in {
+            "counters should substract 1" in {
                 matrix = matrix.fill('O', 2, 2)
                 matrix.Ocount should be (1)
                 matrix.Xcount should be (0)
@@ -39,7 +39,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.Xcount should be (1)
             }
         }
-        "filled with a Stone" should {
+        "filled with a stone" should {
             var matrix = new Matrix(5, 5)
             
             "should only contain 'X'" in {
@@ -58,7 +58,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.flatten.contains('X') should be (false)
                 matrix.matrix.flatten.contains('O') should be (true)
             }
-            "filling results in new Matrix" in {
+            "fill results in new Matrix" in {
                 var mat = new Matrix(1, 1)
                 mat.fillAll(' ') should be (new Matrix(1, 1))
                 mat = mat.fill('X', 0, 0)

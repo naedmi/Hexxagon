@@ -9,6 +9,7 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
     val row = matrix.size
     def cell(col: Int, row: Int):Char = matrix(row)(col)
     // def row(row: Int) = matrix(row)
+
     def fillAll(content: Char): Matrix =
         content match {
             case 'X' => Xcount = row * col; Ocount = 0
@@ -16,10 +17,9 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
             case ' ' => Ocount = 0; Xcount = 0
         }
         copy(Vector.fill[Char](row, col)(content))
-    def fill(content: Char, x: Int, y: Int): Matrix = {
-        
-        if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
 
+    def fill(content: Char, x: Int, y: Int): Matrix = {
+        if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
         if matrix(y)(x).equals(content) then this // prevent from placing X ontop of X
         else if !matrix(y)(x).equals(' ') then
             content match { 

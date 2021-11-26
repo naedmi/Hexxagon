@@ -21,6 +21,7 @@ class TUISpec extends AnyWordSpec {
                 t should be(true)
                 tui.handleInput(in) should be("")
             }
+
             "not match smth like X 1 1" in {
                 val in = "X 1 1"
                 var t = false
@@ -31,10 +32,12 @@ class TUISpec extends AnyWordSpec {
                 t should be(false)
                 tui.handleInput(in) should be("Wrong Input.")
             }
-            "Fill the matrix with the command 'fill _'" in {
+
+            "fill the matrix with the command 'fill _'" in {
                 tui.handleInput("fill x") should be ("Filled with X.")
                 tui.handleInput("fill O") should be ("Filled with O.")
             }
+            
             "exit when q | exit | quit | ..." in {
                 tui.handleInput("q") should be ("Exiting.")
             }

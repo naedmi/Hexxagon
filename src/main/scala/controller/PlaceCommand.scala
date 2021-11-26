@@ -23,6 +23,7 @@ class PlaceCommand(field: HexField, content:Char, x:Int, y:Int) extends Command[
         field
     }
     override def redoStep(field: HexField): HexField = {
+        rememberMe = field.matrix
         field.matrix = field.place(content, x, y)
         field
     }
@@ -40,11 +41,14 @@ class PlaceAllCommand(field: HexField, content:Char) extends Command[HexField] {
         field
     }
     override def undoStep(field: HexField): HexField = {
-        field.matrix = field.fillAll(' ')
+        val sec_rememberMe = field.matrix
+        field.matrix = rememberMe
+        rememberMe = sec_rememberMe
         field
     }
     override def redoStep(field: HexField): HexField = {
-        field.fillAll(content)
+        rememberMe = field.matrix
+        field.matrix = field.fillAll(content)
         field
     }
 }
