@@ -13,5 +13,4 @@ object GameStatus extends Enumeration {
   def message(gameStatus: GameStatus) = {
     map(gameStatus)
   }
-
 }
