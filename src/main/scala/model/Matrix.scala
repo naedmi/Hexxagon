@@ -12,8 +12,8 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
 
     def fillAll(content: Char): Matrix =
         content match {
-            case 'X' => Xcount = row * col; Ocount = 0
-            case 'O' => Ocount = row * col; Xcount = 0
+            case 'X' => Xcount = MAX; Ocount = 0
+            case 'O' => Ocount = MAX; Xcount = 0
             case ' ' => Ocount = 0; Xcount = 0
         }
         copy(Vector.fill[Char](row, col)(content))

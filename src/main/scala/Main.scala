@@ -11,10 +11,10 @@ object starter {
     println(start)
     var input = ""
     var tmp = tui.handleInput(input)
-    while(tmp != "Exiting." & tmp != "Filled with X." & tmp != "Filled with O.") {
+    while(!tmp.equals(Some("Exiting.")) & !tmp.equals("Filled with X.") & !tmp.equals("Filled with O.")) {
       input = readLine()
       tmp = tui.handleInput(input)
-      println(tmp) 
+      if !tmp.isEmpty then println(tmp.get)
     } 
   }
 }

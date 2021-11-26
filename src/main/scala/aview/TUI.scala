@@ -14,26 +14,26 @@ class TUI(controller: Controller) extends Observer {
     val reg: Regex = ("([0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XOxo])").r
     val message = s"Input your x and y Coordinate as followed:\n[ 0-$maxind2 ] [ 0-$maxind1 ] [ X | O ] \n"
 
-    def handleInput(in:String): String = 
+    def handleInput(in:String): Option[String] = 
         in match {
             case reg(_*) => {
                 val (x:Int, y:Int, c:Char) = in.split("\\s") match { 
                     case Array(x, y, c) => (x.toInt, y.toInt, c.charAt(0)) 
                 }
                 controller.place(c.toUpper, x, y)
-                ""  // must return String
+                None
             }
             case "fill X" | "fill x" => {
                 controller.fillAll('X')
-                "Filled with X."
+                Some("Filled with X.")
             }
             case "fill O" | "fill o" => {
                 controller.fillAll('O')
-                "Filled with O."
+                Some("Filled with O.")
             }
-            case "redo" | "r" | "re" => controller.redo; "Redone."
-            case "undo" | "u" | "un" => controller.undo; "Undone."
-            case "q" | "e" | "exit" | "quit" | "Exit" | "Quit" => "Exiting."
-            case _ => "Wrong Input."
+            case "redo" | "r" | "re" => controller.redo; Some("Redone.")
+            case "undo" | "u" | "un" => controller.undo; Some("Undone.")
+            case "q" | "e" | "exit" | "quit" | "Exit" | "Quit" => Some("Exiting.")
+            case _ => Some("Wrong Input.")
         }
 }

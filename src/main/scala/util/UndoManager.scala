@@ -1,8 +1,8 @@
 package util
 
 class UndoManager[T] {
-  private var undoStack: List[Command[T]]= Nil
-  private var redoStack: List[Command[T]]= Nil
+  private var undoStack: List[Command[T]] = Nil
+  private var redoStack: List[Command[T]] = Nil
 
   def doStep(t: T, command: Command[T]): T = {
     undoStack = command :: undoStack
