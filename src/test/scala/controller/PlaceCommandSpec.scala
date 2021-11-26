@@ -6,21 +6,22 @@ import model.HexField
 
 class PlaceCommandSpec extends AnyWordSpec {
     "A PlaceCommand" should {
-        val hex = new HexField()
-        val controller = new Controller(new HexField)
-        val command = new PlaceCommand('X', 0, 0, controller)
+        var hex = new HexField()
+        val command = new PlaceCommand(hex, 'X', 0, 0)
         /*"Capture state of hexfield before changing it" in {
-            command.doStep
+            hex = command.doStep(hex)
             command.rememberMe should be(new HexField().matrix) 
             // failed: Matrix(Xcount: 1 -> 0)?
         }*/
         "Place a stone" in {
-            command.doStep
-            controller.hexfield.matrix.cell(0, 0) should be('X')
+            hex = command.doStep(hex)
+            hex.matrix.cell(0, 0) should be('X')
         }
-        "Redo a step" in {
-            command.redoStep
-            controller.hexfield.matrix.cell(0,0) should be ('X')
+        "Undo and redo a move in" in {
+            hex = command.undoStep(hex)
+            hex.matrix.cell(0, 0) should be (' ')
+            hex = command.redoStep(hex)
+            hex.matrix.cell(0, 0) should be ('X')
         }
     }
   

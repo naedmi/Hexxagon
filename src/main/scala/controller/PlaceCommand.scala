@@ -2,31 +2,49 @@ package controller
 
 import GameStatus._
 import util.Command
+import model.HexField
+import model.Matrix
 
-class PlaceCommand(content:Char, x:Int, y:Int, controller: Controller) extends Command {
+class PlaceCommand(field: HexField, content:Char, x:Int, y:Int) extends Command[HexField] {
 
-    var rememberMe = controller.hexfield.matrix
+    var rememberMe = field.matrix
 
-    override def doStep = {
-        rememberMe = controller.hexfield.matrix
-        controller.hexfield.matrix = controller.hexfield.place(content, x, y)
+    override def noStep(field: HexField): HexField = field
+
+    override def doStep(field: HexField): HexField = {
+        rememberMe = field.matrix
+        field.matrix = field.place(content, x, y)
+        field
     }
-    override def undoStep = {
-        val sec_rememberMe = controller.hexfield.matrix
-        controller.hexfield.matrix = rememberMe
+    override def undoStep(field: HexField): HexField = {
+        val sec_rememberMe = field.matrix
+        field.matrix = rememberMe
         rememberMe = sec_rememberMe
+        field
     }
-    override def redoStep = {
-        controller.hexfield.matrix = controller.hexfield.place(content, x, y)
+    override def redoStep(field: HexField): HexField = {
+        field.matrix = field.place(content, x, y)
+        field
     }
 }
 
-class PlaceAllCommand(content:Char, controller: Controller) extends Command {
-    var rememberMe = controller.hexfield.matrix
-    override def doStep = {
-        rememberMe = controller.hexfield.matrix
-        controller.hexfield.matrix = controller.hexfield.fillAll(content)
+class PlaceAllCommand(field: HexField, content:Char) extends Command[HexField] {
+    
+    var rememberMe = field.matrix
+
+    override def noStep(field: HexField): HexField = field
+
+    override def doStep(field: HexField): HexField = {
+        rememberMe = field.matrix
+        field.matrix = field.fillAll(content)
+        field
     }
-    override def undoStep = controller.hexfield.matrix = controller.hexfield.fillAll(' ')
-    override def redoStep = controller.hexfield.matrix = controller.hexfield.fillAll(content)
+    override def undoStep(field: HexField): HexField = {
+        field.matrix = field.fillAll(' ')
+        field
+    }
+    override def redoStep(field: HexField): HexField = {
+        field.fillAll(content)
+        field
+    }
 }
