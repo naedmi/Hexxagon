@@ -1,6 +1,5 @@
-package controller
+package util
 
-import util.Command
 import model.HexField
 import model.Matrix
 
