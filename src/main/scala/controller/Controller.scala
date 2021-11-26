@@ -50,7 +50,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
     }    
 
     override def toString = 
-        GameStatus.message(gamestatus) + hexfield.toString 
+        gamestatus.message() + hexfield.toString 
         + "\nX: " + hexfield.matrix.Xcount + "\tO: " + hexfield.matrix.Ocount
-        + "\n" + "_" * (4*hexfield.matrix.col+1) + "\n"
+        + "\n" + "_" * ( 4 * hexfield.matrix.col + 1 ) + "\n"
 }
