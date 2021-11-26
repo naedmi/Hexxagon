@@ -1,6 +1,6 @@
 package model
 
-case class HexField(col:Int, lines:Int):
+case class HexField(col: Int, lines: Int):
     assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     
@@ -11,22 +11,22 @@ case class HexField(col:Int, lines:Int):
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
 
-    def fillAll(c:Char) : Matrix = matrix.fillAll(c)
+    def fillAll(c: Char): Matrix = matrix.fillAll(c)
 
-    def place(c:Char,x:Int, y:Int) : Matrix = {
+    def place(c: Char, x: Int, y: Int): Matrix = {
         matrix.fill(c, x, y)
     }
 
-    def bot(line:Int): String = {
+    def bot(line: Int): String = {
         var res = "\\___/"
-
+        
         matrix.matrix(line).zipWithIndex.foreach(
         (x, i) => if i % 2 != 0 && i >= 1 && i < col then res += " " + x.toString + " \\___/")
 
         res + "\n"
     }
 
-    def top(line:Int): String = {
+    def top(line: Int): String = {
         var res = "/ " + matrix.matrix(line)(0).toString + " \\"
 
         matrix.matrix(line).zipWithIndex.foreach(
@@ -42,4 +42,4 @@ case class HexField(col:Int, lines:Int):
         res
     }
 
-    override def toString:String = field
+    override def toString: String = field

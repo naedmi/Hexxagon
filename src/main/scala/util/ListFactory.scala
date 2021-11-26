@@ -1,7 +1,7 @@
 package util
 
 object ListFactory {
-    def apply(x:Int, y:Int, MaxX:Int, MaxY:Int):List[(Int, Int)] = {
+    def apply(x: Int, y: Int, MaxX: Int, MaxY: Int): List[(Int, Int)] = {
         var ibound = y - 1
         if x % 2 == 1 || ibound < 0 then
             ibound += 1

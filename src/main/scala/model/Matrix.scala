@@ -7,8 +7,9 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
     def MAX = row * col
     val col = matrix(0).size
     val row = matrix.size
-    def cell(col: Int, row: Int):Char = matrix(row)(col)
     // def row(row: Int) = matrix(row)
+    
+    def cell(col: Int, row: Int):Char = matrix(row)(col)
 
     def fillAll(content: Char): Matrix =
         content match {
