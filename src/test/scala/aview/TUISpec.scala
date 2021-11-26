@@ -19,7 +19,7 @@ class TUISpec extends AnyWordSpec {
                     case _ =>
                 }
                 t should be(true)
-                tui.handleInput(in) should be("")
+                tui.handleInput(in) should be(None)
             }
 
             "not match smth like X 1 1" in {
@@ -30,16 +30,16 @@ class TUISpec extends AnyWordSpec {
                     case _ =>
                 }
                 t should be(false)
-                tui.handleInput(in) should be("Wrong Input.")
+                tui.handleInput(in) should be(Some("Wrong Input."))
             }
 
             "fill the matrix with the command 'fill _'" in {
-                tui.handleInput("fill x") should be ("Filled with X.")
-                tui.handleInput("fill O") should be ("Filled with O.")
+                tui.handleInput("fill x") should be (Some("Filled with X."))
+                tui.handleInput("fill O") should be (Some("Filled with O."))
             }
             
             "exit when q | exit | quit | ..." in {
-                tui.handleInput("q") should be ("Exiting.")
+                tui.handleInput("q") should be (Some("Exiting."))
             }
         }  
     }
