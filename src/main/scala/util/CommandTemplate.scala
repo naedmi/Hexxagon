@@ -5,6 +5,7 @@ import model.Matrix
 
 trait CommandTemplate(field: HexField) extends Command[HexField] {
     var rememberMe = field.matrix
+
     override def noStep(field: HexField): HexField = field
     override def doStep(field: HexField): HexField = {
         rememberMe = field.matrix

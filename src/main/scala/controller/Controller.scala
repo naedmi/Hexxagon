@@ -12,7 +12,6 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
     val GAMEMAX = hexfield.matrix.MAX
     private def checkStat = if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX then gamestatus = GAMEOVER
 
-
     def create(col:Int = 9, row:Int = 6) = 
         hexfield = new HexField(col, row)
         notifyObservers
