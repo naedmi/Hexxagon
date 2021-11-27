@@ -31,8 +31,9 @@ class TUI(controller: Controller) extends Observer {
                 controller.fillAll('O')
                 Some("Filled with O.")
             }
+            case "reset" => controller.fillAll(' '); Some("Reset.")
             case "redo" | "r" | "re" => controller.redo; Some("Redone.")
-            case "undo" | "u" | "un" => controller.undo; Some("Undone.")
+            case "undo" | "u" | "un" | "z" => controller.undo; Some("Undone.")
             case "q" | "e" | "exit" | "quit" | "Exit" | "Quit" => Some("Exiting.")
             case _ => Some("Wrong Input.")
         }

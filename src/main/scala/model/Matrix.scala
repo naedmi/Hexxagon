@@ -1,6 +1,6 @@
 package model
 
-import util.ListFactory
+import util.SetHandling.DefaultSetHandler
 
 case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) {
     def this(columns:Int, rows:Int) = this(Vector.fill[Char](rows, columns)(' '), 0, 0)
@@ -21,34 +21,13 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
 
     def fill(content: Char, x: Int, y: Int): Matrix = {
         if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
-        if matrix(y)(x).equals(content) then this // prevent from placing X ontop of X
-        else if !matrix(y)(x).equals(' ') then
-            content match { 
-                case 'X' => Xcount += 1; Ocount -= 1;
-                case 'O' => Ocount += 1; Xcount -= 1 
-            }
-        else content match { 
-            case 'X' => Xcount += 1; 
-            case 'O' => Ocount += 1 
-        }
 
-        var tmpmatrix = matrix
-        val tolookat = ListFactory(x, y, col - 1, row - 1)
-        tolookat.foreach{ 
-            case (x, y) => if !tmpmatrix(y)(x).equals(content) && !tmpmatrix(y)(x).equals(' ') then
-             tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
-             content match {
-                case 'X' => {
-                    Xcount += 1
-                    Ocount -= 1
-                 }
-                case 'O' => {
-                    Ocount += 1
-                    Xcount -= 1
-                 }
-             }
-        }
+        var tmpmatrix = new DefaultSetHandler().createSetandHandle(content, x, y, matrix)
         tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
+
+        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
+        Xcount = count.get('X') match { case Some(i) => i; case None => 0 }
+        Ocount = count.get('O') match { case Some(i) => i; case None => 0 }
         copy(tmpmatrix)
     }
 }

@@ -12,11 +12,6 @@ class ControllerSpec extends AnyWordSpec {
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)
-          "notify its Observer after creation" in {
-            controller.create()
-            obs.updated should be(true)
-            controller.hexfield.matrix.col should be(9)
-          }
           "notify its Observer after placing a stone" in {
             controller.place('X', 0, 0)
             obs.updated should be (true)

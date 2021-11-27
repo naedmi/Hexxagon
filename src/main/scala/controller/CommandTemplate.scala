@@ -1,7 +1,8 @@
-package util
+package controller
 
 import model.HexField
 import model.Matrix
+import util.Command
 
 trait CommandTemplate(field: HexField) extends Command[HexField] {
     var rememberMe = field.matrix

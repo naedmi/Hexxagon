@@ -41,6 +41,9 @@ class TUISpec extends AnyWordSpec {
             "exit when q | exit | quit | ..." in {
                 tui.handleInput("q") should be (Some("Exiting."))
             }
+            "reset when reset" in {
+                tui.handleInput("reset") should be (Some("Reset."))
+            }
         }  
     }
 }
