@@ -12,4 +12,5 @@ trait SetHandler {
         } 
         tmpmatrix
     }
+    var tolookat: List[Set[(Int,Int)]]
 }

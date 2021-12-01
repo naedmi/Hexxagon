@@ -10,10 +10,13 @@ class SideSetHandler() extends TopBotSetHandler {
         var tmpmatrix = startmatrix
         setMaxY(startmatrix)
         setMaxX(startmatrix)
-        Try(setforeach(Set((0, y - 1), (0, y + 1), (1, ibound), (1, ibound + 1)), tmpmatrix, content)) match {
+        tolookat = List(Set((0, y - 1), (0, y + 1), (1, ibound), (1, ibound + 1)),
+                        Set((MaxX, y - 1), (MaxX, y + 1), (MaxX - 1, ibound), (MaxX - 1, ibound + 1)))
+
+        Try(setforeach(tolookat(0), tmpmatrix, content)) match {
             case Success(o) => o
             case Failure(_) => {
-                Try(setforeach(Set((MaxX, y - 1), (MaxX, y + 1), (MaxX - 1, ibound), (MaxX - 1, ibound + 1)), tmpmatrix, content)) match {
+                Try(setforeach(tolookat(1), tmpmatrix, content)) match {
                     case Success(o) => o
                     case Failure(_) => new CornerSetHandler().createSetandHandle(content, x, y, startmatrix)
                 }
