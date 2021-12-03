@@ -9,29 +9,33 @@ case class CornerSetHandler() extends SideSetHandler {
         var tmpmatrix = startmatrix
         setMaxY(startmatrix)
         setMaxX(startmatrix)
-        tolookat = List(Set((0, y + 1), (1, y)),
-                        Set((0, MaxY - 1), (1, MaxY), (1, MaxY - 1)),
-                        Set((MaxX - 1, 0), (MaxX, 1)),
-                        Set((MaxX - 1, MaxY), (MaxX - 1, MaxY - 1), (MaxX, MaxY - 1)))
+        tolookat = List(Set((x, y + 1), (x + 1, y)),
+                        Set((x, MaxY - 1), (x + 1, MaxY), (x + 1, MaxY - 1)),
+                        Set((MaxX - 1, y), (MaxX, y + 1)),
+                        Set((MaxX - 1, y), (MaxX - 1, y - 1), (MaxX, y - 1)))
+        
+        val map = tolookat.map(x => Try(setforeach(x, tmpmatrix, content))).collect{ case Success(x) => x }
+        if map.isEmpty then startmatrix
+        else map(0)
 
-        Try(setforeach(tolookat(0), tmpmatrix, content)) match {
-            case Success(x) => x
-            case Failure(_) => {
-                Try(setforeach(tolookat(1), tmpmatrix, content)) match {
-                    case Success(x) => x
-                    case Failure(_) => {
-                    Try(setforeach(tolookat(2), tmpmatrix, content)) match {
-                        case Success(x) => x
-                        case Failure(_) => {
-                        Try(setforeach(tolookat(3), tmpmatrix, content)) match {
-                            case Success(x) => x
-                            case Failure(_) => startmatrix
-                        }
-                    }
-                    }
-                }
-                }
-            }
-        }
+        //Try(setforeach(tolookat(0), tmpmatrix, content)) match {
+        //    case Success(x) => x
+        //    case Failure(_) => {
+        //        Try(setforeach(tolookat(1), tmpmatrix, content)) match {
+        //            case Success(x) => x
+        //            case Failure(_) => {
+        //            Try(setforeach(tolookat(2), tmpmatrix, content)) match {
+        //                case Success(x) => x
+        //                case Failure(_) => {
+        //                Try(setforeach(tolookat(3), tmpmatrix, content)) match {
+        //                    case Success(x) => x
+        //                    case Failure(_) => startmatrix
+        //                }
+        //            }
+        //            }
+        //        }
+        //        }
+        //    }
+        //}
     }
 }
