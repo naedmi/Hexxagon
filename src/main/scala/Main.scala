@@ -1,7 +1,9 @@
 import controller.Controller
 import aview.TUI
+import aview.gui.GUI
 import model.HexField
 import scala.io.StdIn.readLine
+import scalafx.application.JFXApp3;
 
 object starter {
   val controller = Controller()
@@ -17,7 +19,13 @@ object starter {
       if !tmp.isEmpty then println(tmp.get)
     } 
   }
+  def runGUI = {
+    GUI(controller).start()
+  }
 }
-object Main extends App {
+object MainTUI extends App {
     starter.run
+}
+object MainGUI extends JFXApp3 {
+    override def start() = starter.runGUI
 }
