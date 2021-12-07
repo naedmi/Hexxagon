@@ -12,6 +12,8 @@ import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Rectangle
 import scalafx.Includes._
 import scalafx.geometry.Pos._
+import scalafx.scene.shape.Polygon
+import scala.math.sqrt
 
 class GUI(controller: Controller) extends JFXApp3 with Observer {
     controller.add(this)
@@ -33,7 +35,8 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
             height = 800
             scene = new Scene {
               fill = LightBlue
-              content = gp
+              //content += gp
+              content += hex(100, 200, 200)
             }
         }
     }
@@ -48,5 +51,21 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
             j = 0
         }
         start()
+    }
+
+    def hex(size: Double, x: Double, y: Double): Polygon = {
+        val cons = sqrt(3)/2
+        var pol = Polygon()
+        pol.points ++= Seq(
+                        x, y,
+                        x + size, y,
+                        x + size*(3.0/2.0), y + size*cons,
+                        x + size, y + size*sqrt(3),
+                        x, y + size*sqrt(3),
+                        x - (size / 2.0), y + size*cons)
+        pol.fill = Black
+        pol.setStroke(White)
+        pol.alignmentInParent = Center
+        pol
     }
 }

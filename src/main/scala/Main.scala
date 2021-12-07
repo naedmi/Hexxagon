@@ -9,7 +9,7 @@ object starter {
   val controller = Controller()
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
-  def run: Unit = {
+  def runTUI: Unit = {
     println(start)
     var input = ""
     var tmp = tui.handleInput(input)
@@ -24,7 +24,7 @@ object starter {
   }
 }
 object MainTUI extends App {
-    starter.run
+    starter.runTUI
 }
 object MainGUI extends JFXApp3 {
     override def start() = starter.runGUI
