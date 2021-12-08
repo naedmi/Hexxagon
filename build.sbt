@@ -26,11 +26,11 @@ lazy val root = project
         .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
 
-    jacocoExcludes in Test := Seq(
-      "*/Main.scala",
-      "*.aview.gui.*"
+    jacocoExcludes := Seq(
+      "**/Main.scala",
+      "**.aview.gui"
     ),
-
+    
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
