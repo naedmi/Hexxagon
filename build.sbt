@@ -26,10 +26,10 @@ lazy val root = project
         .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
     jacocoIncludes := Seq(
-      "**/TUI.scala",
-      "**/controller/**",
-      "**/model/**",
-      "**/util/**"
+      "src.main.scala.aview.TUI",
+      "src.main.scala.controller.*",
+      "src.main.scala.model.*",
+      "src.main.scala.util.*"
     ),
 
     jacocoCoverallsServiceName := "github-actions", 
