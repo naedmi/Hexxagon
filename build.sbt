@@ -25,15 +25,14 @@ lazy val root = project
       Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
         .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
-    
+    jacocoExcludes in Test := Seq(
+      "src.main.scala.Main.scala",
+      "src.main.scala.aview.gui.GUI.scala"
+    ),
+
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
-    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN"),
-
-    jacocoExcludes in Test := Seq(
-      "src/main/scala/Main.scala",
-      "src/main/scala/aview/gui/GUI.scala"
-    )
+    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN") 
   )
 .enablePlugins(JacocoCoverallsPlugin)
