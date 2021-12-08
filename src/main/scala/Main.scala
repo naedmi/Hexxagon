@@ -27,5 +27,7 @@ object MainTUI extends App {
     starter.runTUI
 }
 object MainGUI extends JFXApp3 {
-    override def start() = starter.runGUI
+    override def start() = 
+      starter.runGUI
+      //GUI(Controller(new HexField())).start()
 }

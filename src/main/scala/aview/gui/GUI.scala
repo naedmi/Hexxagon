@@ -2,14 +2,12 @@ package aview.gui
 
 import util.Observer
 import controller.Controller
-import scalafx.scene.layout.GridPane
 import scalafx.scene.control.Button
 import scalafx.application.JFXApp3;
 import scalafx.scene.Scene;
 import scalafx.stage.Stage;
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
-import scalafx.scene.shape.Rectangle
 import scalafx.Includes._
 import scalafx.geometry.Pos._
 import scalafx.scene.shape.Polygon
@@ -18,15 +16,14 @@ import scalafx.scene.layout.HBox
 import scalafx.scene.text.Text
 import scalafx.scene.layout.StackPane
 import scalafx.scene.paint.LinearGradient
-import scalafx.scene.paint.Stops
-import scalafx.geometry.Orientation
 import javafx.scene.layout.BorderPane
 import scalafx.scene.layout.Pane
-import scalafx.scene.canvas.GraphicsContext
-import scalafx.scene.canvas.Canvas
-import scalafx.scene.Group
 import scalafx.geometry.Insets
 import controller.GameStatus._
+import scalafx.scene.control.Label
+import scalafx.scene.layout.VBox
+import model.HexField
+import scalafx.scene.paint.Stops
 
 class GUI(controller: Controller) extends JFXApp3 with Observer {
     controller.add(this)
@@ -44,14 +41,11 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
     }
     override def start() = {
         stage = new JFXApp3.PrimaryStage {
+            resizable = true
             title.value = "HEXXAGON"
-            scene = new Scene(800, 800) {
+            scene = new Scene((controller.hexfield.col+2) * size*2, 800) {
                 val border = new BorderPane()
-                fill = LightBlue
                 val pane = Pane()
-                pane.setLayoutX(800)
-                pane.setLayoutY(800)
-                pane.setMinSize(500, 500)
                 var tmp: Hex = Hex(0,0,0,' ')
                 for (j <- 0 to controller.hexfield.lines - 1) {
                     controller.hexfield.matrix.matrix(j).zipWithIndex.foreach {
@@ -76,6 +70,72 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                 }
                 border.padding = Insets(50)
                 border.center = pane
+                border.top = {
+                    val l1 = new Label(controller.gamestatus.message())
+                    l1.style = s"-fx-font: $size arial"
+                    l1.alignment = Center
+                    l1.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
+                    l1
+                }
+                border.bottom = new HBox {
+                    if controller.gamestatus == GAMEOVER then
+                        val O = controller.hexfield.matrix.Ocount
+                        val X = controller.hexfield.matrix.Xcount
+                        val winner = if O < X then "PLAYER 1 WON" else if O == X then "DRAW" else "PLAYER 2 WON"
+                        val over = new Label(winner)
+                        over.textAlignment = scalafx.scene.text.TextAlignment.Center
+                        over.style = s"-fx-font: $size arial"
+                        this.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
+                        this.children += over
+                    else
+                        val xcount = new Label("X: " + controller.hexfield.matrix.Xcount)
+                        val ocount = new Label("O: " + controller.hexfield.matrix.Ocount)
+                        xcount.textAlignment = scalafx.scene.text.TextAlignment.Center
+                        ocount.textAlignment = scalafx.scene.text.TextAlignment.Center
+                        xcount.style = s"-fx-font: $size arial"
+                        ocount.style = s"-fx-font: $size arial"
+                        this.children += xcount
+                        this.children += ocount
+                        this.setSpacing(size*controller.hexfield.col)
+                }
+
+                border.right = {
+                    val css = """
+                    #dark-blue {
+                        -fx-background-color: 
+                            #090a0c,
+                            linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+                            linear-gradient(#20262b, #191d22),
+                            radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+                        -fx-background-radius: 5,4,3,5;
+                        -fx-background-insets: 0,1,2,0;
+                        -fx-text-fill: black;
+                        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+                        -fx-font-family: "Arial";
+                        -fx-text-fill: linear-gradient(black, #d0d0d0);
+                        -fx-font-size: 12px;
+                        -fx-padding: 10 20 10 20;
+                    }
+                    #dark-blue Text {
+                        -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+                    }
+                    """
+                    val b1 = new Button("UNDO")
+                    b1.setOnMouseClicked(x => controller.undo)
+                    b1.style = css
+                    val b2 = new Button("REDO")
+                    b2.setOnMouseClicked(x => controller.redo)
+                    b2.style = css
+                    val b3 = new Button("FILL")
+                    b3.setOnMouseClicked(x => controller.fillAll('X'))
+                    b3.style = css
+                    val b4 = new Button("RESET")
+                    b4.setOnMouseClicked(x => controller.reset)
+                    b4.style = css
+                    val vb = new VBox(b1, b2, b3, b4)
+                    vb.spacing = size * 2
+                    vb
+                }
 
                 root = border
             }

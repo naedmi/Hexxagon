@@ -33,7 +33,14 @@ class ControllerSpec extends AnyWordSpec {
             controller.hexfield.matrix.cell(2, 2) should be(stone)
             controller.redo
             controller.hexfield.matrix.cell(2, 2) should be('O')
-
+          }
+          "notify its Observers after resetting" in {
+            controller.reset
+            obs.updated should be (true)
+            val tmp = controller.hexfield.matrix.matrix.flatten
+            tmp.contains('X') should be (false)
+            tmp.contains(' ') should be (true)
+            tmp.contains('O') should be (false)
           }
         }
   }

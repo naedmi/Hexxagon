@@ -11,7 +11,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
 
     val GAMEMAX = hexfield.matrix.MAX
     private def checkStat = 
-        if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX then gamestatus = GAMEOVER
+        if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER
         else if matrixisEmpty then gamestatus = IDLE
 
     def matrixisEmpty = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
@@ -23,13 +23,14 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
 
     def place(c:Char, x: Int, y: Int) =
         if ((gamestatus.equals(TURNPLAYER1) & c.equals('O')) 
-            | (gamestatus.equals(TURNPLAYER2) & c.equals('X')))
+            || (gamestatus.equals(TURNPLAYER2) & c.equals('X')))
             print("\nNot your turn!\n")
             notifyObservers
         else
             undoManager.doStep(hexfield, new PlaceCommand(hexfield, c, x, y))
             laststatus = gamestatus
-            if checkStat.equals(GAMEOVER) then notifyObservers
+            checkStat
+            if gamestatus == GAMEOVER then notifyObservers
             else c match { 
                 case 'X' => gamestatus = TURNPLAYER2; 
                 case 'O' => gamestatus = TURNPLAYER1;
@@ -37,7 +38,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             notifyObservers
     
     def undo = {
-        if matrixisEmpty then notifyObservers
+        if matrixisEmpty || gamestatus == GAMEOVER then notifyObservers
         else
             var mem = gamestatus
             undoManager.undoStep(hexfield)
@@ -55,6 +56,14 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
         checkStat
         notifyObservers
     }    
+
+    def reset = {
+        hexfield = new HexField(hexfield.col, hexfield.lines)
+        gamestatus = IDLE
+        undoManager.undoStack = Nil
+        undoManager.redoStack = Nil
+        notifyObservers
+    }
 
     override def toString = 
         gamestatus.message() + hexfield.toString 
