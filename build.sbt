@@ -31,11 +31,9 @@ lazy val root = project
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN"),
 
-    jacocoExcludes := Seq(
-      "com.something.services.ServiceFoo",
-      "com.something.services.ServiceBar",
-      "**/Main.scala",
-      "**.aview.gui"
+    jacocoExcludes in Test := Seq(
+      "src/main/scala/Main.scala",
+      "src/main/scala/aview/gui/GUI.scala"
     )
   )
 .enablePlugins(JacocoCoverallsPlugin)
