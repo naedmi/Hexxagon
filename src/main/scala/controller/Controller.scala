@@ -26,6 +26,9 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             || (gamestatus.equals(TURNPLAYER2) & c.equals('X')))
             print("\nNot your turn!\n")
             notifyObservers
+        else if !hexfield.matrix.cell(x, y).equals(' ') then 
+            println("\nOccupied.")
+            notifyObservers
         else
             undoManager.doStep(hexfield, new PlaceCommand(hexfield, c, x, y))
             laststatus = gamestatus

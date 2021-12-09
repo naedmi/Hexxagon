@@ -55,8 +55,8 @@ class HexFieldSpec extends AnyWordSpec {
         }
         "created as Single Cell" should {
 
-            val hex = new HexField(1, 1)
-            val contr = new Controller(hex)
+            var hex = new HexField(1, 1)
+            var contr = new Controller(hex)
 
             "contain a Space when empty" in {
                 hex.matrix.matrix(0)(0) should be(' ')
@@ -66,6 +66,8 @@ class HexFieldSpec extends AnyWordSpec {
                 hex.matrix.matrix(0)(0) should be('X')
             }
             "contain a O" in {
+                hex = new HexField(1, 1)
+                contr = new Controller(hex)
                 contr.place('O', 0, 0)
                 hex.matrix.matrix(0)(0) should be('O')
             }

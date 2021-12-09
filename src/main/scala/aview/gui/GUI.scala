@@ -24,10 +24,22 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import model.HexField
 import scalafx.scene.paint.Stops
+import scalafx.stage.StageStyle
+import scalafx.scene.paint.RadialGradient
+import javafx.scene.paint.CycleMethod
+import scalafx.scene.layout.Background
+import scalafx.scene.layout.BackgroundFill
+import scalafx.scene.layout.CornerRadii
+import scalafx.scene.paint.Stop
+import scalafx.scene.text.Font
+import scalafx.scene.image.Image
 
 class GUI(controller: Controller) extends JFXApp3 with Observer {
     controller.add(this)
     val size = 40
+    private val font = "Hexa"
+    private val fontsize = size * 1.5
+    private val load = Font.loadFont(getClass.getResource("/Hexa.ttf").toExternalForm, 20)
 
     def setMouse(p: Hex, i: Int, j: Int) = {
         p.setOnMouseClicked(x => {
@@ -41,10 +53,12 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
     }
     override def start() = {
         stage = new JFXApp3.PrimaryStage {
-            resizable = true
+            icons += new Image(getClass.getResource("/logo.png").toExternalForm, 100, 100, true, true)
+            resizable = false
             title.value = "HEXXAGON"
-            scene = new Scene((controller.hexfield.col+2) * size*2, 800) {
+            scene = new Scene((controller.hexfield.col+2) * size*2, 800) {                
                 val border = new BorderPane()
+                border.setBackground(new Background(Array(new BackgroundFill(new LinearGradient(endX = 0, stops = Stops(LightGrey, LightSteelBlue)) , CornerRadii(size), Insets(10)))))
                 val pane = Pane()
                 var tmp: Hex = Hex(0,0,0,' ')
                 for (j <- 0 to controller.hexfield.lines - 1) {
@@ -72,19 +86,23 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                 border.center = pane
                 border.top = {
                     val l1 = new Label(controller.gamestatus.message())
-                    l1.style = s"-fx-font: $size arial"
+                    l1.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, red);"
                     l1.alignment = Center
                     l1.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
                     l1
                 }
                 border.bottom = new HBox {
+                    padding = Insets(size, 0, size / 2, size * 0.75)
                     if controller.gamestatus == GAMEOVER then
                         val O = controller.hexfield.matrix.Ocount
                         val X = controller.hexfield.matrix.Xcount
                         val winner = if O < X then "PLAYER 1 WON" else if O == X then "DRAW" else "PLAYER 2 WON"
                         val over = new Label(winner)
                         over.textAlignment = scalafx.scene.text.TextAlignment.Center
-                        over.style = s"-fx-font: $size arial"
+                        if winner == "PLAYER 1 WON" then
+                            over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, blue);"
+                        else
+                            over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(black, red);"
                         this.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
                         this.children += over
                     else
@@ -92,15 +110,15 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                         val ocount = new Label("O: " + controller.hexfield.matrix.Ocount)
                         xcount.textAlignment = scalafx.scene.text.TextAlignment.Center
                         ocount.textAlignment = scalafx.scene.text.TextAlignment.Center
-                        xcount.style = s"-fx-font: $size arial"
-                        ocount.style = s"-fx-font: $size arial"
+                        xcount.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, blue);"
+                        ocount.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(black, red);"
                         this.children += xcount
                         this.children += ocount
-                        this.setSpacing(size*controller.hexfield.col)
+                        this.setSpacing(size*controller.hexfield.col - size)
                 }
 
                 border.right = {
-                    val css = """
+                    val css = s"""
                     #dark-blue {
                         -fx-background-color: 
                             #090a0c,
@@ -111,9 +129,9 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                         -fx-background-insets: 0,1,2,0;
                         -fx-text-fill: black;
                         -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-                        -fx-font-family: "Arial";
-                        -fx-text-fill: linear-gradient(black, #d0d0d0);
-                        -fx-font-size: 12px;
+                        -fx-font-family: $font;
+                        -fx-text-fill: linear-gradient(red, blue);
+                        -fx-font-size: 20px;
                         -fx-padding: 10 20 10 20;
                     }
                     #dark-blue Text {
