@@ -1,5 +1,13 @@
 val scala3Version = "3.0.2"
 
+val jacoco = Seq(
+      jacocoCoverallsServiceName := "github-actions", 
+      jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
+      jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
+      jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN"),
+      jacocoExcludes := Seq("**/Main", "**/GUI") 
+    )
+  
 lazy val root = project
   .in(file("."))
   .settings(
@@ -26,9 +34,6 @@ lazy val root = project
         .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
 
-    jacocoCoverallsServiceName := "github-actions", 
-    jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
-    jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
-    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
+    jacoco
   )
 .enablePlugins(JacocoCoverallsPlugin)
