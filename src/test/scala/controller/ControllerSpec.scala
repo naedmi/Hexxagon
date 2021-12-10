@@ -14,7 +14,11 @@ class ControllerSpec extends AnyWordSpec {
           val obs = new Obs()
           controller.add(obs)
           "notify its Observer after placing a stone" in {
-            controller.place('X', 0, 0)
+            controller.place('O', 0, 0)
+            obs.updated should be (true)
+            controller.hexfield.matrix.cell(0, 0) should be('O')
+            obs.updated = false
+            controller.place('X', 0, 0)            
             obs.updated should be (true)
             controller.hexfield.matrix.cell(0, 0) should be('X')
           }
@@ -57,9 +61,11 @@ class ControllerSpec extends AnyWordSpec {
             val status = controller.gamestatus
             if (status == TURNPLAYER1) then
               controller.place('X', 1, 1)
+              obs.updated should be (true)
               controller.gamestatus should be (TURNPLAYER2)
             else if (status == TURNPLAYER2) then
               controller.place('=', 2, 2)
+              obs.updated should be (true)
               controller.gamestatus should be (TURNPLAYER1)
           }
           "don't place a stone if it's not the players turn" in {
