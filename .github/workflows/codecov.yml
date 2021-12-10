@@ -1,6 +1,8 @@
 name: Scala Codecov
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -23,4 +25,4 @@ jobs:
     - name: Add x Flag
       run: chmod +x codecov
     - name: Run Codecov
-      run: ./codecov -t ${{ secrets.CODECOV_TOKEN }}
+      run: ./codecov -t ${{ secrets.CODECOV_TOKEN }} 

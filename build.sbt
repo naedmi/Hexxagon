@@ -26,10 +26,17 @@ lazy val root = project
         .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
 
+    jacocoReportSettings := JacocoReportSettings(
+      "Jacoco Coverage Report",
+      None,
+      JacocoThresholds(),
+      Seq(JacocoReportFormats.ScalaHTML, JacocoReportFormats.XML), // note XML formatter
+    "utf-8"),
+
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
     // jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
-    jacocoCoverallsRepoToken := sys.env.get("CODECOV_TOKEN")
+    // jacocoCoverallsRepoToken := sys.env.get("CODECOV_TOKEN")
   )
 .enablePlugins(JacocoCoverallsPlugin)
