@@ -1,9 +1,5 @@
 ignore:
-  - "src/main/scala/gameWorksheet.sc"
-  - "src/main/scala/aview/gui/**/*"
-  - "src/main/scala/Main.scala"
-  - "src/main/resources/"
-  coverage:
-  range: 40..75
-  round: down
-  precision: 2
+  - "**/gameWorksheet.sc"
+  - "**/aview/gui/**/*"
+  - "**/Main.scala"
+  - "**/resources/"
