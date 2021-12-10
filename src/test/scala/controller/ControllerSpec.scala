@@ -4,6 +4,7 @@ import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import util.Observer
 import model.HexField
+import GameStatus._
 
 class ControllerSpec extends AnyWordSpec {
     "A Controller" when {
@@ -17,12 +18,26 @@ class ControllerSpec extends AnyWordSpec {
             obs.updated should be (true)
             controller.hexfield.matrix.cell(0, 0) should be('X')
           }
+          "change its gamestatus dependent on players turn" in {
+            val status = controller.gamestatus
+            if (status == TURNPLAYER2) then
+              controller.place('O', 1, 1)
+              controller.gamestatus should be (TURNPLAYER1)
+            else if (status == TURNPLAYER1) then
+              controller.place('X', 2, 2)
+              controller.gamestatus should be (TURNPLAYER2)
+          }
           "don't place a stone if it's not the players turn" in {
             val stone = controller.hexfield.matrix.cell(1, 1)
             controller.place('X', 0, 0)
             controller.place('X', 1, 1)
             obs.updated should be (true)
             controller.hexfield.matrix.cell(1, 1) should be(stone)
+            val stone2 = controller.hexfield.matrix.cell(4, 4)
+            controller.place('O', 3, 3)
+            controller.place('O', 4, 4)
+            obs.updated should be (true)
+            controller.hexfield.matrix.cell(4, 4) should be(stone2)
           }
           "notify its Observer after filling the Field" in {
             controller.fillAll('O')
