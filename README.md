@@ -6,6 +6,11 @@
 ![alt text](https://img.shields.io/github/commit-activity/w/naedmi/Hexxagon)
 ![GitHub contributors](https://img.shields.io/github/contributors/naedmi/Hexxagon?color=green)
 ![GitHub repo size](https://img.shields.io/github/repo-size/naedmi/Hexxagon)
+![GitHub commit merge status](https://img.shields.io/github/commit-status/naedmi/Hexxagon/master/c8757cf)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 # Project
 
