@@ -14,3 +14,6 @@ Hexxagon is a strategy board game played in a 2 player mode. The goal is to capt
 
 You can place your stones by inputting a two-indexed location. 
 [If you move 1 space, you clone the stone. If you jump 2 spaces, you just move it.]
+
+[![image](https://github-readme-streak-stats.herokuapp.com/?user=namied)
+[![image](https://github-readme-streak-stats.herokuapp.com/?user=ostabo)
