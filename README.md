@@ -29,3 +29,6 @@ You can place your stones by inputting a two-indexed location.
 
 #### [naedmi](https://github.com/naedmi)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=naedmi)
+
+# GUI - Overview
+![grafik](https://user-images.githubusercontent.com/34040518/145568350-a6b652d0-cc23-46a6-b5c3-1ecc1d98556a.png)
