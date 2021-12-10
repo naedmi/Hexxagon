@@ -24,15 +24,11 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import model.HexField
 import scalafx.scene.paint.Stops
-import scalafx.stage.StageStyle
-import scalafx.scene.paint.RadialGradient
-import javafx.scene.paint.CycleMethod
 import scalafx.scene.layout.Background
 import scalafx.scene.layout.BackgroundFill
-import scalafx.scene.layout.CornerRadii
-import scalafx.scene.paint.Stop
 import scalafx.scene.text.Font
 import scalafx.scene.image.Image
+import scalafx.scene.layout.CornerRadii
 
 class GUI(controller: Controller) extends JFXApp3 with Observer {
     controller.add(this)
