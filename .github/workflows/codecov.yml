@@ -25,4 +25,4 @@ jobs:
     - name: Add x Flag
       run: chmod +x codecov
     - name: Run Codecov
-      run: ./codecov -t ${{ secrets.CODECOV_TOKEN }}
+      run: ./codecov -t ${{ secrets.CODECOV_TOKEN }} 

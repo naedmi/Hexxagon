@@ -1,5 +1,4 @@
-[![Scala CI](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml/badge.svg)](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml) 
-[![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
+[![Scala CI](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yml/badge.svg)](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yml) [![codecov](https://codecov.io/gh/naedmi/Hexxagon/branch/master/graph/badge.svg?token=1GU15EM8AA)](https://codecov.io/gh/naedmi/Hexxagon) [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
 # Project
 
 This project is developed as an example for the lecture Software Engineering at the HTWG Konstanz. 

@@ -1,4 +1,3 @@
-
 import controller.Controller
 import aview.TUI
 import org.scalatest.wordspec.AnyWordSpec
