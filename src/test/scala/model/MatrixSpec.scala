@@ -3,6 +3,7 @@ package model
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import scala.annotation.varargs
+import util.SetHandling.DefaultSetHandler
 
 class MatrixSpec extends AnyWordSpec {
     "A Matrix" when {
@@ -21,17 +22,17 @@ class MatrixSpec extends AnyWordSpec {
         }
         "having a stone placed" should {
             var matrix = new Matrix(5, 4)
-            matrix = matrix.fill('O', 1, 0)
-            matrix = matrix.fill('X', 0, 0)
+            matrix = matrix.fill('O', 0, 0)
+            matrix = matrix.fill('X', 1, 0)
             matrix = matrix.fill('O', 2, 0)
             matrix = matrix.fill(' ', 4, 3)
-            "contain stone in the Cell" in {
+            "contain stone in the cell" in {
                 matrix.Ocount should be (2)
                 matrix.Xcount should be (1)
-                matrix.cell(0, 0) should be('X')
-                matrix.cell(1, 0) should be('O')
-                matrix.cell(2, 0) should be('O')
-                matrix.cell(4, 3) should be(' ')
+                matrix.cell(0, 0) should be ('X')
+                matrix.cell(1, 0) should be ('O')
+                matrix.cell(2, 0) should be ('O')
+                matrix.cell(4, 3) should be (' ')
             }
         }
         "place a stone on top of a stone" should {
@@ -47,7 +48,6 @@ class MatrixSpec extends AnyWordSpec {
         }
         "being filled with a stone" should {
             var matrix = new Matrix(5, 5)
-            
             "should only contain 'X'" in {
                 matrix = matrix.fillAll('X')
                 matrix.Xcount should be (matrix.row * matrix.col)
@@ -64,7 +64,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.flatten.contains('X') should be (false)
                 matrix.matrix.flatten.contains('O') should be (true)
             }
-            "fill results in new Matrix" in {
+            "fill results in new matrix" in {
                 var mat = new Matrix(1, 1)
                 mat.fillAll(' ') should be (new Matrix(1, 1))
                 mat = mat.fill('X', 0, 0)

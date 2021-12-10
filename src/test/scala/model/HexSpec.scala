@@ -71,7 +71,7 @@ class HexFieldSpec extends AnyWordSpec {
                 contr.place('O', 0, 0)
                 hex.matrix.matrix(0)(0) should be('O')
             }
-            "filled completely" in {
+            "be filled completely" in {
                 contr.fillAll('X')
                 hex.matrix.matrix.flatten should contain ('X')
                 hex.matrix.matrix.flatten should not contain (' ')
