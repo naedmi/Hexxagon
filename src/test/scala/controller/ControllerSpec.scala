@@ -20,7 +20,6 @@ class ControllerSpec extends AnyWordSpec {
             obs.updated = false
             controller.place('X', 0, 0)            
             obs.updated should be (true)
-            controller.hexfield.matrix.cell(0, 0) should be('X')
           }
           "notify its observer after filling the Field" in {
             controller.fillAll('O')
