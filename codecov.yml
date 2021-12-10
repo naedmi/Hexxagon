@@ -1,6 +1,6 @@
 ignore:
-  - "src/main/scala/testgrid.worksheet.sc"
-  - "src/main/scala/gui/GUI.scala"
+  - "src/main/scala/gameWorksheet.sc"
+  - "src/main/scala/aview/gui/GUI.scala"
   - "src/main/scala/Main.scala"
   - "src/main/resources/"
   coverage:
