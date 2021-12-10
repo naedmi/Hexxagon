@@ -35,11 +35,18 @@ class TUISpec extends AnyWordSpec {
 
             "fill the matrix with the command 'fill _'" in {
                 tui.handleInput("fill x") should be (Some("Filled with X."))
+                tui.handleInput("fill X") should be (Some("Filled with X."))
+                tui.handleInput("fill o") should be (Some("Filled with O."))
                 tui.handleInput("fill O") should be (Some("Filled with O."))
             }
             
             "exit when q | exit | quit | ..." in {
                 tui.handleInput("q") should be (Some("Exiting."))
+                tui.handleInput("e") should be (Some("Exiting."))
+                tui.handleInput("exit") should be (Some("Exiting."))
+                tui.handleInput("quit") should be (Some("Exiting."))
+                tui.handleInput("Exit") should be (Some("Exiting."))
+                tui.handleInput("Quit") should be (Some("Exiting."))
             }
             "reset when reset" in {
                 tui.handleInput("reset") should be (Some("Reset."))

@@ -13,19 +13,25 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.filter(_.contains('X')) should be(Vector())
                 matrix.matrix.filter(_.contains('O')) should be(Vector())
             }
+            "have its counters on 0" in {
+                val matrix = new Matrix(9, 6)
+                matrix.Xcount should be (0)
+                matrix.Ocount should be (0)
+            }
         }
-        "placed a stone" should {
+        "having a stone placed" should {
             var matrix = new Matrix(5, 4)
             matrix = matrix.fill('O', 1, 0)
             matrix = matrix.fill('X', 0, 0)
             matrix = matrix.fill('O', 2, 0)
+            matrix = matrix.fill(' ', 4, 3)
             "contain stone in the Cell" in {
                 matrix.Ocount should be (2)
                 matrix.Xcount should be (1)
                 matrix.cell(0, 0) should be('X')
                 matrix.cell(1, 0) should be('O')
                 matrix.cell(2, 0) should be('O')
-                matrix.cell(0, 1) should be(' ')
+                matrix.cell(4, 3) should be(' ')
             }
         }
         "place a stone on top of a stone" should {
@@ -39,7 +45,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.Xcount should be (1)
             }
         }
-        "filled with a stone" should {
+        "being filled with a stone" should {
             var matrix = new Matrix(5, 5)
             
             "should only contain 'X'" in {

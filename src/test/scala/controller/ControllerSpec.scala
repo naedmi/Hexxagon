@@ -17,6 +17,13 @@ class ControllerSpec extends AnyWordSpec {
             obs.updated should be (true)
             controller.hexfield.matrix.cell(0, 0) should be('X')
           }
+          "don't place a stone if it's not the players turn" in {
+            val stone = controller.hexfield.matrix.cell(1, 1)
+            controller.place('X', 0, 0)
+            controller.place('X', 1, 1)
+            obs.updated should be (true)
+            controller.hexfield.matrix.cell(1, 1) should be(stone)
+          }
           "notify its Observer after filling the Field" in {
             controller.fillAll('O')
             obs.updated should be (true)
@@ -27,11 +34,15 @@ class ControllerSpec extends AnyWordSpec {
           }
           "undo and redo a move" in {
             val stone = controller.hexfield.matrix.cell(2,2)
+            val orig_status = controller.gamestatus
             controller.place('O', 2, 2)
+            val status = controller.gamestatus
             controller.hexfield.matrix.cell(2, 2) should be('O')
             controller.undo
+            controller.gamestatus should be (orig_status)
             controller.hexfield.matrix.cell(2, 2) should be(stone)
             controller.redo
+            controller.gamestatus should be (status)
             controller.hexfield.matrix.cell(2, 2) should be('O')
           }
           "notify its Observers after resetting" in {

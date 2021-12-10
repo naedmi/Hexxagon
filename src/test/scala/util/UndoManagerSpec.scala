@@ -9,6 +9,18 @@ class UndoManagerSpec extends AnyWordSpec {
     val undoManager = new UndoManager[Int]
     val command = new incrCommand
 
+    "change nothing if there is no step to undo" in {
+      var state = 0
+      state = undoManager.undoStep(state)
+      undoManager.undoStack should be (Nil)
+      state should be (0)
+    }
+    "change nothing if there is no step to redo" in {
+      var state = 0
+      state = undoManager.redoStep(state)
+      undoManager.redoStack should be (Nil)
+      state should be (0)
+    }
     "have a do, undo and redo" in {
       var state = 0
       state = undoManager.doStep(state, command)
@@ -18,7 +30,6 @@ class UndoManagerSpec extends AnyWordSpec {
       state = undoManager.redoStep(state)
       state should be(1)
     }
-
     "handle multiple undo steps correctly" in {
       var state = 0
       state = undoManager.doStep(state, command)
