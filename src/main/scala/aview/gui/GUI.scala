@@ -40,6 +40,7 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
     private val font = "Hexa"
     private val fontsize = size * 1.5
     private val load = Font.loadFont(getClass.getResource("/Hexa.ttf").toExternalForm, 20)
+    //private val load2 = Font.loadFont(getClass.getResource("/Hexag.ttf").toExternalForm, 20)
 
     def setMouse(p: Hex, i: Int, j: Int) = {
         p.setOnMouseClicked(x => {
