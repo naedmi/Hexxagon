@@ -3,7 +3,16 @@
 [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![alt text](https://img.shields.io/github/languages/top/naedmi/Hexxagon?color=magenta)
-
+![alt text](https://img.shields.io/github/commit-activity/w/naedmi/Hexxagon)
+![GitHub contributors](https://img.shields.io/github/contributors/naedmi/Hexxagon?color=green)
+![GitHub repo size](https://img.shields.io/github/repo-size/naedmi/Hexxagon)
+![GitHub commit merge status](https://img.shields.io/github/commit-status/naedmi/Hexxagon/master/c8757cf)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![Photoshop](https://img.shields.io/badge/--31A8FF?logo=adobe%20photoshop&logoColor=000)](https://www.photoshop.com/)
+[![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/u7xVf5FE)
 
 # Project
 
@@ -27,3 +36,6 @@ You can place your stones by inputting a two-indexed location.
 
 #### [naedmi](https://github.com/naedmi)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=naedmi)
+
+# GUI - Overview
+![grafik](https://user-images.githubusercontent.com/34040518/145568350-a6b652d0-cc23-46a6-b5c3-1ecc1d98556a.png)

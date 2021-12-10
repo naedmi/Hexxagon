@@ -30,6 +30,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             println("\nOccupied.")
             notifyObservers
         else
+            undoManager.redoStack = Nil
             undoManager.doStep(hexfield, new PlaceCommand(hexfield, c, x, y))
             laststatus = gamestatus
             checkStat
@@ -52,12 +53,14 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
     }
 
     def redo = {
-        var mem = laststatus
-        laststatus = gamestatus
-        undoManager.redoStep(hexfield)
-        gamestatus = mem
-        checkStat
-        notifyObservers
+        if undoManager.redoStack == Nil then notifyObservers
+        else
+            var mem = laststatus
+            laststatus = gamestatus
+            undoManager.redoStep(hexfield)
+            gamestatus = mem
+            checkStat
+            notifyObservers
     }    
 
     def reset = {
