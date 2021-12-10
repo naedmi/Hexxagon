@@ -2,6 +2,7 @@
 [![codecov](https://codecov.io/gh/naedmi/Hexxagon/branch/master/graph/badge.svg?token=1GU15EM8AA)](https://codecov.io/gh/naedmi/Hexxagon) 
 [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![image](http://ForTheBadge.com/images/badges/built-with-swag.svg)
 # Project
 
 This project is developed as an example for the lecture Software Engineering at the HTWG Konstanz. 
@@ -15,5 +16,5 @@ Hexxagon is a strategy board game played in a 2 player mode. The goal is to capt
 You can place your stones by inputting a two-indexed location. 
 [If you move 1 space, you clone the stone. If you jump 2 spaces, you just move it.]
 
-[![image](https://github-readme-streak-stats.herokuapp.com/?user=namied)
-[![image](https://github-readme-streak-stats.herokuapp.com/?user=ostabo)
+![image](https://github-readme-streak-stats.herokuapp.com/?user=namied)
+![image](https://github-readme-streak-stats.herokuapp.com/?user=ostabo)
