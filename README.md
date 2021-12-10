@@ -21,8 +21,8 @@ You can place your stones by inputting a two-indexed location.
 
 # Contributors
 
-#### Ostabo
+#### [Ostabo](https://github.com/Ostabo)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=ostabo)
 
-#### naedmi
+#### [naedmi](https://github.com/naedmi)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=naedmi)
