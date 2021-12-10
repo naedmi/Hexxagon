@@ -87,7 +87,6 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                 border.top = {
                     val l1 = new Label(controller.gamestatus.message())
                     l1.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, red);"
-                    l1.alignment = Center
                     l1.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
                     l1
                 }
@@ -103,7 +102,7 @@ class GUI(controller: Controller) extends JFXApp3 with Observer {
                             over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, blue);"
                         else
                             over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(black, red);"
-                        this.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
+                        this.padding = Insets(size, 0, size, size * (controller.hexfield.col/2 - 1))
                         this.children += over
                     else
                         val xcount = new Label("X: " + controller.hexfield.matrix.Xcount)
