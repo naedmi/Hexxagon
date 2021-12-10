@@ -4,7 +4,8 @@ import GameStatus._
 import util.{Observable, UndoManager}
 import model.HexField
 
-case class Controller(var hexfield: HexField = new HexField()) extends Observable {
+case class Controller(var hexfield: HexField = new HexField()) 
+    extends ControllerInterface with Observable {
     var gamestatus: GameStatus = IDLE
     private val undoManager = new UndoManager[HexField]
     private var laststatus = IDLE
@@ -12,16 +13,16 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
     val GAMEMAX = hexfield.matrix.MAX
     private def checkStat = 
         if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER
-        else if matrixisEmpty then gamestatus = IDLE
+        else if emptyMatrix then gamestatus = IDLE
 
-    def matrixisEmpty = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
+    def emptyMatrix = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
 
-    def fillAll(c:Char) =
+    override def fillAll(c: Char) =
         undoManager.doStep(hexfield, new PlaceAllCommand(hexfield, c))
         checkStat
         notifyObservers
 
-    def place(c:Char, x: Int, y: Int) =
+    override def place(c: Char, x: Int, y: Int) =
         if ((gamestatus.equals(TURNPLAYER1) & c.equals('O')) 
             || (gamestatus.equals(TURNPLAYER2) & c.equals('X')))
             print("\nNot your turn!\n")
@@ -41,8 +42,8 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             }
             notifyObservers
     
-    def undo = {
-        if matrixisEmpty || gamestatus == GAMEOVER then notifyObservers
+    override def undo = {
+        if emptyMatrix || gamestatus == GAMEOVER then notifyObservers
         else
             var mem = gamestatus
             undoManager.undoStep(hexfield)
@@ -52,7 +53,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             notifyObservers
     }
 
-    def redo = {
+    override def redo = {
         if undoManager.redoStack == Nil then notifyObservers
         else
             var mem = laststatus
@@ -63,7 +64,7 @@ case class Controller(var hexfield: HexField = new HexField()) extends Observabl
             notifyObservers
     }    
 
-    def reset = {
+    override def reset = {
         hexfield = new HexField(hexfield.col, hexfield.lines)
         gamestatus = IDLE
         undoManager.undoStack = Nil
