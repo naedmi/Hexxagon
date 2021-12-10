@@ -36,7 +36,6 @@ lazy val root = project
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),
-    // jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
-    // jacocoCoverallsRepoToken := sys.env.get("CODECOV_TOKEN")
+    jacocoCoverallsRepoToken := sys.env.get("COVERALLS_REPO_TOKEN")
   )
 .enablePlugins(JacocoCoverallsPlugin)
