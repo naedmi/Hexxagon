@@ -1,4 +1,5 @@
 [![Scala CI](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml/badge.svg)](https://github.com/naedmi/Hexxagon/actions/workflows/scala.yaml) 
+
 [![codecov](https://codecov.io/gh/naedmi/Hexxagon/branch/master/graph/badge.svg?token=1GU15EM8AA)](https://codecov.io/gh/naedmi/Hexxagon)
 # Project
 
