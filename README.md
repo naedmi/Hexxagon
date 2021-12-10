@@ -2,6 +2,7 @@
 [![codecov](https://codecov.io/gh/naedmi/Hexxagon/branch/master/graph/badge.svg?token=1GU15EM8AA)](https://codecov.io/gh/naedmi/Hexxagon) 
 [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/naedmi/Hexxagon?color=green)
 # Project
 
 This project is developed as an example for the lecture Software Engineering at the HTWG Konstanz. 
