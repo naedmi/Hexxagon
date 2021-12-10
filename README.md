@@ -3,7 +3,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/naedmi/Hexxagon/badge.svg?branch=master)](https://coveralls.io/github/naedmi/Hexxagon?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![alt text](https://img.shields.io/github/languages/top/naedmi/Hexxagon?color=magenta)
-
+![alt text](https://img.shields.io/github/commit-activity/w/naedmi/Hexxagon)
+![GitHub contributors](https://img.shields.io/github/contributors/naedmi/Hexxagon?color=green)
 
 # Project
 
