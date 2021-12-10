@@ -3,3 +3,7 @@ ignore:
   - "src/main/scala/gui/GUI.scala"
   - "src/main/scala/Main.scala"
   - "src/main/resources/"
+  coverage:
+  range: 40..75
+  round: down
+  precision: 2
