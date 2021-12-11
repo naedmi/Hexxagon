@@ -5,7 +5,8 @@ import util.{Observable, UndoManager}
 import model.HexField
 
 case class Controller(var hexfield: HexField = new HexField()) 
-    extends ControllerInterface with Observable {
+    extends ControllerInterface {
+        
     var gamestatus: GameStatus = IDLE
     private val undoManager = new UndoManager[HexField]
     private var laststatus = IDLE

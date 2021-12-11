@@ -1,34 +1,23 @@
 package aview.gui
 
-import util.Observer
-import controller.Controller
-import scalafx.scene.control.Button
-import scalafx.application.JFXApp3;
-import scalafx.scene.Scene;
-import scalafx.stage.Stage;
+import scalafx.scene.layout.{HBox, StackPane, BorderPane, Pane, VBox, Background, BackgroundFill, CornerRadii}
+import scalafx.scene.control.{Button, Label}
+import scalafx.scene.paint.{Stops, LinearGradient}
+import scalafx.scene.text.{Text, Font}
+import scalafx.scene.shape.Polygon
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
-import scalafx.Includes._
-import scalafx.geometry.Pos._
-import scalafx.scene.shape.Polygon
-import scala.math.sqrt
-import scalafx.scene.layout.HBox
-import scalafx.scene.text.Text
-import scalafx.scene.layout.StackPane
-import scalafx.scene.paint.LinearGradient
-import javafx.scene.layout.BorderPane
-import scalafx.scene.layout.Pane
+import scalafx.scene.image.Image
 import scalafx.geometry.Insets
 import controller.GameStatus._
-import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import controller.Controller
+import scalafx.geometry.Pos._
+import scalafx.scene.Scene
+import scalafx.stage.Stage
+import scalafx.Includes._
+import scala.math.sqrt
 import model.HexField
-import scalafx.scene.paint.Stops
-import scalafx.scene.layout.Background
-import scalafx.scene.layout.BackgroundFill
-import scalafx.scene.text.Font
-import scalafx.scene.image.Image
-import scalafx.scene.layout.CornerRadii
+import util.Observer
 
 class GUI(controller: Controller) extends JFXApp3 with Observer {
     controller.add(this)
