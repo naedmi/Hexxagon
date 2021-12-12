@@ -25,8 +25,7 @@ You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console
 
 Hexxagon is a strategy board game played in a 2 player mode. The goal is to capture as many fields as possible on a hexagonal grid. The player with the most stones on the board wins.
 
-You can place your stones by inputting a two-indexed location. 
-[If you move 1 space, you clone the stone. If you jump 2 spaces, you just move it.]
+You can place your stones by inputting a two-indexed location. All adjacent Fields with opposite stones become your own.
 
 # Contributors
 
