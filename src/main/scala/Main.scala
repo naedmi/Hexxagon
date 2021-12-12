@@ -6,7 +6,7 @@ import scala.io.StdIn.readLine
 import scalafx.application.JFXApp3;
 
 object starter {
-  val controller = Controller()
+  val controller = Controller(new HexField())
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
   def runTUI: Unit = {

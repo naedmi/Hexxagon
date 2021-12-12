@@ -2,13 +2,13 @@ package controller
 
 import GameStatus._
 import util.{Observable, UndoManager}
-import model.HexField
+import model.Field
 
-case class Controller(var hexfield: HexField = new HexField()) 
+case class Controller(var hexfield: Field) 
     extends ControllerInterface {
         
     var gamestatus: GameStatus = IDLE
-    private val undoManager = new UndoManager[HexField]
+    private val undoManager = new UndoManager[Field]
     private var laststatus = IDLE
 
     val GAMEMAX = hexfield.matrix.MAX
@@ -66,7 +66,7 @@ case class Controller(var hexfield: HexField = new HexField())
     }    
 
     override def reset = {
-        hexfield = new HexField(hexfield.col, hexfield.lines)
+        hexfield = hexfield.reset
         gamestatus = IDLE
         undoManager.undoStack = Nil
         undoManager.redoStack = Nil

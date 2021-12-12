@@ -1,20 +1,20 @@
 package controller
 
-import model.HexField
+import model.Field
 import model.Matrix
 import util.Command
 
-trait CommandTemplate(field: HexField) extends Command[HexField] {
+trait CommandTemplate[T <: Field](field: T) extends Command[T] {
     var rememberMe = field.matrix
     var rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
-    override def noStep(field: HexField): HexField = field
-    override def doStep(field: HexField): HexField = {
+    override def noStep(field: T): T = field
+    override def doStep(field: T): T = {
         rememberMe = field.matrix
         rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
         field.matrix = command
         field
     }
-    override def undoStep(field: HexField): HexField = {
+    override def undoStep(field: T) = {
         val sec_rememberMe = field.matrix
         val sec_rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
         field.matrix = rememberMe
@@ -25,7 +25,7 @@ trait CommandTemplate(field: HexField) extends Command[HexField] {
         rememberCounter = sec_rememberCounter
         field
     }
-    override def redoStep(field: HexField): HexField = {
+    override def redoStep(field: T) = {
         rememberMe = field.matrix
         rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
         field.matrix = command

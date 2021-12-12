@@ -4,22 +4,22 @@ import scalafx.scene.layout.{HBox, StackPane, BorderPane, Pane, VBox, Background
 import scalafx.scene.control.{Button, Label}
 import scalafx.scene.paint.{Stops, LinearGradient}
 import scalafx.scene.text.{Text, Font}
+import controller.ControllerInterface
 import scalafx.scene.shape.Polygon
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
 import scalafx.scene.image.Image
 import scalafx.geometry.Insets
 import controller.GameStatus._
-import controller.Controller
 import scalafx.geometry.Pos._
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scalafx.Includes._
 import scala.math.sqrt
-import model.HexField
 import util.Observer
+import model.Field
 
-class GUI(controller: Controller) extends JFXApp3 with Observer {
+class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
     controller.add(this)
     val size = 40
     private val font = "Hexa"

@@ -1,11 +1,11 @@
 package aview
 
 import util.Observer
-import controller.Controller
 import model.HexField
 import scala.util.matching.Regex
+import controller.ControllerInterface
 
-class TUI(controller: Controller) extends Observer {
+class TUI(controller: ControllerInterface) extends Observer {
     controller.add(this)
     override def update = println(controller)
     

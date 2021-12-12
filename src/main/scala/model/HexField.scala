@@ -1,13 +1,12 @@
 package model
 
-case class HexField(col: Int, lines: Int):
+case class HexField(col: Int, lines: Int) extends Field:
     assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     
     var matrix = new Matrix(col, lines)
     if col % 2 == 0 then matrix = new Matrix(col+1, lines)
     
-    val eol = "\n"
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
 
@@ -34,6 +33,8 @@ case class HexField(col: Int, lines: Int):
 
         res + "\n"
     }
+
+    def reset = copy(col, lines)
     
     def field = {
         var res = eol + edgetop
@@ -41,5 +42,3 @@ case class HexField(col: Int, lines: Int):
         res += edgebot
         res
     }
-
-    override def toString: String = field

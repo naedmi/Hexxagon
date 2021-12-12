@@ -1,9 +1,10 @@
 package controller
 
 import util.Observable
-import model.HexField
+import model.Field
 
 trait ControllerInterface extends Observable{
+  var hexfield: Field
   def gamestatus: GameStatus
   def fillAll(c: Char): Unit
   def place(c: Char, x: Int, y: Int): Unit
