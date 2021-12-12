@@ -48,11 +48,16 @@ class TUISpec extends AnyWordSpec {
             "reset when reset" in {
                 tui.handleInput("reset") should be (Some("Reset."))
             }
-            "call redo when redo" in {
+            "call redo when redo | r | ..." in {
                 tui.handleInput("redo") should be (Some("Redone."))
                 tui.handleInput("r") should be (Some("Redone."))
                 tui.handleInput("re") should be (Some("Redone."))
-
+            }
+            "call undo when undo | u | ..." in {
+                tui.handleInput("undo") should be (Some("Undone."))
+                tui.handleInput("u") should be (Some("Undone."))
+                tui.handleInput("un") should be (Some("Undone."))
+                tui.handleInput("z") should be (Some("Undone."))
             }
         }  
     }
