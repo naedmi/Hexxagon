@@ -2,7 +2,7 @@ package aview
 
 import util.Observer
 import scala.util.matching.Regex
-import controller.controllerComponent._
+import controller.controllerComponent.ControllerInterface
 
 class TUI(controller: ControllerInterface) extends Observer {
     controller.add(this)

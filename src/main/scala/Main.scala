@@ -1,9 +1,10 @@
-import controller.controllerComponent.controllerBaseImpl._
+
 import aview.TUI
 import aview.gui.GUI
-import model.fieldComponent.fieldBaseImpl._
 import scala.io.StdIn.readLine
-import scalafx.application.JFXApp3;
+import scalafx.application.JFXApp3
+import model.fieldComponent.fieldBaseImpl._
+import controller.controllerComponent.controllerBaseImpl._
 
 object starter {
   val controller = Controller(new Field())

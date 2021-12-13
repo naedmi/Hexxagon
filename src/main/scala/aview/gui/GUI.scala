@@ -1,10 +1,11 @@
 package aview.gui
 
 import scalafx.scene.layout.{HBox, StackPane, BorderPane, Pane, VBox, Background, BackgroundFill, CornerRadii}
-import scalafx.scene.control.{Button, Label}
+import controller.controllerComponent.ControllerInterface
 import scalafx.scene.paint.{Stops, LinearGradient}
+import scalafx.scene.control.{Button, Label}
+import model.fieldComponent.FieldInterface
 import scalafx.scene.text.{Text, Font}
-import controller.controllerComponent._
 import scalafx.scene.shape.Polygon
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
@@ -17,7 +18,7 @@ import scalafx.stage.Stage
 import scalafx.Includes._
 import scala.math.sqrt
 import util.Observer
-import model.fieldComponent.FieldInterface
+
 
 class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
     controller.add(this)
