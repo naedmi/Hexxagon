@@ -1,10 +1,10 @@
 package controller
 
-import model.Field
+import model.fieldComponent.FieldInterface
 import model.Matrix
 import util.Command
 
-trait CommandTemplate[T <: Field](field: T) extends Command[T] {
+trait CommandTemplate[T <: FieldInterface](field: T) extends Command[T] {
     var rememberMe = field.matrix
     var rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
     override def noStep(field: T): T = field

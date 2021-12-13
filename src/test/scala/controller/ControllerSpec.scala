@@ -3,13 +3,14 @@ package controller
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import util.Observer
-import model.HexField
+import model.fieldComponent.fieldBaseImpl.Field
+import controller.controllerComponent.controllerBaseImpl.Controller
 import GameStatus._
 
 class ControllerSpec extends AnyWordSpec {
     "A Controller" when {
         "observed by an Observer" should {
-          val field = new HexField()
+          val field = new Field()
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)
@@ -39,7 +40,7 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "having a step made" should {
-          val field = new HexField()
+          val field = new Field()
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)
@@ -81,7 +82,7 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "filled" should {
-          val field = new HexField(1, 1)
+          val field = new Field(1, 1)
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)

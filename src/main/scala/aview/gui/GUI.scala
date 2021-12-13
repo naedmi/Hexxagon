@@ -4,7 +4,7 @@ import scalafx.scene.layout.{HBox, StackPane, BorderPane, Pane, VBox, Background
 import scalafx.scene.control.{Button, Label}
 import scalafx.scene.paint.{Stops, LinearGradient}
 import scalafx.scene.text.{Text, Font}
-import controller.ControllerInterface
+import controller.controllerComponent._
 import scalafx.scene.shape.Polygon
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
@@ -17,7 +17,7 @@ import scalafx.stage.Stage
 import scalafx.Includes._
 import scala.math.sqrt
 import util.Observer
-import model.Field
+import model.fieldComponent.FieldInterface
 
 class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
     controller.add(this)

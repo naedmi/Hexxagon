@@ -1,6 +1,8 @@
-package model
+package model.fieldComponent
 
-trait Field {
+import model.Matrix
+
+trait FieldInterface {
     val col: Int
     val lines: Int
     var matrix: Matrix
@@ -8,6 +10,6 @@ trait Field {
     def place(c: Char, x: Int, y: Int): Matrix
     def fillAll(c: Char): Matrix
     def field: String
-    def reset: Field
+    def reset: FieldInterface
     override def toString = field
 }

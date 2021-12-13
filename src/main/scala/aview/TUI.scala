@@ -1,9 +1,8 @@
 package aview
 
 import util.Observer
-import model.HexField
 import scala.util.matching.Regex
-import controller.ControllerInterface
+import controller.controllerComponent._
 
 class TUI(controller: ControllerInterface) extends Observer {
     controller.add(this)

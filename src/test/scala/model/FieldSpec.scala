@@ -2,30 +2,31 @@ package model
 
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
-import controller.Controller
+import controller.controllerComponent.controllerBaseImpl.Controller
+import model.fieldComponent.fieldBaseImpl.Field
 
-class HexFieldSpec extends AnyWordSpec {
-    info("Note that HexFields have to have an uneven number of columns!")
+class FieldSpec extends AnyWordSpec {
+    info("Note that Fields have to have an uneven number of columns!")
     "A Hex" when {
     
         "created as 6 - 9 Grid" should {
         
-            val hex = new HexField(9, 6)
+            val hex = new Field(9, 6)
 
             "start with the top" in {
-                hex.edgetop should be(new HexField(hex.col, 1).edgetop);
+                hex.edgetop should be(new Field(hex.col, 1).edgetop);
             }
             "have lines" in {
-                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new HexField(hex.col, 1).field)
+                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new Field(hex.col, 1).field)
             }
             "be equal to a field the same size" in {
-                hex.field should be(new HexField(hex.col, hex.lines).field)
+                hex.field should be(new Field(hex.col, hex.lines).field)
             }
             "placing at 8 5 X" in {
                 hex.place('X', 8, 5) should be(new Matrix(9, 6).fill('X', 8, 5))
             }
             "be the same size as an 8 - 6 Grid" in {
-                new HexField().field should be(new HexField(8, 6).field)
+                new Field().field should be(new Field(8, 6).field)
             }
             "could be filled with one method call" in {
                 hex.fillAll('X') should be (new Matrix(9, 6).fillAll('X'))
@@ -34,28 +35,28 @@ class HexFieldSpec extends AnyWordSpec {
 
         "created as default Grid" should {
         
-            val hex = new HexField()
+            val hex = new Field()
 
             "start with the top" in {
-                hex.edgetop should be(new HexField(hex.col, 1).edgetop);
+                hex.edgetop should be(new Field(hex.col, 1).edgetop);
             }
             "have lines" in {
-                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new HexField(hex.col, 1).field)
+                "\n" + hex.edgetop + hex.top(0) + hex.bot(0) + hex.edgebot should be(new Field(hex.col, 1).field)
             }
             "be equal to a field with the size: 9 - 6" in {
-                hex.field should be(new HexField(9, 6).field)
+                hex.field should be(new Field(9, 6).field)
             }
             "be empty in every Cell at the beginning" in {
                 hex.matrix.matrix.contains('X') should be(false)
                 hex.matrix.matrix.contains('O') should be(false)
-                val nhex = new HexField(2, 3)
+                val nhex = new Field(2, 3)
                 nhex.matrix.matrix.contains('X') should be(false)
                 nhex.matrix.matrix.contains('O') should be(false)
             }
         }
         "created as Single Cell" should {
 
-            var hex = new HexField(1, 1)
+            var hex = new Field(1, 1)
             var contr = new Controller(hex)
 
             "contain a Space when empty" in {
@@ -66,7 +67,7 @@ class HexFieldSpec extends AnyWordSpec {
                 hex.matrix.matrix(0)(0) should be('X')
             }
             "contain a O" in {
-                hex = new HexField(1, 1)
+                hex = new Field(1, 1)
                 contr = new Controller(hex)
                 contr.place('O', 0, 0)
                 hex.matrix.matrix(0)(0) should be('O')

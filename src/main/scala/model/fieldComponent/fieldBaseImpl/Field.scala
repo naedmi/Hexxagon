@@ -1,6 +1,9 @@
-package model
+package model.fieldComponent.fieldBaseImpl
 
-case class HexField(col: Int, lines: Int) extends Field:
+import model.fieldComponent._
+import model.Matrix
+
+case class Field(col: Int, lines: Int) extends FieldInterface:
     assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     

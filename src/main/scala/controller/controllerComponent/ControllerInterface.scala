@@ -1,10 +1,12 @@
-package controller
+package controller.controllerComponent
 
 import util.Observable
-import model.Field
+import model.fieldComponent.FieldInterface
+import controller.GameStatus
+import model.fieldComponent.FieldInterface
 
 trait ControllerInterface extends Observable{
-  var hexfield: Field
+  var hexfield: FieldInterface
   def gamestatus: GameStatus
   def fillAll(c: Char): Unit
   def place(c: Char, x: Int, y: Int): Unit

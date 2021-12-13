@@ -1,12 +1,12 @@
-import controller.Controller
+import controller.controllerComponent.controllerBaseImpl._
 import aview.TUI
 import aview.gui.GUI
-import model.HexField
+import model.fieldComponent.fieldBaseImpl._
 import scala.io.StdIn.readLine
 import scalafx.application.JFXApp3;
 
 object starter {
-  val controller = Controller(new HexField())
+  val controller = Controller(new Field())
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
   def runTUI: Unit = {
@@ -29,5 +29,5 @@ object MainTUI extends App {
 object MainGUI extends JFXApp3 {
     override def start() = 
       starter.runGUI
-      //GUI(Controller(new HexField())).start()
+      //GUI(Controller(new Field())).start()
 }
