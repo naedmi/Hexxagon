@@ -58,15 +58,11 @@ class ControllerSpec extends AnyWordSpec {
             controller.hexfield.matrix.cell(2, 2) should be('O')
           }
           "change its gamestatus dependent on players turn" in {
-            val status = controller.gamestatus
-            if (status == TURNPLAYER1) then
-              controller.place('X', 1, 1)
-              obs.updated should be (true)
-              controller.gamestatus should be (TURNPLAYER2)
-            else if (status == TURNPLAYER2) then
-              controller.place('=', 2, 2)
-              obs.updated should be (true)
-              controller.gamestatus should be (TURNPLAYER1)
+            controller.gamestatus should be (TURNPLAYER1)
+            controller.place('X', 4, 2)
+            controller.gamestatus should be (TURNPLAYER2)
+            controller.place('O', 5, 2)
+            controller.gamestatus should be (TURNPLAYER1)
           }
           "don't place a stone if it's not the players turn" in {
             val stone = controller.hexfield.matrix.cell(1, 1)
