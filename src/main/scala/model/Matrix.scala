@@ -15,7 +15,7 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
         content match {
             case 'X' => Xcount = MAX; Ocount = 0
             case 'O' => Ocount = MAX; Xcount = 0
-            case ' ' => Ocount = 0; Xcount = 0
+            case _ => Ocount = 0; Xcount = 0
         }
         copy(Vector.fill[Char](row, col)(content))
 
