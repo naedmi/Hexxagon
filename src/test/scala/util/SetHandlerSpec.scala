@@ -19,6 +19,8 @@ class SetHandlerSpec extends AnyWordSpec {
                 new DefaultSetHandler().createSetandHandle('X', 2, 0, mat.matrix) should be (new TopBotSetHandler().createSetandHandle('X', 2, 0, mat.matrix))
                 new DefaultSetHandler().createSetandHandle('X', 0, 2, mat.matrix) should be (new SideSetHandler().createSetandHandle('X', 0, 2, mat.matrix))
                 new DefaultSetHandler().createSetandHandle('X', 0, 0, mat.matrix) should be (new CornerSetHandler().createSetandHandle('X', 0, 0, mat.matrix))
+                new CornerSetHandler().createSetandHandle('X', 0, 0, mat.matrix) should be (new DefaultSetHandler().createSetandHandle('X', 0, 0, mat.matrix))
+                new CornerSetHandler().createSetandHandle('X', 1, 1, mat.matrix) should not be (new DefaultSetHandler().createSetandHandle('X', 1, 1, mat.matrix))
            }
            "have a certain List of Sets for each Situation" in {
                 var d = new DefaultSetHandler()
