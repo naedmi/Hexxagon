@@ -7,8 +7,8 @@ trait FieldInterface[T] {
     val lines: Int
     var matrix: MatrixInterface[T]
     val eol = "\n"
-    def place(c: Char, x: Int, y: Int): MatrixInterface[T]
-    def fillAll(c: Char): MatrixInterface[T]
+    def place(c: T, x: Int, y: Int): MatrixInterface[T]
+    def fillAll(c: T): MatrixInterface[T]
     def field: String
     def reset: FieldInterface[T]
     override def toString = field
