@@ -3,3 +3,9 @@ ignore:
   - "**/GUI.scala"
   - "**/Main.scala"
   - "**/resources/"
+
+coverage:
+  status:
+    patch:
+      default:
+        target: 75%
