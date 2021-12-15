@@ -10,6 +10,7 @@ class MatrixSpec extends AnyWordSpec {
         "initialized" should {
             "contain only ' '" in {
                 val matrix = new Matrix(9, 6)
+                matrix should be (new Matrix(Vector.fill[Char](6, 9)(' '), 0, 0))
                 matrix.matrix.filter(_.contains(' ')) should be(Vector.fill[Char](matrix.row, matrix.col)(' '))
                 matrix.matrix.filter(_.contains('X')) should be(Vector())
                 matrix.matrix.filter(_.contains('O')) should be(Vector())
