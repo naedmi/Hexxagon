@@ -3,6 +3,7 @@ package controller
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import model.fieldComponent.fieldBaseImpl.Field
+import controller.controllerComponent.controllerBaseImpl.{PlaceCommand, PlaceAllCommand}
 
 class PlaceCommandSpec extends AnyWordSpec {
     "A PlaceCommand" should {

@@ -3,16 +3,16 @@ package controller.controllerComponent.controllerBaseImpl
 import controller.GameStatus
 import controller.GameStatus._
 import controller.controllerComponent.ControllerInterface
-import controller.PlaceAllCommand
-import controller.PlaceCommand
+import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
+import controller.controllerComponent.controllerBaseImpl.PlaceCommand
 import util.{Observable, UndoManager}
 import model.fieldComponent.FieldInterface
 
-case class Controller(var hexfield: FieldInterface) 
+case class Controller(var hexfield: FieldInterface[Char]) 
     extends ControllerInterface {
         
     var gamestatus: GameStatus = IDLE
-    private val undoManager = new UndoManager[FieldInterface]
+    private val undoManager = new UndoManager[FieldInterface[Char]]
     private var laststatus = IDLE
 
     val GAMEMAX = hexfield.matrix.MAX

@@ -1,15 +1,15 @@
 package model.fieldComponent
 
-import model.Matrix
+import model.fieldComponent.MatrixInterface
 
-trait FieldInterface {
+trait FieldInterface[T] {
     val col: Int
     val lines: Int
-    var matrix: Matrix
+    var matrix: MatrixInterface[T]
     val eol = "\n"
-    def place(c: Char, x: Int, y: Int): Matrix
-    def fillAll(c: Char): Matrix
+    def place(c: Char, x: Int, y: Int): MatrixInterface[T]
+    def fillAll(c: Char): MatrixInterface[T]
     def field: String
-    def reset: FieldInterface
+    def reset: FieldInterface[T]
     override def toString = field
 }

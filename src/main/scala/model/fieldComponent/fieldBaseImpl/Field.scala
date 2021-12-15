@@ -1,9 +1,9 @@
 package model.fieldComponent.fieldBaseImpl
 
-import model.fieldComponent._
-import model.Matrix
+import model.fieldComponent.FieldInterface
+import model.fieldComponent.MatrixInterface
 
-case class Field(col: Int, lines: Int) extends FieldInterface:
+case class Field(col: Int, lines: Int) extends FieldInterface[Char]:
     assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     
@@ -13,9 +13,9 @@ case class Field(col: Int, lines: Int) extends FieldInterface:
     def edgetop = " ___ " + "    ___ " * (col/2) + eol
     def edgebot = " " + "   \\___/" * (col/2) + eol
 
-    def fillAll(c: Char): Matrix = matrix.fillAll(c)
+    override def fillAll(c: Char): MatrixInterface[Char] = matrix.fillAll(c)
 
-    def place(c: Char, x: Int, y: Int): Matrix = {
+    override def place(c: Char, x: Int, y: Int): MatrixInterface[Char] = {
         matrix.fill(c, x, y)
     }
 
@@ -37,9 +37,9 @@ case class Field(col: Int, lines: Int) extends FieldInterface:
         res + "\n"
     }
 
-    def reset = copy(col, lines)
+    override def reset = copy(col, lines)
     
-    def field = {
+    override def field = {
         var res = eol + edgetop
         for (l <- 0 until matrix.row) res += (top(l) + bot(l))
         res += edgebot
