@@ -1,7 +1,6 @@
 package controller.controllerComponent
 
-import model.fieldComponent.FieldInterface
-import model.fieldComponent.MatrixInterface
+import model.fieldComponent.{FieldInterface, MatrixInterface}
 import util.Command
 
 trait CommandTemplate[T <: FieldInterface[Char]](field: T) extends Command[T] {

@@ -1,12 +1,12 @@
 package model.fieldComponent.fieldBaseImpl
 
-import model.fieldComponent.FieldInterface
-import model.fieldComponent.MatrixInterface
+import model.fieldComponent.{FieldInterface, MatrixInterface}
 
 case class Field(col: Int, lines: Int) extends FieldInterface[Char]:
     assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
     def this() = this(9,6) // default
     
+    val eol = "\n"
     var matrix = new Matrix(col, lines)
     if col % 2 == 0 then matrix = new Matrix(col+1, lines)
     
