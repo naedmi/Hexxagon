@@ -45,7 +45,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.cell(4, 3) should be (' ')
             }
         }
-        "place a stone on top of a stone" should {
+        "placing a stone on top of a stone" should {
             var matrix = new Matrix(5, 4)
             "counters should substract 1" in {
                 matrix = matrix.fill('O', 2, 2)

@@ -5,10 +5,10 @@ import model.fieldComponent.MatrixInterface
 /** Interface to implement the game board. */
 trait FieldInterface[T] {
     /** Number of columns of the field. */
-    val col: Int
+    // val col: Int
 
     /** Number of lines of the field. */
-    val lines: Int
+    // val lines: Int
 
     /** Matrix that stores the content of the fields cells. */
     var matrix: MatrixInterface[T]

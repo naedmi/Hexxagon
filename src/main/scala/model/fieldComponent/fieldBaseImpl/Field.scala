@@ -2,16 +2,12 @@ package model.fieldComponent.fieldBaseImpl
 
 import model.fieldComponent.{FieldInterface, MatrixInterface}
 
-case class Field(col: Int, lines: Int) extends FieldInterface[Char]:
-    assert(col > 0 && lines > 0 && col < 10 && lines < 10)  // 10 not working with regex
-    def this() = this(9,6) // default
-    
+case class Field(var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
     val eol = "\n"
-    var matrix = new Matrix(col, lines)
-    if col % 2 == 0 then matrix = new Matrix(col+1, lines)
+    if matrix.col % 2 == 0 then matrix = new Matrix(matrix.col+1, matrix.row)
     
-    def edgetop = " ___ " + "    ___ " * (col/2) + eol
-    def edgebot = " " + "   \\___/" * (col/2) + eol
+    def edgetop = " ___ " + "    ___ " * (matrix.col/2) + eol
+    def edgebot = " " + "   \\___/" * (matrix.col/2) + eol
 
     override def fillAll(c: Char): MatrixInterface[Char] = matrix.fillAll(c)
 
@@ -23,7 +19,7 @@ case class Field(col: Int, lines: Int) extends FieldInterface[Char]:
         var res = "\\___/"
         
         matrix.matrix(line).zipWithIndex.foreach(
-        (x, i) => if i % 2 != 0 && i >= 1 && i < col then res += " " + x.toString + " \\___/")
+        (x, i) => if i % 2 != 0 && i >= 1 && i < matrix.col then res += " " + x.toString + " \\___/")
 
         res + "\n"
     }
@@ -37,7 +33,7 @@ case class Field(col: Int, lines: Int) extends FieldInterface[Char]:
         res + "\n"
     }
 
-    override def reset = copy(col, lines)
+    override def reset = copy(matrix.fillAll(' '))
     
     override def field = {
         var res = eol + edgetop

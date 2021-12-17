@@ -4,7 +4,11 @@ import util.SetHandling.DefaultSetHandler
 import model.fieldComponent.MatrixInterface
 
 case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) extends MatrixInterface[Char] {
-    def this(columns: Int, rows: Int) = this(Vector.fill[Char](rows, columns)(' '), 0, 0)
+    def this(columns: Int, rows: Int) = {
+        this(Vector.fill[Char](rows, columns)(' '), 0, 0)
+        assert(columns > 0 && rows > 0 && columns < 10 && rows < 10)  // 10 not working with regex
+    }
+
     def MAX = row * col
     val col = matrix(0).size
     val row = matrix.size

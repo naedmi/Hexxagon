@@ -43,12 +43,12 @@ class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
             icons += new Image(getClass.getResource("/logo.png").toExternalForm, 100, 100, true, true)
             resizable = false
             title.value = "HEXXAGON"
-            scene = new Scene((controller.hexfield.col+2) * size*2, 800) {                
+            scene = new Scene((controller.hexfield.matrix.col+2) * size*2, 800) {                
                 val border = new BorderPane()
                 border.setBackground(new Background(Array(new BackgroundFill(new LinearGradient(endX = 0, stops = Stops(LightGrey, LightSteelBlue)) , CornerRadii(size), Insets(10)))))
                 val pane = Pane()
                 var tmp: Hex = Hex(0,0,0,' ')
-                for (j <- 0 to controller.hexfield.lines - 1) {
+                for (j <- 0 to controller.hexfield.matrix.row - 1) {
                     controller.hexfield.matrix.matrix(j).zipWithIndex.foreach {
                         (x, i) => 
                             if i == 0 then 
@@ -74,7 +74,7 @@ class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
                 border.top = {
                     val l1 = new Label(controller.gamestatus.message())
                     l1.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, red);"
-                    l1.padding = Insets(0, 0, size, size * (controller.hexfield.col/2 - 1))
+                    l1.padding = Insets(0, 0, size, size * (controller.hexfield.matrix.col/2 - 1))
                     l1
                 }
                 border.bottom = new HBox {
@@ -89,7 +89,7 @@ class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
                             over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(darkblue, blue);"
                         else
                             over.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(black, red);"
-                        this.padding = Insets(size, 0, size, size * (controller.hexfield.col/2 - 1))
+                        this.padding = Insets(size, 0, size, size * (controller.hexfield.matrix.col/2 - 1))
                         this.children += over
                     else
                         val xcount = new Label("X: " + controller.hexfield.matrix.Xcount)
@@ -100,7 +100,7 @@ class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
                         ocount.style = s"-fx-font: $fontsize $font; -fx-text-fill: linear-gradient(black, red);"
                         this.children += xcount
                         this.children += ocount
-                        this.setSpacing(size*controller.hexfield.col - size)
+                        this.setSpacing(size*controller.hexfield.matrix.col - size)
                 }
 
                 border.right = {
