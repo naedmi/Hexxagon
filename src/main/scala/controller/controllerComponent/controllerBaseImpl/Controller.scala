@@ -2,11 +2,11 @@ package controller.controllerComponent.controllerBaseImpl
 
 import controller.GameStatus
 import controller.GameStatus._
+import util.{Observable, UndoManager}
+import model.fieldComponent.FieldInterface
 import controller.controllerComponent.ControllerInterface
 import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
 import controller.controllerComponent.controllerBaseImpl.PlaceCommand
-import util.{Observable, UndoManager}
-import model.fieldComponent.FieldInterface
 
 case class Controller(var hexfield: FieldInterface[Char]) 
     extends ControllerInterface {
@@ -61,6 +61,7 @@ case class Controller(var hexfield: FieldInterface[Char])
     override def redo = {
         if undoManager.redoStack == Nil then notifyObservers
         else
+            if laststatus == IDLE then laststatus = TURNPLAYER1
             var mem = laststatus
             laststatus = gamestatus
             undoManager.redoStep(hexfield)
