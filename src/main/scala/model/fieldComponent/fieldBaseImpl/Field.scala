@@ -4,7 +4,6 @@ import model.fieldComponent.{FieldInterface, MatrixInterface}
 
 case class Field(var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
     val eol = "\n"
-    if matrix.col % 2 == 0 then matrix = new Matrix(matrix.col+1, matrix.row)
     
     def edgetop = " ___ " + "    ___ " * (matrix.col/2) + eol
     def edgebot = " " + "   \\___/" * (matrix.col/2) + eol

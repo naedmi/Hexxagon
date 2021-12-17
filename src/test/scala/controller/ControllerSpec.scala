@@ -3,14 +3,14 @@ package controller
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 import util.Observer
-import model.fieldComponent.fieldBaseImpl.Field
+import model.fieldComponent.fieldBaseImpl._
 import controller.controllerComponent.controllerBaseImpl.Controller
 import GameStatus._
 
 class ControllerSpec extends AnyWordSpec {
     "A Controller" when {
         "observed by an Observer" should {
-          val field = new Field()
+          val field = new Field(new Matrix(9, 6))
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)
@@ -40,7 +40,7 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "having a step made" should {
-          val field = new Field()
+          val field = new Field(new Matrix(9, 6))
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)
@@ -78,7 +78,7 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "filled" should {
-          val field = new Field(1, 1)
+          val field = new Field(new Matrix(1, 1))
           val controller = new Controller(field)
           val obs = new Obs()
           controller.add(obs)

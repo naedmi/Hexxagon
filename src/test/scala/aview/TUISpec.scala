@@ -1,14 +1,14 @@
 package aview
 
 import controller.controllerComponent.controllerBaseImpl.Controller
-import model.fieldComponent.fieldBaseImpl.Field
+import model.fieldComponent.fieldBaseImpl._
 import aview.TUI
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
 class TUISpec extends AnyWordSpec {
     "A TUI" when {
-        val hex = new Field()
+        val hex = new Field(new Matrix(9, 6))
         val tui = TUI(Controller(hex))
         "created" should {
             "have regex in matching smth like 0 0 X" in {

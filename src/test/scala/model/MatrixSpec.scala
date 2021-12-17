@@ -22,6 +22,11 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.Ocount should be (0)
             }
         }
+        "initialized as a 9 - 6 Grid" should {
+            "be the same size as an 8 - 6 Grid" in {
+                new Matrix(9, 6) should be (new Matrix(8, 6))
+            }
+        }
         "having a stone placed" should {
             var matrix = new Matrix(5, 4)
             matrix = matrix.fill('O', 0, 0)
