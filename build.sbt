@@ -14,6 +14,8 @@ lazy val root = project
 
     libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24",
 
+    libraryDependencies += ("net.codingwell" %% "scala-guice" % "5.0.2").cross(CrossVersion.for3Use2_13),
+
     libraryDependencies ++= {
     // Determine OS version of JavaFX binaries
     lazy val osName = System.getProperty("os.name") match {

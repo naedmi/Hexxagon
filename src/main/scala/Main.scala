@@ -6,6 +6,7 @@ import model.fieldComponent.fieldBaseImpl._
 import controller.controllerComponent.controllerBaseImpl._
 
 object starter {
+
   val controller = Controller(new Field(new Matrix(9, 6)))
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
