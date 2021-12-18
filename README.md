@@ -11,7 +11,6 @@
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/u7xVf5FE)
 
 # Project
 
