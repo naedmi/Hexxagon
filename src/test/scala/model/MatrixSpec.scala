@@ -21,6 +21,9 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.Xcount should be (0)
                 matrix.Ocount should be (0)
             }
+            "use default value if given size is negative or > 10" in {
+                val matrix = new Matrix(11, -1) should be (new Matrix(9, 6))
+            }
         }
         "initialized as a 9 - 6 Grid" should {
             "be the same size as an 8 - 6 Grid" in {

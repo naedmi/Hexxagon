@@ -8,11 +8,12 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
         this(
         if col % 2 == 0 then 
             Vector.fill[Char](row, col + 1)(' ') 
-        else 
+        else if (col < 0 || row < 0 || col > 10 || row > 10) // 10 not working with regex
+            Vector.fill[Char](6, 9)(' ') // default values
+        else
             Vector.fill[Char](row, col)(' '), 
         0, 0)
-        assert(col > 0 && row > 0 && col < 10 && row < 10)  // 10 not working with regex
-    }
+    } 
 
     def MAX = row * col
     val col = matrix(0).size
