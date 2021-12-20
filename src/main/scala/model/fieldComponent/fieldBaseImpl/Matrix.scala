@@ -6,10 +6,10 @@ import model.fieldComponent.MatrixInterface
 case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) extends MatrixInterface[Char] {
     def this(col: Int, row: Int) = {
         this(
-        if col % 2 == 0 then 
+        if (col < 0 || row < 0 || col > 10 || row > 10) // 10 not working with regex
+            Vector.fill[Char](6, 9)(' ')                // default values
+        else if col % 2 == 0 then 
             Vector.fill[Char](row, col + 1)(' ') 
-        else if (col < 0 || row < 0 || col > 10 || row > 10) // 10 not working with regex
-            Vector.fill[Char](6, 9)(' ') // default values
         else
             Vector.fill[Char](row, col)(' '), 
         0, 0)

@@ -22,13 +22,16 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.Ocount should be (0)
             }
             "use default value if given size is negative or > 10" in {
-                new Matrix(11, -1) should be (new Matrix(9, 6))
-                new Matrix(-1, 11) should be (new Matrix(9, 6))
+                new Matrix(10, -1) should be (new Matrix(9, 6))
+                new Matrix(-1, 10) should be (new Matrix(9, 6))
+                new Matrix(11, 1) should be (new Matrix(9, 6))
+                new Matrix(1, 11) should be (new Matrix(9, 6))
             }
         }
         "initialized as a 9 - 6 Grid" should {
             "be the same size as an 8 - 6 Grid" in {
                 new Matrix(9, 6) should be (new Matrix(8, 6))
+                new Matrix(6, 6) should be (new Matrix(7, 6))
             }
         }
         "having a stone placed" should {
