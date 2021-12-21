@@ -16,6 +16,12 @@ class GameStatusSpec extends AnyWordSpec {
             TURNPLAYER1.message() should be ("Player 1 to place X")
             TURNPLAYER2.message() should be ("Player 2 to place O")
         }
+        "have values" in {
+            GameStatus.valueOf("TURNPLAYER2") should be (TURNPLAYER2)
+            GameStatus.valueOf("TURNPLAYER1") should be (TURNPLAYER1)
+            GameStatus.valueOf("IDLE") should be (IDLE)
+            GameStatus.valueOf("GAMEOVER") should be (GAMEOVER)
+        } 
         "be controlled via Controller" in {
             val c = Controller(new Field(new Matrix(9, 6)))
             c.place('X', 0, 0)
