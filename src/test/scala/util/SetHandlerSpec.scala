@@ -41,6 +41,14 @@ class SetHandlerSpec extends AnyWordSpec {
                                                             Set((0, 3),(1, 4),(1, 3)),
                                                             Set((3, -1),(3, 0),(4, -1))))
            }
+           "is a chain of responsibility" in {
+                CornerSetHandler().isInstanceOf[SideSetHandler] should be (true)
+                CornerSetHandler().isInstanceOf[TopBotSetHandler] should be (true)
+                CornerSetHandler().isInstanceOf[DefaultSetHandler] should be (true)
+                SideSetHandler().isInstanceOf[TopBotSetHandler] should be (true)
+                SideSetHandler().isInstanceOf[DefaultSetHandler] should be (true)
+                TopBotSetHandler().isInstanceOf[DefaultSetHandler] should be (true)
+           }
        }
    }
 }
