@@ -11,10 +11,8 @@
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-![GitHub Contributors Image](https://contrib.rocks/image?repo=naedmi/Hexxagon)
 
-# MERRY CHRISTMAS
-# Project
+## Project
 
 ![image](http://ForTheBadge.com/images/badges/built-with-swag.svg)
 
@@ -28,7 +26,12 @@ Hexxagon is a strategy board game played in a 2 player mode. The goal is to capt
 
 You can place your stones by inputting a two-indexed location. All adjacent Fields with opposite stones become your own.
 
+# JOTD - Joke of the Day
+![Jokes Card](https://readme-jokes.vercel.app/api)
+
 # Contributors
+
+![GitHub Contributors Image](https://contrib.rocks/image?repo=naedmi/Hexxagon)
 
 #### [Ostabo](https://github.com/Ostabo)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=ostabo)
