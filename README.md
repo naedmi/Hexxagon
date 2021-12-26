@@ -12,7 +12,7 @@
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
-## Project
+# Project
 
 ![image](http://ForTheBadge.com/images/badges/built-with-swag.svg)
 
@@ -20,13 +20,13 @@ This project is developed as an example for the lecture Software Engineering at 
 
 You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
 
-# Hexxagon
+## Hexxagon
 
 Hexxagon is a strategy board game played in a 2 player mode. The goal is to capture as many fields as possible on a hexagonal grid. The player with the most stones on the board wins.
 
 You can place your stones by inputting a two-indexed location. All adjacent Fields with opposite stones become your own.
 
-# JOTD - Joke of the Day
+## JOTD - Joke of the Day
 ![Jokes Card](https://readme-jokes.vercel.app/api)
 
 # Contributors
@@ -39,7 +39,7 @@ You can place your stones by inputting a two-indexed location. All adjacent Fiel
 #### [naedmi](https://github.com/naedmi)
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=naedmi)
 
-# GUI - Overview
+## GUI - Overview
 ![grafik](https://user-images.githubusercontent.com/34040518/145568350-a6b652d0-cc23-46a6-b5c3-1ecc1d98556a.png)
 ![grafik](https://user-images.githubusercontent.com/34040518/147228936-72d1362f-46bd-4367-8f57-4067dd7dd758.png)
 
