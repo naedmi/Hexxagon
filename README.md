@@ -28,7 +28,6 @@ You can place your stones by inputting a two-indexed location. All adjacent Fiel
 
 ## JOTD - Joke of the Day
 ![Jokes Card](https://readme-jokes.vercel.app/api)
-
 # Contributors
 
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=naedmi/Hexxagon)
