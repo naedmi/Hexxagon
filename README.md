@@ -11,6 +11,7 @@
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![Scala](https://img.shields.io/badge/Scala-DC322F?style=for-the-badge&logo=scala&logoColor=white)
 
 # Project
 
