@@ -2,13 +2,14 @@ package controller.controllerComponent.controllerBaseImpl
 
 import controller.GameStatus
 import controller.GameStatus._
+import com.google.inject.Inject
 import util.{Observable, UndoManager}
 import model.fieldComponent.FieldInterface
 import controller.controllerComponent.ControllerInterface
 import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
 import controller.controllerComponent.controllerBaseImpl.PlaceCommand
 
-case class Controller(var hexfield: FieldInterface[Char]) 
+case class Controller @Inject() (var hexfield: FieldInterface[Char]) 
     extends ControllerInterface {
         
     var gamestatus: GameStatus = IDLE

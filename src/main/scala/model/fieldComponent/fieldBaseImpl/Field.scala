@@ -1,8 +1,9 @@
 package model.fieldComponent.fieldBaseImpl
 
 import model.fieldComponent.{FieldInterface, MatrixInterface}
+import com.google.inject.Inject
 
-case class Field(var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
+case class Field @Inject() (var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
     val eol = "\n"
     
     def edgetop = " ___ " + "    ___ " * (matrix.col/2) + eol

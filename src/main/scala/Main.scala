@@ -1,5 +1,6 @@
 import aview.TUI
 import aview.gui.GUI
+import com.google.inject.Guice
 import scala.io.StdIn.readLine
 import scalafx.application.JFXApp3
 import model.fieldComponent.fieldBaseImpl._
@@ -7,7 +8,7 @@ import controller.controllerComponent.controllerBaseImpl._
 
 object starter {
 
-  val controller = Controller(new Field(new Matrix(9, 6)))
+  val controller = Controller(new Field(new Matrix(3, 2)))
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
   def runTUI: Unit = {
