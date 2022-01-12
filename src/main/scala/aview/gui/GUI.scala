@@ -20,7 +20,7 @@ import scala.math.sqrt
 import util.Observer
 
 
-class GUI(controller: ControllerInterface) extends JFXApp3 with Observer {
+class GUI(controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
     controller.add(this)
     val size = 40
     private val font = "Hexa"

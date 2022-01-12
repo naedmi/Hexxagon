@@ -4,7 +4,7 @@ import util.Observer
 import scala.util.matching.Regex
 import controller.controllerComponent.ControllerInterface
 
-class TUI(controller: ControllerInterface) extends Observer {
+class TUI(controller: ControllerInterface[Char]) extends Observer {
     controller.add(this)
     override def update = println(controller)
     

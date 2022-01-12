@@ -12,7 +12,7 @@ import com.google.inject.Guice
 
 object starter {
   val injector = Guice.createInjector(new HexModule)
-  val controller = injector.getInstance(classOf[ControllerInterface])
+  val controller = injector.getInstance(classOf[ControllerInterface[Char]])
   // val controller = Controller(new Field(new Matrix(3, 2)))
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
