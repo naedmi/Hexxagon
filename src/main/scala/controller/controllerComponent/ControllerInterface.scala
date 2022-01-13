@@ -2,7 +2,6 @@ package controller.controllerComponent
 
 import util.Observable
 import controller.GameStatus
-import com.google.inject.Inject
 import model.fieldComponent.FieldInterface
 
 /** Interface to implement the controller unit. */

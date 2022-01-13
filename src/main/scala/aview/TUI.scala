@@ -1,10 +1,11 @@
 package aview
 
 import util.Observer
+import HexModule.{given}
 import scala.util.matching.Regex
 import controller.controllerComponent.ControllerInterface
 
-class TUI(controller: ControllerInterface[Char]) extends Observer {
+class TUI(using controller: ControllerInterface[Char]) extends Observer {
     controller.add(this)
     override def update = println(controller)
     
@@ -12,6 +13,8 @@ class TUI(controller: ControllerInterface[Char]) extends Observer {
     val maxind2 = controller.hexfield.matrix.col - 1
     val reg: Regex = ("([0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XOxo])").r
     val message = s"Input your x and y Coordinate as followed:\n[ 0-$maxind2 ] [ 0-$maxind1 ] [ X | O ] \n"
+
+    def startmes = "\nWelcome to Hexxagon!\n" + message + controller
 
     def handleInput(in:String): Option[String] = 
         in match {
@@ -30,7 +33,7 @@ class TUI(controller: ControllerInterface[Char]) extends Observer {
                 controller.fillAll('O')
                 Some("Filled with O.")
             }
-            case "reset" => controller.fillAll(' '); Some("Reset.")
+            case "reset" => controller.reset; Some("Reset.")
             case "redo" | "r" | "re" => controller.redo; Some("Redone.")
             case "undo" | "u" | "un" | "z" => controller.undo; Some("Undone.")
             case "q" | "e" | "exit" | "quit" | "Exit" | "Quit" => Some("Exiting.")

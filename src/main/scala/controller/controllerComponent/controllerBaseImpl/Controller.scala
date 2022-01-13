@@ -3,27 +3,19 @@ package controller.controllerComponent.controllerBaseImpl
 import scala.HexModule
 import controller.GameStatus
 import controller.GameStatus._
-import com.google.inject.Inject
-import com.google.inject.name.Names
 import util.{Observable, UndoManager}
-import com.google.inject.{Guice, Inject}
 import model.fieldComponent.FieldInterface
-import net.codingwell.scalaguice.InjectorExtensions._
 import controller.controllerComponent.ControllerInterface
 import controller.controllerComponent.controllerBaseImpl.PlaceCommand
 import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
 
-case class Controller @Inject() (var hexfield: FieldInterface[Char]) 
+class Controller (using var hexfield: FieldInterface[Char]) 
     extends ControllerInterface[Char] {
 
     var gamestatus: GameStatus = IDLE
     private val undoManager = new UndoManager[FieldInterface[Char]]
     private var laststatus = IDLE
     val GAMEMAX = hexfield.matrix.MAX
-
-    def this() = {
-        this(Guice.createInjector(new HexModule).getInstance(classOf[FieldInterface[Char]]))
-    }
 
     private def checkStat = 
         if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER

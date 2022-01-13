@@ -1,9 +1,9 @@
 package model.fieldComponent.fieldBaseImpl
 
 import model.fieldComponent.{FieldInterface, MatrixInterface}
-import com.google.inject.Inject
 
-case class Field @Inject() (var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
+class Field(using var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
+
     val eol = "\n"
     
     def edgetop = " ___ " + "    ___ " * (matrix.col/2) + eol
@@ -33,7 +33,10 @@ case class Field @Inject() (var matrix: MatrixInterface[Char]) extends FieldInte
         res + "\n"
     }
 
-    override def reset = copy(matrix.fillAll(' '))
+    override def reset = {
+        matrix = fillAll(' ')
+        this
+    }
     
     override def field = {
         var res = eol + edgetop

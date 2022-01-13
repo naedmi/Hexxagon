@@ -16,11 +16,12 @@ import scalafx.geometry.Pos._
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scalafx.Includes._
+import HexModule.{given}
 import scala.math.sqrt
 import util.Observer
 
 
-class GUI(controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
+class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
     controller.add(this)
     val size = 40
     private val font = "Hexa"
