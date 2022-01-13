@@ -3,11 +3,14 @@ import aview.gui.GUI
 import scala.io.StdIn.readLine
 import scalafx.application.JFXApp3
 import model.fieldComponent.fieldBaseImpl._
-import controller.controllerComponent.controllerBaseImpl._
+import controller.controllerComponent.ControllerInterface
+import scala.HexModule
+import com.google.inject.Guice
+import model.fieldComponent.FieldInterface
 
 object starter {
-
-  val controller = Controller(new Field(new Matrix(9, 6)))
+  val injector = Guice.createInjector(new HexModule)
+  val controller = injector.getInstance(classOf[ControllerInterface])
   val tui = TUI(controller)
   def start: String = "\nWelcome to Hexxagon!\n" + tui.message + controller
   def runTUI: Unit = {

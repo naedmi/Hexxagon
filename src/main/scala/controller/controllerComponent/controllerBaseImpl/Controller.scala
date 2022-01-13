@@ -7,8 +7,9 @@ import model.fieldComponent.FieldInterface
 import controller.controllerComponent.ControllerInterface
 import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
 import controller.controllerComponent.controllerBaseImpl.PlaceCommand
+import com.google.inject.Inject
 
-case class Controller(var hexfield: FieldInterface[Char]) 
+case class Controller @Inject() (var hexfield: FieldInterface[Char]) 
     extends ControllerInterface {
         
     var gamestatus: GameStatus = IDLE

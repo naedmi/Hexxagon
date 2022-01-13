@@ -2,8 +2,9 @@ package model.fieldComponent.fieldBaseImpl
 
 import util.SetHandling.DefaultSetHandler
 import model.fieldComponent.MatrixInterface
+import com.google.inject.Inject
 
-case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) extends MatrixInterface[Char] {
+case class Matrix @Inject() (matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) extends MatrixInterface[Char] {
     def this(col: Int, row: Int) = {
         this(
         if (col < 0 || row < 0 || col > 10 || row > 10) // 10 not working with regex
