@@ -3,7 +3,6 @@ package scala
 import com.google.inject.AbstractModule
 import com.google.inject.name.Names
 import com.google.inject.TypeLiteral
-import net.codingwell.scalaguice.ScalaModule
 import model.fieldComponent.{FieldInterface, MatrixInterface}
 import model.fieldComponent.fieldBaseImpl.{Field, Matrix}
 import controller.controllerComponent.{ControllerInterface, controllerBaseImpl}
