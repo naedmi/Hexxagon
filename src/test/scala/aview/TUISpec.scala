@@ -1,10 +1,10 @@
 package aview
 
-import controller.controllerComponent.controllerBaseImpl.Controller
-import model.fieldComponent.fieldBaseImpl._
 import aview.TUI
 import org.scalatest.wordspec.AnyWordSpec
+import model.fieldComponent.fieldBaseImpl._
 import org.scalatest.matchers.should.Matchers._
+import controller.controllerComponent.controllerBaseImpl.Controller
 
 class TUISpec extends AnyWordSpec {
     "A TUI" when {

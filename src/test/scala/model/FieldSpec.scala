@@ -1,9 +1,9 @@
 package model
 
 import org.scalatest.wordspec.AnyWordSpec
+import model.fieldComponent.fieldBaseImpl._
 import org.scalatest.matchers.should.Matchers._
 import controller.controllerComponent.controllerBaseImpl.Controller
-import model.fieldComponent.fieldBaseImpl._
 
 class FieldSpec extends AnyWordSpec {
     info("Note that Fields have to have an uneven number of columns!")

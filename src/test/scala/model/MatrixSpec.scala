@@ -1,9 +1,9 @@
 package model
 
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers._
 import scala.annotation.varargs
 import util.SetHandling.DefaultSetHandler
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.should.Matchers._
 import model.fieldComponent.fieldBaseImpl.Matrix
 
 class MatrixSpec extends AnyWordSpec {
