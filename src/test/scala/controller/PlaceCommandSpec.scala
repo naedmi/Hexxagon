@@ -17,7 +17,7 @@ class PlaceCommandSpec extends AnyWordSpec {
         }
 
         "capture state of field before changing it" in {
-            command.rememberMe.matrix should be(new Field(using new Matrix(9, 6)).matrix.matrix) 
+            command.rememberMe should be(new Field(using new Matrix(9, 6))) 
         }
 
         "undo and redo a move" in {

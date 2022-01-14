@@ -70,7 +70,7 @@ class MatrixSpec extends AnyWordSpec {
         }
         "being filled with a stone" should {
             var matrix = new Matrix(5, 5)
-            "should only contain 'X'" in {
+            "only contain 'X'" in {
                 matrix = matrix.fillAll('X')
                 matrix.Xcount should be (matrix.row * matrix.col)
                 matrix.Ocount should be (0)
@@ -78,7 +78,7 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.flatten.contains('O') should be (false)
                 matrix.matrix.flatten.contains('X') should be (true)
             }
-            "should only contain 'O'" in {
+            "only contain 'O'" in {
                 matrix = matrix.fillAll('O')
                 matrix.Ocount should be (matrix.row * matrix.col)
                 matrix.Xcount should be (0)
@@ -94,7 +94,7 @@ class MatrixSpec extends AnyWordSpec {
                 mat = mat.fillAll(' ')
                 mat.cell(0, 0) should be (' ')
             }
-            "should only contain 'P'" in {
+            "only contain 'P'" in {
                 matrix = matrix.fillAll('P')
                 matrix.Ocount should be (0)
                 matrix.Xcount should be (0)

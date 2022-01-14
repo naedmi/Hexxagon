@@ -4,31 +4,23 @@ import model.fieldComponent.{FieldInterface, MatrixInterface}
 import util.Command
 
 trait CommandTemplate[T <: FieldInterface[Char]](field: T) extends Command[T] {
-    var rememberMe = field.matrix
-    var rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
+    var rememberMe = field
     override def noStep(field: T): T = field
     override def doStep(field: T): T = {
-        rememberMe = field.matrix
-        rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
-        field.matrix = command
-        field
+        rememberMe = field
+        val f = command
+        f
     }
-    override def undoStep(field: T) = {
-        val sec_rememberMe = field.matrix
-        val sec_rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
-        field.matrix = rememberMe
+    override def undoStep(field: T): T = {
+        val sec_rememberMe = field
+        val f = rememberMe
         rememberMe = sec_rememberMe
-        rememberCounter match {
-            case (x,y) => field.matrix.Xcount = x; field.matrix.Ocount = y
-        }
-        rememberCounter = sec_rememberCounter
-        field
+        f
     }
-    override def redoStep(field: T) = {
-        rememberMe = field.matrix
-        rememberCounter = (field.matrix.Xcount, field.matrix.Ocount)
-        field.matrix = command
-        field
+    override def redoStep(field: T): T = {
+        rememberMe = field
+        val f = command
+        f
     }
-    def command: MatrixInterface[Char]
+    def command: T
 }

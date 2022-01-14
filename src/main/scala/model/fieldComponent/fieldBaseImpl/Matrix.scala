@@ -3,7 +3,7 @@ package model.fieldComponent.fieldBaseImpl
 import util.SetHandling.DefaultSetHandler
 import model.fieldComponent.MatrixInterface
 
-case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount: Int = 0) extends MatrixInterface[Char] {
+case class Matrix(matrix: Vector[Vector[Char]], Xcount: Int = 0, Ocount: Int = 0) extends MatrixInterface[Char] {
     def this(col: Int, row: Int) = {
         this(
         if (col < 0 || row < 0 || col > 10 || row > 10) // 10 not working with regex
@@ -23,12 +23,13 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
     override def cell(col: Int, row: Int): Char = matrix(row)(col)
 
     override def fillAll(content: Char): Matrix =
+        var o, x = 0
         content match {
-            case 'X' => Xcount = MAX; Ocount = 0
-            case 'O' => Ocount = MAX; Xcount = 0
-            case _ => Ocount = 0; Xcount = 0
+            case 'X' => x = MAX; o = 0
+            case 'O' => o = MAX; x = 0
+            case _ => o = 0; x = 0
         }
-        copy(Vector.fill[Char](row, col)(content))
+        copy(Vector.fill[Char](row, col)(content), x, o)
 
     override def fill(content: Char, x: Int, y: Int): Matrix = {
         if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
@@ -36,9 +37,10 @@ case class Matrix(matrix: Vector[Vector[Char]], var Xcount: Int = 0, var Ocount:
         var tmpmatrix = new DefaultSetHandler().createSetandHandle(content, x, y, matrix)
         tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
 
+        var ot, xt = 0;
         val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
-        Xcount = count.get('X') match { case Some(i) => i; case None => 0 }
-        Ocount = count.get('O') match { case Some(i) => i; case None => 0 }
-        copy(tmpmatrix)
+        xt = count.get('X') match { case Some(i) => i; case None => 0 }
+        ot = count.get('O') match { case Some(i) => i; case None => 0 }
+        copy(tmpmatrix, xt, ot)
     }
 }

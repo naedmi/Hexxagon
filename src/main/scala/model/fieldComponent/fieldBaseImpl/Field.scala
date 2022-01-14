@@ -2,18 +2,16 @@ package model.fieldComponent.fieldBaseImpl
 
 import model.fieldComponent.{FieldInterface, MatrixInterface}
 
-class Field(using var matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
+case class Field()(using val matrix: MatrixInterface[Char]) extends FieldInterface[Char]:
 
     val eol = "\n"
     
     def edgetop = " ___ " + "    ___ " * (matrix.col/2) + eol
     def edgebot = " " + "   \\___/" * (matrix.col/2) + eol
 
-    override def fillAll(c: Char): MatrixInterface[Char] = matrix.fillAll(c)
+    override def fillAll(c: Char): FieldInterface[Char] = copy()(using matrix.fillAll(c))
 
-    override def place(c: Char, x: Int, y: Int): MatrixInterface[Char] = {
-        matrix.fill(c, x, y)
-    }
+    override def place(c: Char, x: Int, y: Int): FieldInterface[Char] = copy()(using matrix.fill(c, x, y))
 
     def bot(line: Int): String = {
         var res = "\\___/"
@@ -33,12 +31,9 @@ class Field(using var matrix: MatrixInterface[Char]) extends FieldInterface[Char
         res + "\n"
     }
 
-    override def reset = {
-        matrix = fillAll(' ')
-        this
-    }
+    override def reset: FieldInterface[Char]  = copy()(using matrix.fillAll(' '))
     
-    override def field = {
+    override def field: String = {
         var res = eol + edgetop
         for (l <- 0 until matrix.row) res += (top(l) + bot(l))
         res += edgebot

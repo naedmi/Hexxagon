@@ -21,10 +21,10 @@ class Controller (using var hexfield: FieldInterface[Char])
         if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER
         else if emptyMatrix then gamestatus = IDLE
 
-    def emptyMatrix = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
+    private def emptyMatrix = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
 
     override def fillAll(c: Char) =
-        undoManager.doStep(hexfield, new PlaceAllCommand(hexfield, c))
+        hexfield = undoManager.doStep(hexfield, new PlaceAllCommand(hexfield, c))
         checkStat
         notifyObservers
 
@@ -38,7 +38,7 @@ class Controller (using var hexfield: FieldInterface[Char])
             notifyObservers
         else
             undoManager.redoStack = Nil
-            undoManager.doStep(hexfield, new PlaceCommand(hexfield, c, x, y))
+            hexfield = undoManager.doStep(hexfield, new PlaceCommand(hexfield, c, x, y))
             laststatus = gamestatus
             checkStat
             if gamestatus == GAMEOVER then notifyObservers
@@ -52,7 +52,7 @@ class Controller (using var hexfield: FieldInterface[Char])
         if emptyMatrix || gamestatus == GAMEOVER then notifyObservers
         else
             var mem = gamestatus
-            undoManager.undoStep(hexfield)
+            hexfield = undoManager.undoStep(hexfield)
             gamestatus = laststatus
             laststatus = mem
             checkStat
@@ -65,7 +65,7 @@ class Controller (using var hexfield: FieldInterface[Char])
             if laststatus == IDLE then laststatus = TURNPLAYER1
             var mem = laststatus
             laststatus = gamestatus
-            undoManager.redoStep(hexfield)
+            hexfield = undoManager.redoStep(hexfield)
             gamestatus = mem
             checkStat
             notifyObservers

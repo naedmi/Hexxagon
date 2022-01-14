@@ -21,13 +21,13 @@ class FieldSpec extends AnyWordSpec {
                 hex.field should be (new Field(using new Matrix(hex.matrix.col, hex.matrix.row)).field)
             }
             "placing at 8 5 X" in {
-                hex.place('X', 8, 5) should be (new Matrix(9, 6).fill('X', 8, 5))
+                hex.place('X', 8, 5).matrix should be (new Matrix(9, 6).fill('X', 8, 5))
             }
-            /*"be the same size as an 8 - 6 Grid" in {
-                new Field(new Matrix(9, 6)).field should be (new Field(new Matrix(8, 6)).field)
-            }*/
-            "could be filled with one method call" in {
-                hex.fillAll('X') should be (new Matrix(9, 6).fillAll('X'))
+            "be the same size as an 8 - 6 Grid" in {
+                new Field(using new Matrix(9, 6)).field should be (new Field(using new Matrix(8, 6)).field)
+            }
+            "be filled with one method call" in {
+                hex.fillAll('X').matrix should be (new Matrix(9, 6).fillAll('X'))
             }
         }
 
@@ -53,27 +53,25 @@ class FieldSpec extends AnyWordSpec {
         }
         "created as Single Cell" should {
 
-            var hex = new Field(using new Matrix(1, 1))
-            var contr = new Controller(using hex)
+            var contr = new Controller(using new Field(using new Matrix(1, 1)))
 
             "contain a Space when empty" in {
-                hex.matrix.matrix(0)(0) should be (' ')
+                contr.hexfield.matrix.matrix(0)(0) should be (' ')
             }
             "contain a X" in {
                 contr.place('X', 0, 0)
-                hex.matrix.matrix(0)(0) should be ('X')
+                contr.hexfield.matrix.matrix(0)(0) should be ('X')
             }
             "contain a O" in {
-                hex = new Field(using new Matrix(1, 1))
-                contr = new Controller(using hex)
+                contr = new Controller(using new Field(using new Matrix(1, 1)))
                 contr.place('O', 0, 0)
-                hex.matrix.matrix(0)(0) should be ('O')
+                contr.hexfield.matrix.matrix(0)(0) should be ('O')
             }
             "be filled completely" in {
                 contr.fillAll('X')
-                hex.matrix.matrix.flatten should contain ('X')
-                hex.matrix.matrix.flatten should not contain (' ')
-                hex.matrix.matrix.flatten should not contain ('O')
+                contr.hexfield.matrix.matrix.flatten should contain ('X')
+                contr.hexfield.matrix.matrix.flatten should not contain (' ')
+                contr.hexfield.matrix.matrix.flatten should not contain ('O')
             }
         }
     }

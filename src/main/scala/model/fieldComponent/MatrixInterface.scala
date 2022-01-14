@@ -3,10 +3,10 @@ package model.fieldComponent
 /** Interface to implement the cells of the game board as a matrix. */
 trait MatrixInterface[T]() {
     /** Number of cells occupied by player one. */
-    var Xcount: Int
+    val Xcount: Int
 
     /** Number of cells occupied by player two. */
-    var Ocount: Int
+    val Ocount: Int
 
     /** The matrix as a vector of vectors. */
     def matrix: Vector[Vector[T]]
