@@ -1,7 +1,5 @@
 package model.fieldComponent
 
-import model.fieldComponent.MatrixInterface
-
 /** Interface to implement the game board. */
 trait FieldInterface[T] {
 

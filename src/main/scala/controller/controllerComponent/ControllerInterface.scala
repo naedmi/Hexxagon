@@ -3,6 +3,7 @@ package controller.controllerComponent
 import util.Observable
 import model.fieldComponent.FieldInterface
 import controller.GameStatus
+import com.google.inject.Inject
 
 /** Interface to implement the controller unit. */
 trait ControllerInterface extends Observable {

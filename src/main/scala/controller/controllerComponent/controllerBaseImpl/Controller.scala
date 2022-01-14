@@ -1,7 +1,11 @@
 package controller.controllerComponent.controllerBaseImpl
 
+import com.google.inject.name.Names
+import com.google.inject.{Guice, Inject}
+import net.codingwell.scalaguice.InjectorExtensions._
 import controller.GameStatus
 import controller.GameStatus._
+import com.google.inject.Inject
 import util.{Observable, UndoManager}
 import model.fieldComponent.FieldInterface
 import controller.controllerComponent.ControllerInterface
@@ -11,12 +15,16 @@ import com.google.inject.Inject
 
 case class Controller @Inject() (var hexfield: FieldInterface[Char]) 
     extends ControllerInterface {
-        
+
     var gamestatus: GameStatus = IDLE
     private val undoManager = new UndoManager[FieldInterface[Char]]
     private var laststatus = IDLE
-
     val GAMEMAX = hexfield.matrix.MAX
+
+    def this() = {
+        this(Guice.createInjector(new HexModule).getInstance(classOf[FieldInterface[Char]]))
+    }
+
     private def checkStat = 
         if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER
         else if emptyMatrix then gamestatus = IDLE

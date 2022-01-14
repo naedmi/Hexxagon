@@ -1,5 +1,8 @@
+package scala
+
 import aview.TUI
 import aview.gui.GUI
+import com.google.inject.Guice
 import scala.io.StdIn.readLine
 import scalafx.application.JFXApp3
 import model.fieldComponent.fieldBaseImpl._
