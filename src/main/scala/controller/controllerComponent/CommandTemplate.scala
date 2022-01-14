@@ -1,7 +1,7 @@
 package controller.controllerComponent
 
-import model.fieldComponent.{FieldInterface, MatrixInterface}
 import util.Command
+import model.fieldComponent.{FieldInterface, MatrixInterface}
 
 trait CommandTemplate[T <: FieldInterface[Char]](field: T) extends Command[T] {
     var rememberMe = field
