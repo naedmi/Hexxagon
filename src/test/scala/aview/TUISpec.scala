@@ -8,8 +8,8 @@ import org.scalatest.matchers.should.Matchers._
 
 class TUISpec extends AnyWordSpec {
     "A TUI" when {
-        val hex = new Field(new Matrix(9, 6))
-        val tui = TUI(Controller(hex))
+        val hex = new Field(using new Matrix(9, 6))
+        val tui = TUI(using Controller(using hex))
         "created" should {
             "have regex in matching smth like 0 0 X" in {
                 val in = "0 0 X"

@@ -10,8 +10,8 @@ import GameStatus._
 class ControllerSpec extends AnyWordSpec {
     "A Controller" when {
         "observed by an Observer" should {
-          val field = new Field(new Matrix(9, 6))
-          val controller = new Controller(field)
+          val field = new Field(using new Matrix(9, 6))
+          val controller = new Controller(using field)
           val obs = new Obs()
           controller.add(obs)
           "notify its Observer after placing a stone" in {
@@ -40,8 +40,8 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "having a step made" should {
-          val field = new Field(new Matrix(9, 6))
-          val controller = new Controller(field)
+          val field = new Field(using new Matrix(9, 6))
+          val controller = new Controller(using field)
           val obs = new Obs()
           controller.add(obs)
           "undo and redo a move" in {
@@ -78,8 +78,8 @@ class ControllerSpec extends AnyWordSpec {
           }
         }
         "filled" should {
-          val field = new Field(new Matrix(1, 1))
-          val controller = new Controller(field)
+          val field = new Field(using new Matrix(1, 1))
+          val controller = new Controller(using field)
           val obs = new Obs()
           controller.add(obs)
           "define a gameover" in {

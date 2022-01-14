@@ -9,3 +9,9 @@ object HexModule {
   given FieldInterface[Char] = new Field()
   given ControllerInterface[Char] = controllerBaseImpl.Controller()
 }
+
+object HexModuleTestCase1 {
+  given MatrixInterface[Char] = new Matrix(1, 1)
+  given FieldInterface[Char] = new Field()
+  given ControllerInterface[Char] = controllerBaseImpl.Controller()
+}

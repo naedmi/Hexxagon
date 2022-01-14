@@ -7,8 +7,8 @@ import controller.controllerComponent.controllerBaseImpl.{PlaceCommand, PlaceAll
 
 class PlaceCommandSpec extends AnyWordSpec {
     "A PlaceCommand" should {
-        var hex = new Field(new Matrix(9, 6))
-        var emptyHex = new Field(new Matrix(9, 6))
+        var hex = new Field(using new Matrix(9, 6))
+        var emptyHex = new Field(using new Matrix(9, 6))
         val command = new PlaceCommand(hex, 'X', 0, 0)
 
         "place a stone" in {
@@ -17,7 +17,7 @@ class PlaceCommandSpec extends AnyWordSpec {
         }
 
         "capture state of field before changing it" in {
-            command.rememberMe.matrix should be(new Field(new Matrix(9, 6)).matrix.matrix) 
+            command.rememberMe.matrix should be(new Field(using new Matrix(9, 6)).matrix.matrix) 
         }
 
         "undo and redo a move" in {
@@ -33,8 +33,8 @@ class PlaceCommandSpec extends AnyWordSpec {
 
 class PlaceAllCommandSpec extends AnyWordSpec {
     "A PlaceAllCommand" should {
-        var hex = new Field(new Matrix(9, 6))
-        var emptyHex = new Field(new Matrix(9, 6))
+        var hex = new Field(using new Matrix(9, 6))
+        var emptyHex = new Field(using new Matrix(9, 6))
         val command = new PlaceAllCommand(hex, 'X')
 
         "fill every cell" in {
@@ -48,8 +48,8 @@ class PlaceAllCommandSpec extends AnyWordSpec {
         }
 
         "undo and redo a move" in {
-            command.undoStep(hex).matrix.matrix should be(new Field(new Matrix(9, 6)).matrix.matrix)
-            command.redoStep(hex).matrix.matrix should be(new Field(new Matrix(9, 6)).matrix.fillAll('X').matrix)
+            command.undoStep(hex).matrix.matrix should be(new Field(using new Matrix(9, 6)).matrix.matrix)
+            command.redoStep(hex).matrix.matrix should be(new Field(using new Matrix(9, 6)).matrix.fillAll('X').matrix)
         }
 
         "change nothing" in {

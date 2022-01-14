@@ -23,7 +23,7 @@ class GameStatusSpec extends AnyWordSpec {
             GameStatus.valueOf("GAMEOVER") should be (GAMEOVER)
         } 
         "be controlled via Controller" in {
-            val c = Controller(new Field(new Matrix(9, 6)))
+            val c = Controller(using new Field(using new Matrix(9, 6)))
             c.place('X', 0, 0)
             c.gamestatus should be (TURNPLAYER2)
             c.gamestatus.message() should be (TURNPLAYER2.message())
