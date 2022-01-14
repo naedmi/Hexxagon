@@ -3,6 +3,7 @@ ignore:
   - "**/GUI.scala"
   - "**/Main.scala"
   - "**/resources/"
+  - "**/HexModule.scala"
 
 coverage:
   status:
