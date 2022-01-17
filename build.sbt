@@ -11,7 +11,9 @@ lazy val root = project
     libraryDependencies ++= Seq("com.novocode" % "junit-interface" % "0.11" % "test",
     "org.scalactic" %% "scalactic" % "3.2.10", 
     "org.scalatest" %% "scalatest" % "3.2.10" % "test",
-    "org.scalafx" %% "scalafx" % "16.0.0-R24"),
+    "org.scalafx" %% "scalafx" % "16.0.0-R24",
+    "org.scala-lang.modules" %% "scala-xml" % "2.0.1", // XML
+    "com.lihaoyi" %% "upickle" % "1.4.4"), // JSON
     
     libraryDependencies ++= {
     // Determine OS version of JavaFX binaries
