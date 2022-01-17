@@ -13,9 +13,7 @@ lazy val root = project
     "org.scalatest" %% "scalatest" % "3.2.10" % "test",
     "org.scalafx" %% "scalafx" % "16.0.0-R24",
     "org.scala-lang.modules" %% "scala-xml" % "2.0.1", // XML
-    "com.lihaoyi" %% "upickle" % "1.4.4", // JSON
-    "com.google.inject" % "guice" % "4.2.3",
-    ("net.codingwell" %% "scala-guice" % "5.0.2").cross(CrossVersion.for3Use2_13)),
+    "com.lihaoyi" %% "upickle" % "1.4.4"), //JSON
     
     libraryDependencies ++= {
     // Determine OS version of JavaFX binaries
