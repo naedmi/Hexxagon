@@ -26,14 +26,14 @@ trait MatrixInterface[T]() {
      * @param row number of the row
      * @return content of the cell
     */
-    def cell(col: Int, row: Int) : T
+    def cell(col: Int, row: Int): T
 
     /** Fills every cell of the matrix with a given element. 
     * 
     * @param c the element to fill the matrix with
     * @return an updated instance of the matrix
     */
-    def fillAll(content: T) : MatrixInterface[T]
+    def fillAll(content: T): MatrixInterface[T]
 
     /** Fills a cell with a given element.
      * 
