@@ -137,8 +137,14 @@ class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Obse
                     val b4 = new Button("RESET")
                     b4.setOnMouseClicked(x => controller.reset)
                     b4.style = css
-                    val vb = new VBox(b1, b2, b3, b4)
-                    vb.spacing = size * 2
+                    val b5 = new Button("SAVE")
+                    b5.setOnMouseClicked(x => controller.save)
+                    b5.style = css
+                    val b6 = new Button("LOAD")
+                    b6.setOnMouseClicked(x => controller.load)
+                    b6.style = css
+                    val vb = new VBox(b1, b2, b3, b4, b5, b6)
+                    vb.spacing = size
                     vb
                 }
 
