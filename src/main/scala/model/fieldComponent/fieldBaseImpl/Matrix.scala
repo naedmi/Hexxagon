@@ -43,4 +43,12 @@ case class Matrix(matrix: Vector[Vector[Char]], Xcount: Int = 0, Ocount: Int = 0
         ot = count.get('O') match { case Some(i) => i; case None => 0 }
         copy(tmpmatrix, xt, ot)
     }
+    override def fillAlways(content: Char, x: Int, y: Int): Matrix = {
+        var tmpmatrix = matrix.updated(y, matrix(y).updated(x, content))
+        var ot, xt = 0;
+        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
+        xt = count.get('X') match { case Some(i) => i; case None => 0 }
+        ot = count.get('O') match { case Some(i) => i; case None => 0 }
+        copy(tmpmatrix, xt, ot)
+    }
 }

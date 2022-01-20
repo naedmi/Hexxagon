@@ -13,6 +13,8 @@ case class Field()(using val matrix: MatrixInterface[Char]) extends FieldInterfa
 
     override def place(c: Char, x: Int, y: Int): FieldInterface[Char] = copy()(using matrix.fill(c, x, y))
 
+    override def placeAlways(c: Char, x: Int, y: Int): FieldInterface[Char] = copy()(using matrix.fillAlways(c, x, y))
+
     def bot(line: Int): String = {
         var res = "\\___/"
         

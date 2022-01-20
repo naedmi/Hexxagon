@@ -14,10 +14,16 @@ class FileIO extends FileIOInterface {
 
         val cells = (file \\ "cell")
         for (cell <- cells) {
-            val r: Int = (cell \ "@row").text.toInt
-            val c: Int = (cell \ "@col").text.toInt
-            val value: Char = cell.text.charAt(0)
-            field = field.place(value, r, c)
+            val r: Int = (cell \ "@row").text.trim.toInt
+            val c: Int = (cell \ "@col").text.trim.toInt
+            val value: Char = {
+                cell.text.trim match {
+                    case "" => ' '
+                    case "X" => 'X'
+                    case "O" => 'O'
+                }
+            }
+            field = field.placeAlways(value, c, r)
         }
         field
     }

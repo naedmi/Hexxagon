@@ -79,6 +79,21 @@ class Controller (using var hexfield: FieldInterface[Char])
         notifyObservers
     }
 
+    override def save = {
+        HexModule.given_FileIOInterface.save(hexfield)
+        notifyObservers
+    }
+
+    override def load = {
+        hexfield = HexModule.given_FileIOInterface.load
+        hexfield.matrix.Xcount > hexfield.matrix.Ocount match {
+            case true => gamestatus = TURNPLAYER2
+            case false => gamestatus = TURNPLAYER1
+        }
+        checkStat
+        notifyObservers
+    }
+
     override def toString = 
         gamestatus.message() + hexfield.toString 
         + "\nX: " + hexfield.matrix.Xcount + "\tO: " + hexfield.matrix.Ocount

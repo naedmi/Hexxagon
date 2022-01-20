@@ -18,6 +18,15 @@ trait ControllerInterface[T] extends Observable {
   */
   def fillAll(c: T): Unit
 
+  /**
+   *  Saves current field state to FileIO Implementation
+   */
+  def save: Unit
+  /**
+   *  Load field state from FileIO Implementation
+   */
+  def load: Unit
+
   /** Places a character in a cell.
    * 
    * @param c the character to fill the cell with

@@ -33,6 +33,8 @@ class TUI(using controller: ControllerInterface[Char]) extends Observer {
                 controller.fillAll('O')
                 Some("Filled with O.")
             }
+            case "save" => controller.save; Some("Saved.")
+            case "load" => controller.load; Some("Loaded.")
             case "reset" => controller.reset; Some("Reset.")
             case "redo" | "r" | "re" => controller.redo; Some("Redone.")
             case "undo" | "u" | "un" | "z" => controller.undo; Some("Undone.")
