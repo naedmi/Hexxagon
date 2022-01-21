@@ -7,7 +7,6 @@ import controller.controllerComponent.ControllerInterface
 
 class TUI(using controller: ControllerInterface[Char]) extends Observer {
     controller.add(this)
-    controller.save
     override def update = println(controller)
     
     val maxind1 = controller.hexfield.matrix.row - 1
@@ -15,7 +14,7 @@ class TUI(using controller: ControllerInterface[Char]) extends Observer {
     val reg: Regex = ("([0-" + maxind2 + "]\\s[0-" + maxind1 + "]\\s[XOxo])").r
     val message = s"Input your x and y Coordinate as followed:\n[ 0-$maxind2 ] [ 0-$maxind1 ] [ X | O ] \n"
 
-    def startmes = "\nWelcome to Hexxagon!\n" + message + controller
+    def startmes = "\nWelcome to Hexxagon!\n" + message
 
     def handleInput(in:String): Option[String] = 
         in match {

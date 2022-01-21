@@ -36,6 +36,13 @@ lazy val root = project
       Seq(JacocoReportFormats.ScalaHTML, JacocoReportFormats.XML), // note XML formatter
     "utf-8"),
 
+    jacocoExcludes := Seq(
+      "*aview.*",
+      "*fileIOComponent.*",
+      "*HexModule*",
+      "*Main*"
+    ),
+
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),
     jacocoCoverallsPullRequest := sys.env.get("GITHUB_EVENT_NAME"),

@@ -2,8 +2,8 @@ package model.fileIOComponent.fileIOJsonImpl
 
 /*import model.fileIOComponent.FileIOInterface
 import model.fieldComponent.FieldInterface
-import scala.io.Source
 import upickle.default._
+import scala.io.Source
 import ujson.Obj
 
 class FileIO extends FileIOInterface {
@@ -51,8 +51,8 @@ class FileIO extends FileIOInterface {
 
 import model.fileIOComponent.FileIOInterface
 import model.fieldComponent.FieldInterface
-import scala.io.Source
 import play.api.libs.json._
+import scala.io.Source
 
 class FileIO extends FileIOInterface {
 

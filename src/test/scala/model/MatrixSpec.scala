@@ -103,5 +103,19 @@ class MatrixSpec extends AnyWordSpec {
                 matrix.matrix.flatten.contains('O') should be (false)
             }
         }
+        "used for FileIO" should {
+            "fill an entry without rules applying" in {
+                var m = new Matrix(9, 6)
+                var m2 = new Matrix(9, 6)
+                m = m.fill('X', 0, 0)
+                m2 = m2.fillAlways('X', 0, 0)
+                m should be (m2)
+                m = m.fill('O', 0, 1)
+                m2 = m2.fillAlways('O', 0, 1)
+                m should not be (m2)
+                m2 = m2.fillAlways('O', 0, 0)
+                m2 should be (m)
+            }
+        }
     }
 }
