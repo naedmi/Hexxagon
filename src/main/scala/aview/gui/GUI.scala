@@ -23,6 +23,7 @@ import util.Observer
 
 class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
     controller.add(this)
+    controller.save
     val size = 40
     private val font = "Hexa"
     private val fontsize = size * 1.5

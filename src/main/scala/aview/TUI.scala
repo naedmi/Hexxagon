@@ -7,6 +7,7 @@ import controller.controllerComponent.ControllerInterface
 
 class TUI(using controller: ControllerInterface[Char]) extends Observer {
     controller.add(this)
+    controller.save
     override def update = println(controller)
     
     val maxind1 = controller.hexfield.matrix.row - 1
