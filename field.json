@@ -5,87 +5,87 @@
         {
             "row": 0,
             "col": 0,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 1,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 2,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 3,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 4,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 5,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 6,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 7,
+            "cell": " "
+        },
+        {
+            "row": 0,
+            "col": 8,
+            "cell": " "
+        },
+        {
+            "row": 1,
+            "col": 0,
+            "cell": " "
+        },
+        {
+            "row": 1,
+            "col": 1,
             "cell": "X"
         },
         {
-            "row": 0,
-            "col": 1,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 2,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 3,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 4,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 5,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 6,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 7,
-            "cell": " "
-        },
-        {
-            "row": 0,
-            "col": 8,
-            "cell": " "
-        },
-        {
-            "row": 1,
-            "col": 0,
-            "cell": " "
-        },
-        {
-            "row": 1,
-            "col": 1,
-            "cell": " "
-        },
-        {
             "row": 1,
             "col": 2,
-            "cell": " "
-        },
-        {
-            "row": 1,
-            "col": 3,
             "cell": "O"
         },
         {
             "row": 1,
+            "col": 3,
+            "cell": "X"
+        },
+        {
+            "row": 1,
             "col": 4,
             "cell": " "
         },
         {
             "row": 1,
             "col": 5,
-            "cell": " "
+            "cell": "O"
         },
         {
             "row": 1,
             "col": 6,
-            "cell": " "
+            "cell": "O"
         },
         {
             "row": 1,
             "col": 7,
-            "cell": " "
+            "cell": "X"
         },
         {
             "row": 1,
@@ -100,7 +100,7 @@
         {
             "row": 2,
             "col": 1,
-            "cell": " "
+            "cell": "O"
         },
         {
             "row": 2,
@@ -115,7 +115,7 @@
         {
             "row": 2,
             "col": 4,
-            "cell": " "
+            "cell": "O"
         },
         {
             "row": 2,
@@ -125,7 +125,7 @@
         {
             "row": 2,
             "col": 6,
-            "cell": "O"
+            "cell": " "
         },
         {
             "row": 2,
@@ -150,32 +150,32 @@
         {
             "row": 3,
             "col": 2,
-            "cell": " "
-        },
-        {
-            "row": 3,
-            "col": 3,
-            "cell": " "
-        },
-        {
-            "row": 3,
-            "col": 4,
-            "cell": " "
-        },
-        {
-            "row": 3,
-            "col": 5,
             "cell": "X"
         },
         {
             "row": 3,
+            "col": 3,
+            "cell": "O"
+        },
+        {
+            "row": 3,
+            "col": 4,
+            "cell": " "
+        },
+        {
+            "row": 3,
+            "col": 5,
+            "cell": "O"
+        },
+        {
+            "row": 3,
             "col": 6,
             "cell": "X"
         },
         {
             "row": 3,
             "col": 7,
-            "cell": "O"
+            "cell": " "
         },
         {
             "row": 3,
@@ -205,7 +205,7 @@
         {
             "row": 4,
             "col": 4,
-            "cell": " "
+            "cell": "X"
         },
         {
             "row": 4,
