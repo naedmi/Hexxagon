@@ -14,6 +14,8 @@ lazy val root = project
     "org.scalafx" %% "scalafx" % "16.0.0-R24",
     "org.scala-lang.modules" %% "scala-xml" % "2.0.1", // XML
     "com.lihaoyi" %% "upickle" % "1.4.4"), // JSON
+
+    libraryDependencies += ("com.typesafe.play" %% "play-json" % "2.9.2").cross(CrossVersion.for3Use2_13), // JSON
     
     libraryDependencies ++= {
     // Determine OS version of JavaFX binaries
