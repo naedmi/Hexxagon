@@ -43,4 +43,13 @@ trait MatrixInterface[T]() {
      * @return an updated instance of the matrix
     */
     def fill(content: T, x: Int, y: Int): MatrixInterface[T]
+
+    /** Fills a cell with a given element no matter what (needed for FileIO)
+     * 
+     * @param c the element to fill the cell with
+     * @param x x coordinate of the cell
+     * @param y y coordinate of the cell
+     * @return an updated instance of the matrix
+    */
+    def fillAlways(content: T, x: Int, y: Int): MatrixInterface[T]
 }

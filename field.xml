@@ -1,0 +1,56 @@
+<field rows="6" cols="9">
+    <cell row="0" col="0"> X </cell>
+    <cell row="0" col="1"> </cell>
+    <cell row="0" col="2"> O </cell>
+    <cell row="0" col="3"> </cell>
+    <cell row="0" col="4"> </cell>
+    <cell row="0" col="5"> </cell>
+    <cell row="0" col="6"> X </cell>
+    <cell row="0" col="7"> O </cell>
+    <cell row="0" col="8"> X </cell>
+    <cell row="1" col="0"> X </cell>
+    <cell row="1" col="1"> O </cell>
+    <cell row="1" col="2"> X </cell>
+    <cell row="1" col="3"> X </cell>
+    <cell row="1" col="4"> </cell>
+    <cell row="1" col="5"> </cell>
+    <cell row="1" col="6"> O </cell>
+    <cell row="1" col="7"> O </cell>
+    <cell row="1" col="8"> O </cell>
+    <cell row="2" col="0"> </cell>
+    <cell row="2" col="1"> </cell>
+    <cell row="2" col="2"> </cell>
+    <cell row="2" col="3"> O </cell>
+    <cell row="2" col="4"> X </cell>
+    <cell row="2" col="5"> O </cell>
+    <cell row="2" col="6"> O </cell>
+    <cell row="2" col="7"> </cell>
+    <cell row="2" col="8"> </cell>
+    <cell row="3" col="0"> </cell>
+    <cell row="3" col="1"> </cell>
+    <cell row="3" col="2"> </cell>
+    <cell row="3" col="3"> </cell>
+    <cell row="3" col="4"> X </cell>
+    <cell row="3" col="5"> </cell>
+    <cell row="3" col="6"> </cell>
+    <cell row="3" col="7"> </cell>
+    <cell row="3" col="8"> </cell>
+    <cell row="4" col="0"> </cell>
+    <cell row="4" col="1"> </cell>
+    <cell row="4" col="2"> </cell>
+    <cell row="4" col="3"> </cell>
+    <cell row="4" col="4"> </cell>
+    <cell row="4" col="5"> </cell>
+    <cell row="4" col="6"> </cell>
+    <cell row="4" col="7"> </cell>
+    <cell row="4" col="8"> </cell>
+    <cell row="5" col="0"> </cell>
+    <cell row="5" col="1"> </cell>
+    <cell row="5" col="2"> </cell>
+    <cell row="5" col="3"> </cell>
+    <cell row="5" col="4"> </cell>
+    <cell row="5" col="5"> </cell>
+    <cell row="5" col="6"> </cell>
+    <cell row="5" col="7"> </cell>
+    <cell row="5" col="8"> </cell>
+</field>

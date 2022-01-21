@@ -74,5 +74,15 @@ class FieldSpec extends AnyWordSpec {
                 contr.hexfield.matrix.matrix.flatten should not contain ('O')
             }
         }
+        "handling FileIO" should {
+            "able to place stones without rules applying" in {
+                var hex = new Field(using new Matrix(9, 6))
+                var hex2 = new Field(using new Matrix(9, 6))
+                hex = hex.place('X', 0, 0).asInstanceOf[Field]
+                hex2 = hex2.placeAlways('X', 0, 0).asInstanceOf[Field]
+                hex.toString should be (hex2.toString)
+                hex.place('O', 0, 1).toString should not be (hex2.placeAlways('O', 0, 1).toString) 
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ object starter {
   val tui = TUI()
   def runTUI: Unit = {
     println(tui.startmes)
+    tui.handleInput("save")
     var input = ""
     var tmp = tui.handleInput(input)
     while(!tmp.equals(Some("Exiting.")) & !tmp.equals(Some("Filled with X.")) & !tmp.equals(Some("Filled with O."))) {

@@ -1,10 +1,10 @@
 package controller
 
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers._
-import util.Observer
-import model.fieldComponent.fieldBaseImpl._
 import controller.controllerComponent.controllerBaseImpl.Controller
+import org.scalatest.matchers.should.Matchers._
+import model.fieldComponent.fieldBaseImpl._
+import org.scalatest.wordspec.AnyWordSpec
+import util.Observer
 import GameStatus._
 
 class ControllerSpec extends AnyWordSpec {
@@ -89,6 +89,18 @@ class ControllerSpec extends AnyWordSpec {
             controller.gamestatus should be (GAMEOVER)
             controller.fillAll('O')
             controller.gamestatus should be (GAMEOVER)
+          }
+        }
+        "used by FileIO" should {
+          "be able to save and load a Xml-File" in {
+            val c = HexModule.given_ControllerInterface_Char
+            c.place('X', 0, 0)
+            c.save
+            val hex = c.hexfield
+            c.place('O', 1, 0)
+            c.hexfield.toString should not be (hex.toString)
+            c.load
+            c.hexfield.toString should be (hex.toString)
           }
         }
   }

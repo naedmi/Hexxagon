@@ -22,6 +22,17 @@ trait FieldInterface[T] {
     */
     def place(c: T, x: Int, y: Int): FieldInterface[T]
 
+    /**
+     * Places an element without checking for rules (needed for FileIO)
+     * 
+     * @param c the element to fill the cell with
+     * @param x x coordinate of the cell
+     * @param y y coordinate of the cell
+     * @return an updated instance of the field
+     */
+    
+    def placeAlways(c: T, x: Int, y: Int): FieldInterface[T]
+
     /** Returns a string representation of the field. */
     def field: String
 
