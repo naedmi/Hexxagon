@@ -13,6 +13,7 @@ class Controller (using var hexfield: FieldInterface[Char])
     extends ControllerInterface[Char] {
 
     var gamestatus: GameStatus = IDLE
+    private var savedstatus = IDLE
     private val undoManager = new UndoManager[FieldInterface[Char]]
     private var laststatus = IDLE
     val GAMEMAX = hexfield.matrix.MAX
@@ -81,15 +82,13 @@ class Controller (using var hexfield: FieldInterface[Char])
 
     override def save = {
         HexModule.given_FileIOInterface.save(hexfield)
+        savedstatus = gamestatus
         notifyObservers
     }
 
     override def load = {
         hexfield = HexModule.given_FileIOInterface.load
-        hexfield.matrix.Xcount > hexfield.matrix.Ocount match {
-            case true => gamestatus = TURNPLAYER2
-            case false => gamestatus = TURNPLAYER1
-        }
+        gamestatus = savedstatus
         checkStat
         notifyObservers
     }
