@@ -19,6 +19,7 @@ import scalafx.Includes._
 import HexModule.{given}
 import scala.math.sqrt
 import util.Observer
+import scalafx.scene.ImageCursor
 
 
 class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
@@ -45,7 +46,8 @@ class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Obse
             icons += new Image(getClass.getResource("/logo.png").toExternalForm, 100, 100, true, true)
             resizable = false
             title.value = "HEXXAGON"
-            scene = new Scene((controller.hexfield.matrix.col+2) * size*2, 800) {                
+            scene = new Scene((controller.hexfield.matrix.col+2) * size*2, 800) {     
+                this.setCursor(new ImageCursor(new Image(getClass.getResource("/cursor.png").toExternalForm, 100, 100, true, true)))         
                 val border = new BorderPane()
                 border.setBackground(new Background(Array(new BackgroundFill(new LinearGradient(endX = 0, stops = Stops(LightGrey, LightSteelBlue)) , CornerRadii(size), Insets(10)))))
                 val pane = Pane()
