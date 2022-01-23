@@ -16,10 +16,16 @@ class FileIOSpec extends AnyWordSpec {
                 val xml = fileIOxml.fieldToXml(field)
                 (xml \\ "field" \ "@rows").text should be ("6")
                 (xml \\ "field" \ "@cols").text should be ("9")
+            }
+            "save current state of cell in xml" in {
                 val cellXml = fileIOxml.cellToXml(field, 0, 0)
                 (cellXml \\ "cell" \ "@row").text should be ("0")
                 (cellXml \\ "cell" \ "@col").text should be ("0")
                 (cellXml \\ "@cell").text should be ("")
+            }
+            "load field from xml" in {
+                fileIOxml.save(field)
+                fileIOxml.load should be (field)
             }
         } 
 
@@ -29,10 +35,16 @@ class FileIOSpec extends AnyWordSpec {
                 val json = fileIOjson.fieldToJson(field)
                 (json \ "field" \ "rows").get.toString should be ("6")
                 (json \ "field" \ "cols").get.toString should be ("9")
+            }
+            "save current state of cell in json" in {
                 val cellJson = fileIOjson.cellToJson(field, 0, 0)
                 (cellJson \ "row").get.toString should be ("0")
                 (cellJson \ "col").get.toString should be ("0")
                 (cellJson \ "cell").get.toString should be ("\" \"")
+            }
+            "load field from json" in {
+                fileIOjson.save(field)
+                fileIOjson.load should be (field)
             }
         }
     }
