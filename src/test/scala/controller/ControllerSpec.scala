@@ -91,29 +91,6 @@ class ControllerSpec extends AnyWordSpec {
             controller.gamestatus should be (GAMEOVER)
           }
         }
-        "used by FileIO" should {
-          "be able to save and load a Xml-File" in {
-            val c = HexModule.given_ControllerInterface_Char
-            c.place('X', 0, 0)
-            c.save
-            val hex = c.hexfield
-            c.place('O', 1, 0)
-            c.hexfield.toString should not be (hex.toString)
-            c.load
-            c.hexfield.toString should be (hex.toString)
-          }
-          "keep the saved gamestatus after loading" in {
-            val c = FlexibleModule(7, 4).given_ControllerInterface_Char
-            c.gamestatus should be (IDLE)
-            c.place('X', 0, 0)
-            c.gamestatus should be (TURNPLAYER2)
-            c.save
-            c.place('O', 3, 3)
-            c.gamestatus should be (TURNPLAYER1)
-            c.load
-            c.gamestatus should be (TURNPLAYER2)
-          }
-        }
   }
 }
 case class Obs() extends Observer:
