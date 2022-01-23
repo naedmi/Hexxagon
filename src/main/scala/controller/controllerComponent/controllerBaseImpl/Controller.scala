@@ -6,8 +6,7 @@ import controller.GameStatus._
 import util.{Observable, UndoManager}
 import model.fieldComponent.FieldInterface
 import controller.controllerComponent.ControllerInterface
-import controller.controllerComponent.controllerBaseImpl.PlaceCommand
-import controller.controllerComponent.controllerBaseImpl.PlaceAllCommand
+import controller.controllerComponent.controllerBaseImpl.{ PlaceCommand, PlaceAllCommand }
 
 class Controller (using var hexfield: FieldInterface[Char]) 
     extends ControllerInterface[Char] {

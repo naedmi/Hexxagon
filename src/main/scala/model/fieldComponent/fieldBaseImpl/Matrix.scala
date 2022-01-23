@@ -36,19 +36,16 @@ case class Matrix(matrix: Vector[Vector[Char]], Xcount: Int = 0, Ocount: Int = 0
 
         var tmpmatrix = new DefaultSetHandler().createSetandHandle(content, x, y, matrix)
         tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
+        val xcount = tmpmatrix.flatten.count(x => x == 'X')
+        val ocount = tmpmatrix.flatten.count(x => x == 'O')
 
-        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
-        copy(tmpmatrix, 
-            count.get('X') match { case Some(i) => i; case None => 0 }, 
-            count.get('O') match { case Some(i) => i; case None => 0 })
+        copy(tmpmatrix, xcount, ocount)
     }
 
     override def fillAlways(content: Char, x: Int, y: Int): Matrix = {
         var tmpmatrix = matrix.updated(y, matrix(y).updated(x, content))
+        val xcount = tmpmatrix.flatten.count(x => x == 'X')
+        val ocount = tmpmatrix.flatten.count(x => x == 'O')
 
-        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
-        copy(tmpmatrix, 
-            count.get('X') match { case Some(i) => i; case None => 0 }, 
-            count.get('O') match { case Some(i) => i; case None => 0 })
-    }
+        copy(tmpmatrix, xcount, ocount)    }
 }

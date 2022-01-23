@@ -38,16 +38,10 @@ lazy val root = project
     
     jacocoExcludes := Seq(
       "*aview.*",
+      "*FileIO_uPickle.*",
       "*HexModule.*",
       "*Main.*",
       ),
-
-    jacocoExcludes := Seq(
-      "*aview.*",
-      "*fileIOComponent.*",
-      "*HexModule*",
-      "*Main*"
-    ),
 
     jacocoCoverallsServiceName := "github-actions", 
     jacocoCoverallsBranch := sys.env.get("CI_BRANCH"),

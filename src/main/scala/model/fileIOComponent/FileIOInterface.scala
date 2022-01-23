@@ -2,7 +2,7 @@ package model.fileIOComponent
 
 import model.fieldComponent.FieldInterface
 
-/** Interface to implement file IO regarding the field of the game. */
+/** Interface to implement file IO for the current game status. */
 trait FileIOInterface {
     /** Loads field from a file.
      * 
