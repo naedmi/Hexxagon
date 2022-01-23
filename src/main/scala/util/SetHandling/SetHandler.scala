@@ -5,6 +5,7 @@ import scala.util.{Try,Success,Failure}
 
 trait SetHandler {
     def createSetandHandle(content: Char, x: Int, y: Int, startmatrix: Vector[Vector[Char]]): Vector[Vector[Char]]
+    
     def setforeach(s: Set[(Int,Int)], matrix: Vector[Vector[Char]], content: Char) = {
         var tmpmatrix = matrix
         s.foreach{
@@ -12,5 +13,6 @@ trait SetHandler {
         } 
         tmpmatrix
     }
+
     var tolookat: List[Set[(Int,Int)]]
 }

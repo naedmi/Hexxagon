@@ -110,9 +110,11 @@ class MatrixSpec extends AnyWordSpec {
                 m = m.fill('X', 0, 0)
                 m2 = m2.fillAlways('X', 0, 0)
                 m should be (m2)
+                m.Ocount should be (m2.Ocount)
                 m = m.fill('O', 0, 1)
                 m2 = m2.fillAlways('O', 0, 1)
                 m should not be (m2)
+                m.Ocount should not be (m2.Ocount)
                 m2 = m2.fillAlways('O', 0, 0)
                 m2 should be (m)
             }
