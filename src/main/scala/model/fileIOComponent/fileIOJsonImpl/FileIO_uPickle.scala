@@ -37,14 +37,16 @@ class FileIO_uPickle extends FileIOInterface {
                 for {
                     row <- 0 until field.matrix.row;
                     col <- 0 until field.matrix.col
-                } yield {
-                    ujson.Obj(
-                    "row" -> row,
-                    "col" -> col,
-                    "cell" -> field.matrix.cell(col, row).toString
-                    )
-                }
+                } yield cellToJson(field, row, col)
             )
         )
     }
+
+    def cellToJson(field: FieldInterface[Char], row: Int, col: Int) = {
+    ujson.Obj(
+        "row" -> row,
+        "col" -> col,
+        "cell" -> field.matrix.cell(col, row).toString
+    )
+  }
 }

@@ -38,7 +38,6 @@ lazy val root = project
     
     jacocoExcludes := Seq(
       "*aview.*",
-      "*FileIO_uPickle.*",
       "*HexModule.*",
       "*Main.*",
       ),

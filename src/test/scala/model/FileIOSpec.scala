@@ -50,6 +50,25 @@ class FileIOSpec extends AnyWordSpec {
             }
         }
 
+        "used with json (uPickle)" should {
+            val fileIOjson = fileIOJsonImpl.FileIO_uPickle()
+            "save current state of field in json" in {
+                val json = fileIOjson.fieldToJson(field)
+                json("rows").num.toInt should be (6)
+                json("cols").num.toInt should be (9)
+            }
+            "save current state of cell in json" in {
+                val cellJson = fileIOjson.cellToJson(field, 0, 0)
+                cellJson("row").num.toInt should be (0)
+                cellJson("col").num.toInt should be (0)
+                cellJson("cell").toString should be ("\" \"")
+            }
+            "load field from json" in {
+                fileIOjson.save(field)
+                fileIOjson.load should be (field)
+            }
+        }
+
         "used by controller" should {
             "save and load" in {
                 val c = HexModule.given_ControllerInterface_Char
