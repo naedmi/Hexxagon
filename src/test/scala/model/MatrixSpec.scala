@@ -42,15 +42,9 @@ class MatrixSpec extends AnyWordSpec {
             matrix = matrix.fill(' ', 4, 3)
             "contain stone in the cell" in {
                 matrix.Ocount should be (2)
-                matrix.matrix.flatten.groupBy(identity).map(t => (t._1, t._2.length)).get('O') match {
-                    case Some(i) => i should be (matrix.Ocount)
-                    case None => matrix.Ocount should be (0)
-                }
+                matrix.matrix.flatten.count(x => x =='O') should be (2)
                 matrix.Xcount should be (1)
-                matrix.matrix.flatten.groupBy(identity).map(t => (t._1, t._2.length)).get('X') match {
-                    case Some(i) => i should be (matrix.Xcount)
-                    case None => matrix.Xcount should be (0)
-                }
+                matrix.matrix.flatten.count(x => x =='X') should be (1)
                 matrix.cell(0, 0) should be ('X')
                 matrix.cell(1, 0) should be ('O')
                 matrix.cell(2, 0) should be ('O')
@@ -110,9 +104,11 @@ class MatrixSpec extends AnyWordSpec {
                 m = m.fill('X', 0, 0)
                 m2 = m2.fillAlways('X', 0, 0)
                 m should be (m2)
+                m.Ocount should be (m2.Ocount)
                 m = m.fill('O', 0, 1)
                 m2 = m2.fillAlways('O', 0, 1)
                 m should not be (m2)
+                m.Ocount should not be (m2.Ocount)
                 m2 = m2.fillAlways('O', 0, 0)
                 m2 should be (m)
             }

@@ -18,11 +18,10 @@ case class Matrix(matrix: Vector[Vector[Char]], Xcount: Int = 0, Ocount: Int = 0
     def MAX = row * col
     val col = matrix(0).size
     val row = matrix.size
-    // def row(row: Int) = matrix(row)
     
     override def cell(col: Int, row: Int): Char = matrix(row)(col)
 
-    override def fillAll(content: Char): Matrix =
+    override def fillAll(content: Char): Matrix = {
         var o, x = 0
         content match {
             case 'X' => x = MAX; o = 0
@@ -30,25 +29,23 @@ case class Matrix(matrix: Vector[Vector[Char]], Xcount: Int = 0, Ocount: Int = 0
             case _ => o = 0; x = 0
         }
         copy(Vector.fill[Char](row, col)(content), x, o)
+    }
 
     override def fill(content: Char, x: Int, y: Int): Matrix = {
         if content.equals(' ') then copy(matrix.updated(y, matrix(y).updated(x, content)))
 
         var tmpmatrix = new DefaultSetHandler().createSetandHandle(content, x, y, matrix)
         tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
+        val xcount = tmpmatrix.flatten.count(x => x == 'X')
+        val ocount = tmpmatrix.flatten.count(x => x == 'O')
 
-        var ot, xt = 0;
-        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
-        xt = count.get('X') match { case Some(i) => i; case None => 0 }
-        ot = count.get('O') match { case Some(i) => i; case None => 0 }
-        copy(tmpmatrix, xt, ot)
+        copy(tmpmatrix, xcount, ocount)
     }
+
     override def fillAlways(content: Char, x: Int, y: Int): Matrix = {
         var tmpmatrix = matrix.updated(y, matrix(y).updated(x, content))
-        var ot, xt = 0;
-        val count = tmpmatrix.flatten.groupBy(identity).map(t => (t._1, t._2.length))
-        xt = count.get('X') match { case Some(i) => i; case None => 0 }
-        ot = count.get('O') match { case Some(i) => i; case None => 0 }
-        copy(tmpmatrix, xt, ot)
-    }
+        val xcount = tmpmatrix.flatten.count(x => x == 'X')
+        val ocount = tmpmatrix.flatten.count(x => x == 'O')
+
+        copy(tmpmatrix, xcount, ocount)    }
 }

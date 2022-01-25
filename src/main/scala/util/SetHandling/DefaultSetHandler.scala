@@ -6,6 +6,7 @@ import scala.util.{Try,Success,Failure}
 class DefaultSetHandler() extends SetHandler {
     var ibound: Int = 0
     var tolookat = List()
+
     override def createSetandHandle(content: Char, x: Int, y: Int, startmatrix: Vector[Vector[Char]]) = {
         if x < 0 || y < 0 then startmatrix
         else
@@ -18,6 +19,7 @@ class DefaultSetHandler() extends SetHandler {
             case Failure(_) => new TopBotSetHandler().createSetandHandle(content, x, y, startmatrix)
         }
     }
+    
     def setBound(x: Int, y: Int) = 
         ibound = y - 1
         if x % 2 == 1 || ibound < 0 then

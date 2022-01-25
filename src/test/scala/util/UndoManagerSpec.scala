@@ -20,23 +20,37 @@ class UndoManagerSpec extends AnyWordSpec {
     "have a do, undo and redo" in {
       var state = 0
       state = undoManager.doStep(state, command)
-      state should be(1)
-      state = undoManager.undoStep(state)
-      state should be(0)
+      state should be (1)
+      state = undoManager.undoStep(1)
+      state should be (0)
+      undoManager.undoStack should be (Nil)
+      undoManager.redoStack should be (command :: Nil)
       state = undoManager.redoStep(state)
-      state should be(1)
+      state should be (1)
+      undoManager.undoStack should be (command :: Nil)
+      undoManager.redoStack should be (Nil)
     }
     "handle multiple undo steps correctly" in {
       var state = 0
       state = undoManager.doStep(state, command)
+      undoManager.undoStack should be (command :: command :: Nil)
+      undoManager.redoStack should be (Nil)
       state = undoManager.doStep(state, command)
-      state should be(2)
+      undoManager.undoStack should be (command :: command :: command :: Nil)
+      undoManager.redoStack should be (Nil)
+      state should be (2)
       state = undoManager.undoStep(state)
-      state should be(1)
+      undoManager.undoStack should be (command :: command :: Nil)
+      undoManager.redoStack should be (command :: Nil)
+      state should be (1)
       state = undoManager.undoStep(state)
-      state should be(0)
+      undoManager.undoStack should be (command :: Nil)
+      undoManager.redoStack should be (command :: command :: Nil)
+      state should be (0)
       state = undoManager.redoStep(state)
-      state should be(1)
+      undoManager.undoStack should be (command :: command :: Nil)
+      undoManager.redoStack should be (command :: Nil)
+      state should be (1)
     }
   }
 }
