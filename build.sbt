@@ -5,7 +5,7 @@ lazy val root = project
   .settings(
     name := "scala3",
     version := "0.1.0-SNAPSHOT",
-
+    fork in run := true,  // not pretty but fixes error on second startup
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq("com.novocode" % "junit-interface" % "0.11" % "test",

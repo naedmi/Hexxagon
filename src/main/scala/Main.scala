@@ -9,7 +9,6 @@ import model.fieldComponent.fieldBaseImpl._
 import controller.controllerComponent.ControllerInterface
 
 object starter {
-  // val controller = Controller(new Field(new Matrix(3, 2)))
   val tui = TUI()
   def runTUI: Unit = {
     println(tui.startmes)

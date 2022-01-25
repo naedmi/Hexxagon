@@ -10,6 +10,7 @@ import scalafx.scene.shape.Polygon
 import scalafx.application.JFXApp3
 import scalafx.scene.paint.Color._
 import scalafx.scene.image.Image
+import scalafx.scene.ImageCursor
 import scalafx.geometry.Insets
 import controller.GameStatus._
 import scalafx.geometry.Pos._
@@ -19,7 +20,6 @@ import scalafx.Includes._
 import HexModule.{given}
 import scala.math.sqrt
 import util.Observer
-import scalafx.scene.ImageCursor
 
 
 class GUI(using controller: ControllerInterface[Char]) extends JFXApp3 with Observer {
