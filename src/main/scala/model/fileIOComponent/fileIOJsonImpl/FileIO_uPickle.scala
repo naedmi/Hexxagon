@@ -8,12 +8,13 @@ import ujson.Obj
 
 class FileIO_uPickle extends FileIOInterface {
     override def load: FieldInterface[Char] = {
-        val source: String = Source.fromFile("field.json").getLines.mkString
-        val json = ujson.read(source)
-        var field = FlexibleModule(json("rows").num.toInt, json("cols").num.toInt).given_FieldInterface_Char
+        val json = ujson.read(Source.fromFile("field.json").getLines.mkString)
+        val rows = json("rows").num.toInt
+        val cols = json("cols").num.toInt
+        var field = FlexibleModule(rows, cols).given_FieldInterface_Char
         val cells = json("cells")
         
-        for (index <- 0 until json("rows").num.toInt * json("cols").num.toInt) {
+        for (index <- 0 until rows * cols) {
             val row = cells(index)("row").num.toInt
             val col = cells(index)("col").num.toInt
             val cell = cells(index)("cell").str.head

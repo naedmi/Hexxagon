@@ -1,7 +1,7 @@
 package util
 
 trait Observer:
-    def update:Unit // in TUI implementieren
+    def update: Unit
     
 trait Observable:
     var subscribers: Vector[Observer] = Vector()

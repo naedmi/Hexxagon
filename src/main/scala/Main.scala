@@ -32,5 +32,4 @@ object MainTUI extends App {
 object MainGUI extends JFXApp3 {
     override def start() = 
       starter.runGUI
-      // GUI(Controller(new Field())).start()
 }

@@ -8,12 +8,9 @@ import scala.io.Source
 class FileIO extends FileIOInterface {
 
   override def load: FieldInterface[Char] = {
-    var grid: FieldInterface[Char] = null
-    val source: String = Source.fromFile("field.json").getLines.mkString
-    val json: JsValue = Json.parse(source)
+    val json: JsValue = Json.parse(Source.fromFile("field.json").getLines.mkString)
     val rows = (json \ "field" \ "rows").get.toString.toInt
     val cols = (json \ "field" \ "cols").get.toString.toInt
-
     var field = FlexibleModule(rows, cols).given_FieldInterface_Char
   
     for (index <- 0 until rows * cols) {
@@ -49,9 +46,9 @@ class FileIO extends FileIOInterface {
 
   def cellToJson(field: FieldInterface[Char], row: Int, col: Int) = {
     Json.obj(
-              "row" -> row,
-              "col" -> col,
-              "cell" -> Json.toJson(field.matrix.cell(col, row).toString)
-            )
+      "row" -> row,
+      "col" -> col,
+      "cell" -> Json.toJson(field.matrix.cell(col, row).toString)
+    )
   }
 }

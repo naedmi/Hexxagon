@@ -4,7 +4,6 @@ ignore:
   - "**/Main.scala"
   - "**/resources/"
   - "**/HexModule.scala"
-  - "**/FileIO_uPickle.scala"
 
 coverage:
   status:
