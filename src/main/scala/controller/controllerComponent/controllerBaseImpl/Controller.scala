@@ -18,7 +18,10 @@ class Controller (using var hexfield: FieldInterface[Char])
     val GAMEMAX = hexfield.matrix.MAX
 
     private def checkStat = 
-        if hexfield.matrix.Xcount == GAMEMAX || hexfield.matrix.Ocount == GAMEMAX || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX then gamestatus = GAMEOVER
+        if hexfield.matrix.Xcount == GAMEMAX 
+        || hexfield.matrix.Ocount == GAMEMAX 
+        || hexfield.matrix.Ocount + hexfield.matrix.Xcount == GAMEMAX 
+        then gamestatus = GAMEOVER
         else if emptyMatrix then gamestatus = IDLE
 
     private def emptyMatrix = !hexfield.matrix.matrix.flatten.contains('O') && !hexfield.matrix.matrix.flatten.contains('X')
