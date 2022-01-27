@@ -46,7 +46,7 @@ You can place your stones by inputting a two-indexed location. All adjacent Fiel
 ![image](https://github-readme-streak-stats.herokuapp.com/?user=naedmi)
 
 ## GUI - Overview
-(![HEXXAGON](https://user-images.githubusercontent.com/34040518/151370057-dd08f6ff-a616-44c8-8bac-97bae45c1a9f.gif))
+![HEXXAGON](https://user-images.githubusercontent.com/34040518/151370057-dd08f6ff-a616-44c8-8bac-97bae45c1a9f.gif)
 ![grafik](https://user-images.githubusercontent.com/34040518/145568350-a6b652d0-cc23-46a6-b5c3-1ecc1d98556a.png)
 ![grafik](https://user-images.githubusercontent.com/34040518/147228936-72d1362f-46bd-4367-8f57-4067dd7dd758.png)
 ![grafik](https://user-images.githubusercontent.com/34040518/147615216-5e6b8078-cf84-41f2-9e3b-ac4b67ec902b.png)
