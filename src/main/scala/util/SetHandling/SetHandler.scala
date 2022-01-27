@@ -9,7 +9,11 @@ trait SetHandler {
     def setforeach(s: Set[(Int,Int)], matrix: Vector[Vector[Char]], content: Char) = {
         var tmpmatrix = matrix
         s.foreach{
-            case (x, y) => if !tmpmatrix(y)(x).equals(content) && !tmpmatrix(y)(x).equals(' ') then tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
+            case (x, y) => {
+                if !tmpmatrix(y)(x).equals(content) 
+                && !tmpmatrix(y)(x).equals(' ') then 
+                    tmpmatrix = tmpmatrix.updated(y, tmpmatrix(y).updated(x, content))
+            }
         } 
         tmpmatrix
     }

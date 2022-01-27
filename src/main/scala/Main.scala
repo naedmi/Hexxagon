@@ -15,8 +15,7 @@ object starter {
     tui.handleInput("save")
     var input = ""
     var tmp = tui.handleInput(input)
-    while(!tmp.equals(Some("Exiting.")) & !tmp.equals(Some("Filled with X.")) 
-    & !tmp.equals(Some("Filled with O."))) {
+    while(!tmp.equals(Some("Exiting.")) & !tmp.equals(Some("Filled with X.")) & !tmp.equals(Some("Filled with O."))) {
       input = readLine()
       tmp = tui.handleInput(input)
       if !tmp.isEmpty then println(tmp.get)
