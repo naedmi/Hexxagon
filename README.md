@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![alt text](https://img.shields.io/github/languages/top/naedmi/Hexxagon?color=magenta)
 ![alt text](https://img.shields.io/github/commit-activity/w/naedmi/Hexxagon)
+
 ![GitHub contributors](https://img.shields.io/github/contributors/naedmi/Hexxagon?color=green)
 [![GitHub repo size](https://img.shields.io/github/repo-size/naedmi/Hexxagon)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 ![GitHub commit merge status](https://img.shields.io/github/commit-status/naedmi/Hexxagon/master/c8757cf)
