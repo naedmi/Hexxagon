@@ -10,11 +10,11 @@ lazy val root = project
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq("com.novocode" % "junit-interface" % "0.11" % "test",
-    "org.scalactic" %% "scalactic" % "3.2.10", 
-    "org.scalatest" %% "scalatest" % "3.2.10" % "test",
+    "org.scalactic" %% "scalactic" % "3.2.14",
+    "org.scalatest" %% "scalatest" % "3.2.14" % "test",
     "org.scalafx" %% "scalafx" % "16.0.0-R24",
-    "org.scala-lang.modules" %% "scala-xml" % "2.0.1", // XML
-    "com.lihaoyi" %% "upickle" % "1.4.4"), // JSON
+    "org.scala-lang.modules" %% "scala-xml" % "2.1.0", // XML
+    "com.lihaoyi" %% "upickle" % "2.0.0"), // JSON
 
     libraryDependencies += ("com.typesafe.play" %% "play-json" % "2.9.2").cross(CrossVersion.for3Use2_13), // JSON
     

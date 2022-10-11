@@ -1,7 +1,7 @@
 package util
 package SetHandling
 
-import scala.util.{Try,Success,Failure}
+import scala.util.{Failure, Success, Try}
 
 trait SetHandler {
     def createSetandHandle(content: Char, x: Int, y: Int, startmatrix: Vector[Vector[Char]]): Vector[Vector[Char]]
