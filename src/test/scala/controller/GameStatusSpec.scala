@@ -13,8 +13,8 @@ class GameStatusSpec extends AnyWordSpec {
             GAMEOVER.message() should be ("GAME OVER")
         }
         "have map descriptions for each players turn" in {
-            TURNPLAYER1.message() should be ("Player 1s turn to place X")
-            TURNPLAYER2.message() should be ("Player 2s turn to place O")
+            TURNPLAYER1.message() should be ("Player 1's turn to place X")
+            TURNPLAYER2.message() should be ("Player 2's turn to place O")
         }
         "have values" in {
             GameStatus.valueOf("TURNPLAYER2") should be (TURNPLAYER2)
