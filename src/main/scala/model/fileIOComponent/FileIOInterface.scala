@@ -15,4 +15,10 @@ trait FileIOInterface {
      * @param field the field to be saved
     */
     def save(field: FieldInterface[Char]): Unit
+    
+    /** Returns the game status.
+     * 
+     * @return the game status
+    */
+    def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String
 }

@@ -37,14 +37,17 @@ class FileIO extends FileIOInterface {
         pw.close
     }
 
+    override def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String =
+        gameToXml(field, xcount, ocount, turn).toString
+
     def fieldToXml(field: FieldInterface[Char]) = {
         <field rows={ field.matrix.row.toString } cols={ field.matrix.col.toString }>
-        {
+            {
             for {
                 l <- 0 until field.matrix.row
                 i <- 0 until field.matrix.col
             } yield cellToXml(field, l, i)
-        }
+            }
         </field>
     }
 
@@ -52,5 +55,21 @@ class FileIO extends FileIOInterface {
         <cell row={ row.toString } col={ col.toString }>
             { field.matrix.cell(col, row) }
         </cell>
+    }
+
+    def gameToXml(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int) = {
+        <field rows={ field.matrix.row.toString } cols={ field.matrix.col.toString }>
+            {
+            <xcount>{ xcount }</xcount>
+              <ocount>{ ocount }</ocount>
+              <turn>{ turn }</turn>
+            }
+            {
+            for {
+                l <- 0 until field.matrix.row
+                i <- 0 until field.matrix.col
+            } yield cellToXml(field, l, i)
+            }
+        </field>
     }
 }

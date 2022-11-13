@@ -30,6 +30,11 @@ class FileIO_uPickle extends FileIOInterface {
         pw.close
     }
 
+    // not working with xcount, ocount, turn yet
+    override def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String = {
+        fieldToJson(field).toString
+    }
+
     def fieldToJson(field: FieldInterface[Char]) = {
         ujson.Obj(
             "rows" -> ujson.Num(field.matrix.row),

@@ -43,4 +43,7 @@ trait ControllerInterface[T] extends Observable {
 
   /** Resets the game board and its status. */
   def reset: Unit
+  
+  /** Returns the field of the game. */
+  def exportField: String
 }
