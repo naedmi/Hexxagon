@@ -31,7 +31,7 @@ class FileIO extends FileIOInterface {
 
   // not working with xcount, ocount, turn yet
   override def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String =
-    fieldToJson(field).toString
+    gameToJson(field, xcount, ocount, turn).toString
 
   def fieldToJson(field: FieldInterface[Char]) = {
     Json.obj(
@@ -53,6 +53,15 @@ class FileIO extends FileIOInterface {
       "row" -> row,
       "col" -> col,
       "cell" -> Json.toJson(field.matrix.cell(col, row).toString)
+    )
+  }
+  
+  def gameToJson(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int) = {
+    Json.obj(
+      "xcount" -> JsNumber(xcount),
+      "ocount" -> JsNumber(ocount),
+      "turn" -> JsNumber(turn),
+      "field" -> fieldToJson(field)
     )
   }
 }
