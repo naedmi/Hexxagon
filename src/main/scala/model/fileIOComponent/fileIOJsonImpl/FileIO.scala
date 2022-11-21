@@ -10,8 +10,8 @@ class FileIO extends FileIOInterface {
 
   override def load: FieldInterface[Char] = {
     val json: JsValue = Json.parse(Source.fromFile("field.json").getLines.mkString)
-    val rows = (json \ "field" \ "rows").get.toString.toInt
-    val cols = (json \ "field" \ "cols").get.toString.toInt
+    val rows = (json \ "rows").get.toString.toInt
+    val cols = (json \ "cols").get.toString.toInt
     var field = FlexibleModule(rows, cols).given_FieldInterface_Char
 
     for (index <- 0 until rows * cols) {
@@ -24,23 +24,10 @@ class FileIO extends FileIOInterface {
   }
 
   override def save(field: FieldInterface[Char]): Unit = {
-    import java.io.*
+    import java.io.{File, PrintWriter}
     val pw = new PrintWriter(new File("field.json"))
     pw.write(Json.prettyPrint(fieldToJson(field)))
     pw.close
-  }
-
-  // not working with xcount, ocount, turn yet
-  override def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String =
-    gameToJson(field, xcount, ocount, turn).toString
-
-  def gameToJson(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int) = {
-    Json.obj(
-      "xcount" -> JsNumber(xcount),
-      "ocount" -> JsNumber(ocount),
-      "turn" -> JsNumber(turn),
-      "field" -> fieldToJson(field)
-    )
   }
 
   def fieldToJson(field: FieldInterface[Char]) = {
@@ -61,6 +48,19 @@ class FileIO extends FileIOInterface {
       "row" -> row,
       "col" -> col,
       "cell" -> Json.toJson(field.matrix.cell(col, row).toString)
+    )
+  }
+
+  // not working with xcount, ocount, turn yet
+  override def exportGame(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int): String =
+    gameToJson(field, xcount, ocount, turn).toString
+
+  def gameToJson(field: FieldInterface[Char], xcount: Int, ocount: Int, turn: Int) = {
+    Json.obj(
+      "xcount" -> JsNumber(xcount),
+      "ocount" -> JsNumber(ocount),
+      "turn" -> JsNumber(turn),
+      "field" -> fieldToJson(field)
     )
   }
 }
