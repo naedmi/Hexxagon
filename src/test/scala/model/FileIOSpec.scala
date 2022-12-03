@@ -35,8 +35,8 @@ class FileIOSpec extends AnyWordSpec {
             val fileIOjson = fileIOJsonImpl.FileIO()
             "save current state of field in json" in {
                 val json = fileIOjson.fieldToJson(field)
-                (json \ "field" \ "rows").get.toString should be ("6")
-                (json \ "field" \ "cols").get.toString should be ("9")
+                (json \ "rows").get.toString should be ("6")
+                (json \ "cols").get.toString should be ("9")
             }
             "save current state of cell in json" in {
                 val cellJson = fileIOjson.cellToJson(field, 0, 0)
